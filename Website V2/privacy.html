@@ -53,9 +53,14 @@
     table.policy td strong { color: var(--ink); font-weight: 600; }
     .doc-footer-note { font-size: 13px; color: var(--rich-grey); margin-top: 64px; padding-top: 24px; border-top: 1px solid rgba(8,8,31,0.08); }
     .top-nav {
-      position: fixed; top: 16px; left: 0; right: 0; z-index: 50;
+      position: fixed;
+      top: max(16px, env(safe-area-inset-top));
+      left: 0; right: 0; z-index: 70;
       display: flex; justify-content: center;
+      padding: 0 var(--s-3);
+      pointer-events: none;
     }
+    .top-nav .nav-inner { pointer-events: auto; }
     .top-nav .nav-inner {
       background: rgba(255,255,255,0.7);
       backdrop-filter: blur(20px) saturate(180%);
@@ -68,27 +73,81 @@
     .top-nav .nav-link { color: rgba(8,8,31,0.7); }
     .top-nav .nav-link:hover { background: rgba(8,8,31,0.06); color: var(--ink); }
     .top-nav .nav-cta { background: var(--electric-blue); color: #fff; }
+    .top-nav .nav-toggle {
+      background: rgba(8,8,31,0.05);
+      border-color: rgba(8,8,31,0.12);
+      color: var(--ink);
+    }
+    .top-nav .nav-toggle-icon::before,
+    .top-nav .nav-toggle-icon::after,
+    .top-nav .nav-toggle-icon span { background: var(--ink); }
     .footer-mini { background: #08081F; color: rgba(255,255,255,0.6); padding: 36px 0; text-align: center; font-size: 13px; }
     .footer-mini a { color: rgba(255,255,255,0.85); margin: 0 12px; }
+    /* Privacy doc — fluid horizontal padding */
+    .doc { padding: clamp(100px, 18vw, 140px) clamp(20px, 5vw, 24px) clamp(80px, 14vw, 120px); }
   </style>
 </head>
 <body>
-  <header class="top-nav">
-    <div class="nav-inner" style="display:flex; align-items:center; gap:8px; padding:8px 8px 8px 20px; border-radius:999px;">
-      <a href="index.html" class="brand-mark" style="color: var(--ink); display:inline-flex; align-items:center; gap:10px;">
+  <header class="top-nav nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand-mark">
         <span style="display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:8px; background:var(--faded-blue); flex-shrink:0;">
           <img src="assets/social-limits-logo.png" alt="Social Limits" style="max-width:85%; max-height:85%; width:auto; height:auto; object-fit:contain; display:block;"/>
         </span>
         <span style="font-size:16px; font-weight:800; letter-spacing:-0.01em;">Social Limits</span>
       </a>
-      <div style="display:flex; align-items:center; gap:2px; margin-left: 16px;">
-        <a class="nav-link" href="index.html#how" style="padding: 10px 16px; font-size: 14px; border-radius: 999px; font-weight: 500;">How it works</a>
-        <a class="nav-link" href="index.html#science" style="padding: 10px 16px; font-size: 14px; border-radius: 999px; font-weight: 500;">Why it works</a>
-        <a class="nav-link" href="our-story.html" style="padding: 10px 16px; font-size: 14px; border-radius: 999px; font-weight: 500;">Our story</a>
+      <div class="nav-links">
+        <a class="nav-link" href="index.html#how">How it works</a>
+        <a class="nav-link" href="index.html#science">Why it works</a>
+        <a class="nav-link" href="our-story.html">Our story</a>
       </div>
-      <a class="nav-cta" href="index.html#download" style="margin-left: 8px; padding: 10px 18px; border-radius: 999px; font-weight: 600; font-size: 14px;">Get the app</a>
+      <a class="nav-cta" href="index.html#download">Get the app</a>
+      <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer" data-nav-toggle>
+        <span class="nav-toggle-icon"><span></span></span>
+      </button>
+    </div>
+
+    <div id="nav-drawer" class="nav-drawer" data-open="false" role="dialog" aria-modal="true" aria-label="Site navigation">
+      <div class="nav-drawer-links">
+        <a class="nav-link" href="index.html#how" data-nav-close>How it works</a>
+        <a class="nav-link" href="index.html#science" data-nav-close>Why it works</a>
+        <a class="nav-link" href="our-story.html" data-nav-close>Our story</a>
+        <a class="nav-link" href="index.html#reviews" data-nav-close>Reviews</a>
+        <a class="nav-link" href="index.html#partners" data-nav-close>Partners</a>
+      </div>
+      <a class="nav-cta" href="index.html#download" data-nav-close>Get the app</a>
     </div>
   </header>
+
+  <script>
+    (function () {
+      var toggle = document.querySelector('[data-nav-toggle]');
+      var drawer = document.getElementById('nav-drawer');
+      if (!toggle || !drawer) return;
+      var closers = drawer.querySelectorAll('[data-nav-close]');
+      function setOpen(open) {
+        drawer.setAttribute('data-open', open ? 'true' : 'false');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        document.body.setAttribute('data-nav-open', open ? 'true' : 'false');
+        if (open) {
+          var first = drawer.querySelector('a, button');
+          if (first) setTimeout(function () { first.focus(); }, 50);
+        } else {
+          toggle.focus();
+        }
+      }
+      toggle.addEventListener('click', function () {
+        setOpen(drawer.getAttribute('data-open') !== 'true');
+      });
+      closers.forEach(function (el) {
+        el.addEventListener('click', function () { setOpen(false); });
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && drawer.getAttribute('data-open') === 'true') setOpen(false);
+      });
+    })();
+  </script>
 
   <main class="doc">
     <div style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:var(--faded-blue); color:var(--electric-blue); font-size:12px; font-weight:600; margin-bottom: 20px;">Legal</div>
@@ -103,7 +162,7 @@
 
     <h2>1. Definitions</h2>
     <p>For the purposes of this Privacy Policy:</p>
-    <table class="policy">
+    <div class="table-wrap"><table class="policy">
       <thead>
         <tr><th style="width: 34%;">Term</th><th>Meaning</th></tr>
       </thead>
@@ -125,7 +184,7 @@
           <td>Any operation performed on Personal Data such as collection, storage, use, sharing, or deletion.</td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
 
     <h2>2. What Data We Collect</h2>
     <h3>2.1 Account &amp; Contact Data</h3>
@@ -139,7 +198,7 @@
     <p>Automatically collected technical data about how you interact with the Service (e.g. IP address, device model, OS version, time stamps, in-app events).</p>
 
     <h3>2.3 Health &amp; Fitness Data</h3>
-    <table class="policy">
+    <div class="table-wrap"><table class="policy">
       <thead>
         <tr><th>Data type</th><th>Source</th><th>Purpose</th></tr>
       </thead>
@@ -155,11 +214,11 @@
           <td>Gamification (leaderboard, streaks) &amp; accurate goal tracking</td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
     <p style="margin-top: 14px;">We do not collect heart-rate, location routes, medical conditions, or any other sensitive health data.</p>
 
     <h2>3. How We Use Your Data</h2>
-    <table class="policy">
+    <div class="table-wrap"><table class="policy">
       <thead>
         <tr><th>Purpose</th><th>Lawful basis</th></tr>
       </thead>
@@ -181,7 +240,7 @@
           <td>Legal obligation / Legitimate interests</td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
     <p style="margin-top: 14px;">Health &amp; Fitness Data is never used for advertising, marketing, credit scoring, or sold to third parties. We do not combine it with other data to infer sensitive attributes.</p>
 
     <h2>4. Sharing &amp; Disclosure</h2>
@@ -240,7 +299,7 @@
     <p>When you connect Social Limits to Google Fit or Health Connect, Android will present a permissions dialog describing the exact data types (e.g. Steps, Distance) that the app requests. Granting permission allows Social Limits to read those data types solely to enable the core feature of unlocking social media once your daily step goal is achieved. Social Limits does not write data back to Google Fit/Health Connect and does not share the retrieved data with third parties. You can revoke access at any time in <strong>Android → Settings → Security &amp; privacy → Health Connect</strong>.</p>
 
     <h2>Data Safety Summary (Google Play Console)</h2>
-    <table class="policy">
+    <div class="table-wrap"><table class="policy">
       <thead>
         <tr>
           <th>Data Type</th>
@@ -280,7 +339,7 @@
           <td>No (opt-out)</td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
     <p style="margin-top: 14px;">This table is provided for transparency; the authoritative source is the Data Safety form in the Play Console.</p>
 
     <div class="doc-footer-note">© 2025 Social Limits Pty Ltd. All rights reserved.</div>

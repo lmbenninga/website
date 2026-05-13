@@ -66,6 +66,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 @media (min-width: 768px) {
   .shell { padding: 0 var(--s-6); }
 }
+@media (max-width: 480px) {
+  .shell { padding: 0 var(--s-3); }
+}
 
 /* ─────────────────── Liquid Glass ─────────────────── */
 .glass {
@@ -124,6 +127,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
   color: #fff;
   overflow: hidden;
   isolation: isolate;
@@ -165,38 +169,154 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 /* ─────────────────── Nav ─────────────────── */
 .nav {
-  position: fixed; top: 16px; left: 0; right: 0;
-  z-index: 50;
+  position: fixed;
+  top: max(16px, env(safe-area-inset-top));
+  left: 0; right: 0;
+  z-index: 70;
   display: flex; justify-content: center;
+  padding: 0 var(--s-3);
   pointer-events: none;
 }
 .nav-inner {
   pointer-events: auto;
+  position: relative;
+  z-index: 100;
   display: flex; align-items: center; gap: 8px;
   padding: 8px 8px 8px 20px;
   border-radius: 999px;
+  max-width: calc(100vw - var(--s-4));
+}
+/* When drawer is open, give the pill a more solid backdrop so brand + close button stay readable */
+body[data-nav-open="true"] .nav-inner {
+  background: rgba(10,10,40,0.55) !important;
+}
+.nav-links {
+  display: flex; align-items: center; gap: 2px;
+  margin-left: 16px;
 }
 .nav-link {
-  padding: 10px 16px;
+  padding: 12px 16px;
   font-size: 14px; font-weight: 500;
   color: rgba(255,255,255,0.85);
   border-radius: 999px;
   transition: background .15s ease, color .15s ease;
 }
 .nav-link:hover { color: #fff; background: rgba(255,255,255,0.12); }
+.nav-link:focus-visible { outline: 2px solid rgba(255,255,255,0.6); outline-offset: 2px; }
 .nav-cta {
-  padding: 10px 18px; border-radius: 999px;
+  padding: 12px 18px; border-radius: 999px;
   background: #fff; color: var(--electric-blue);
   font-weight: 600; font-size: 14px;
+  margin-left: 8px;
 }
+.nav-cta:focus-visible { outline: 2px solid var(--electric-blue); outline-offset: 2px; }
 .brand-mark {
   display: inline-flex; align-items: center; gap: 10px;
   color: #fff; font-weight: 700; letter-spacing: -0.01em;
 }
 
+/* Hamburger toggle — hidden on desktop */
+.nav-toggle {
+  display: none;
+  align-items: center; justify-content: center;
+  width: 44px; height: 44px;
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.nav-toggle:focus-visible { outline: 2px solid rgba(255,255,255,0.6); outline-offset: 2px; }
+.nav-toggle-icon {
+  position: relative;
+  width: 20px; height: 14px;
+  display: block;
+}
+.nav-toggle-icon::before,
+.nav-toggle-icon::after,
+.nav-toggle-icon span {
+  content: '';
+  position: absolute; left: 0; right: 0;
+  height: 2px; background: #fff; border-radius: 2px;
+  transition: transform .25s ease, opacity .2s ease, top .25s ease;
+}
+.nav-toggle-icon::before { top: 0; }
+.nav-toggle-icon span { top: 6px; display: block; }
+.nav-toggle-icon::after { top: 12px; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon::before { top: 6px; transform: rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon span { opacity: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon::after { top: 6px; transform: rotate(-45deg); }
+
+/* Full-screen glass drawer */
+.nav-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: none;
+  flex-direction: column;
+  padding:
+    calc(env(safe-area-inset-top) + 84px)
+    calc(env(safe-area-inset-right) + var(--s-4))
+    calc(env(safe-area-inset-bottom) + var(--s-4))
+    calc(env(safe-area-inset-left) + var(--s-4));
+  background:
+    radial-gradient(120% 80% at 90% 10%, rgba(123, 91, 255, 0.55) 0%, transparent 55%),
+    radial-gradient(100% 70% at 10% 100%, rgba(0, 180, 255, 0.45) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(10,10,184,0.96), rgba(6,6,160,0.97));
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  color: #fff;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity .22s ease, transform .22s ease;
+}
+.nav-drawer[data-open="true"] {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+.nav-drawer-links {
+  display: flex; flex-direction: column;
+  gap: 4px;
+  margin-top: var(--s-3);
+}
+.nav-drawer .nav-link {
+  font-size: 22px; font-weight: 600;
+  padding: 16px 18px;
+  min-height: 56px;
+  color: #fff;
+  display: flex; align-items: center;
+  border-radius: 16px;
+}
+.nav-drawer .nav-link:hover,
+.nav-drawer .nav-link:focus-visible {
+  background: rgba(255,255,255,0.1);
+}
+.nav-drawer .nav-cta {
+  margin: auto 0 var(--s-3);
+  text-align: center; justify-content: center;
+  padding: 18px 24px; font-size: 16px;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 100%;
+  min-height: 56px;
+}
+
+body[data-nav-open="true"] { overflow: hidden; }
+
+/* Below 720px: collapse pill to brand + hamburger, show drawer */
+@media (max-width: 720px) {
+  .nav-links { display: none; }
+  .nav-inner > .nav-cta { display: none; }
+  .nav-toggle { display: inline-flex; }
+  .nav-inner { padding: 6px 6px 6px 14px; gap: 6px; }
+}
+@media (min-width: 721px) {
+  .nav-drawer { display: none !important; }
+}
+
 /* ─────────────────── Sections ─────────────────── */
 section { padding: var(--s-8) 0; }
 @media (max-width: 768px) { section { padding: var(--s-7) 0; } }
+@media (max-width: 480px) { section { padding: var(--s-6) 0; } }
 
 .section-head {
   display: flex; flex-direction: column; gap: var(--s-3);
@@ -234,7 +354,7 @@ section { padding: var(--s-8) 0; }
 /* ─────────────────── Phone (custom mockup) ─────────────────── */
 .phone-stack { position: relative; }
 .phone {
-  width: 320px;
+  width: min(320px, 80vw);
   aspect-ratio: 9 / 19.5;
   border-radius: 52px;
   background: #0a0a12;
@@ -283,4 +403,52 @@ section { padding: var(--s-8) 0; }
   background: linear-gradient(180deg, #fff 0%, #C4C4FF 100%);
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* ─────────────────── Mobile polish ─────────────────── */
+
+/* Lighter glass blur on mobile — saves GPU and fixes iOS Safari scroll flicker */
+@media (max-width: 720px) {
+  .glass { backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); }
+  .glass-dark { backdrop-filter: blur(10px) saturate(130%); -webkit-backdrop-filter: blur(10px) saturate(130%); }
+  .btn-glass { backdrop-filter: blur(12px) saturate(150%); -webkit-backdrop-filter: blur(12px) saturate(150%); }
+}
+
+/* Honour prefers-reduced-motion across all animations and transitions */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .float { animation: none !important; }
+}
+
+/* Cards: drop hover-lift on touch devices (no hover state) */
+@media (hover: none) {
+  .card:hover { transform: none; }
+  .btn:hover { transform: none; }
+}
+
+/* Hero on mobile — tighter padding, no shadow excess */
+@media (max-width: 720px) {
+  .hero-bg::after { filter: blur(20px); }
+}
+
+/* Pull-quote on small screens (used by our-story page) */
+@media (max-width: 640px) {
+  .pull-quote { padding: 20px 22px !important; margin: 22px 0 !important; }
+}
+
+/* Footer: collapse to a single column on narrow phones */
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr !important; gap: var(--s-4) !important; }
+}
+
+/* Horizontally scrollable container for tables and other wide content */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 16px 0 8px;
 }
