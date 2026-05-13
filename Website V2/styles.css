@@ -273,6 +273,7 @@ body[data-nav-open="true"] .nav-inner {
   display: flex;
   opacity: 1;
   transform: translateY(0);
+  pointer-events: auto;
 }
 .nav-drawer-links {
   display: flex; flex-direction: column;
