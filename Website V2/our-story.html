@@ -11,7 +11,7 @@
     .os-hero {
       position: relative;
       color: #fff;
-      padding: 200px 0 140px;
+      padding: clamp(140px, 24vw, 200px) 0 clamp(80px, 16vw, 140px);
       overflow: hidden;
       isolation: isolate;
     }
@@ -166,22 +166,66 @@
   <!-- Nav -->
   <header class="nav">
     <div class="nav-inner glass-dark" style="background: rgba(10,10,40,0.32);">
-      <a href="index.html" class="brand-mark" style="color: #fff; display:inline-flex; align-items:center; gap:10px;">
+      <a href="index.html" class="brand-mark">
         <span style="display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:8px; background:#fff; flex-shrink:0; box-shadow: 0 4px 12px -4px rgba(0,0,80,0.25);">
           <img src="assets/social-limits-logo.png" alt="Social Limits" style="max-width:85%; max-height:85%; width:auto; height:auto; object-fit:contain; display:block;"/>
         </span>
         <span style="font-size:16px; font-weight:800; letter-spacing:-0.01em;">Social Limits</span>
       </a>
-      <div style="display:flex; align-items:center; gap:2px; margin-left: 16px;">
+      <div class="nav-links">
         <a class="nav-link" href="index.html#how">How it works</a>
         <a class="nav-link" href="index.html#science">Why it works</a>
         <a class="nav-link" href="our-story.html" style="background: rgba(255,255,255,0.12); color: #fff;">Our story</a>
         <a class="nav-link" href="index.html#reviews">Reviews</a>
         <a class="nav-link" href="index.html#partners">Partners</a>
       </div>
-      <a class="nav-cta" href="index.html#download" style="margin-left: 8px;">Get the app</a>
+      <a class="nav-cta" href="index.html#download">Get the app</a>
+      <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer" data-nav-toggle>
+        <span class="nav-toggle-icon"><span></span></span>
+      </button>
+    </div>
+
+    <div id="nav-drawer" class="nav-drawer" data-open="false" role="dialog" aria-modal="true" aria-label="Site navigation">
+      <div class="nav-drawer-links">
+        <a class="nav-link" href="index.html#how" data-nav-close>How it works</a>
+        <a class="nav-link" href="index.html#science" data-nav-close>Why it works</a>
+        <a class="nav-link" href="our-story.html" data-nav-close>Our story</a>
+        <a class="nav-link" href="index.html#reviews" data-nav-close>Reviews</a>
+        <a class="nav-link" href="index.html#partners" data-nav-close>Partners</a>
+      </div>
+      <a class="nav-cta" href="index.html#download" data-nav-close>Get the app</a>
     </div>
   </header>
+
+  <script>
+    (function () {
+      var toggle = document.querySelector('[data-nav-toggle]');
+      var drawer = document.getElementById('nav-drawer');
+      if (!toggle || !drawer) return;
+      var closers = drawer.querySelectorAll('[data-nav-close]');
+      function setOpen(open) {
+        drawer.setAttribute('data-open', open ? 'true' : 'false');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        document.body.setAttribute('data-nav-open', open ? 'true' : 'false');
+        if (open) {
+          var first = drawer.querySelector('a, button');
+          if (first) setTimeout(function () { first.focus(); }, 50);
+        } else {
+          toggle.focus();
+        }
+      }
+      toggle.addEventListener('click', function () {
+        setOpen(drawer.getAttribute('data-open') !== 'true');
+      });
+      closers.forEach(function (el) {
+        el.addEventListener('click', function () { setOpen(false); });
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && drawer.getAttribute('data-open') === 'true') setOpen(false);
+      });
+    })();
+  </script>
 
   <!-- Hero / Mission -->
   <section class="os-hero" data-screen-label="01 Mission">

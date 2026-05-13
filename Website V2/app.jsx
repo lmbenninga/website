@@ -30,19 +30,81 @@ function BrandMark({ color = '#fff', logoSize = 22 }) {
 // ─────────────────────────────────────────────────────────────
 // Nav
 // ─────────────────────────────────────────────────────────────
+const NAV_LINKS = [
+  ['How it works', 'index.html#how'],
+  ['Why it works', 'index.html#science'],
+  ['Our story',    'our-story.html'],
+  ['Reviews',      'index.html#reviews'],
+  ['Partners',     'index.html#partners'],
+];
+
 function Nav() {
+  const [open, setOpen] = useState(false);
+  const firstLinkRef = useRef(null);
+  const toggleRef = useRef(null);
+
+  useEffect(() => {
+    document.body.dataset.navOpen = open ? 'true' : 'false';
+    if (!open) return;
+    const onKey = (e) => { if (e.key === 'Escape') setOpen(false); };
+    window.addEventListener('keydown', onKey);
+    const t = setTimeout(() => firstLinkRef.current && firstLinkRef.current.focus(), 50);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      clearTimeout(t);
+    };
+  }, [open]);
+
+  const close = () => {
+    setOpen(false);
+    setTimeout(() => toggleRef.current && toggleRef.current.focus(), 0);
+  };
+
   return (
     <header className="nav">
       <div className="nav-inner glass-dark" style={{ background:'rgba(10,10,40,0.32)' }}>
         <BrandMark/>
-        <div style={{ display:'flex', alignItems:'center', gap: 2, marginLeft: 16 }}>
-          <a className="nav-link" href="index.html#how">How it works</a>
-          <a className="nav-link" href="index.html#science">Why it works</a>
-          <a className="nav-link" href="our-story.html">Our story</a>
-          <a className="nav-link" href="index.html#reviews">Reviews</a>
-          <a className="nav-link" href="index.html#partners">Partners</a>
+        <div className="nav-links">
+          {NAV_LINKS.map(([label, href]) => (
+            <a key={href} className="nav-link" href={href}>{label}</a>
+          ))}
         </div>
-        <a className="nav-cta" href="#download" style={{ marginLeft: 8 }}>Get the app</a>
+        <a className="nav-cta" href="#download">Get the app</a>
+        <button
+          ref={toggleRef}
+          type="button"
+          className="nav-toggle"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
+          aria-controls="nav-drawer"
+          onClick={() => setOpen(v => !v)}
+        >
+          <span className="nav-toggle-icon"><span/></span>
+        </button>
+      </div>
+
+      <div
+        id="nav-drawer"
+        className="nav-drawer"
+        data-open={open}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Site navigation"
+      >
+        <div className="nav-drawer-links">
+          {NAV_LINKS.map(([label, href], i) => (
+            <a
+              key={href}
+              ref={i === 0 ? firstLinkRef : null}
+              className="nav-link"
+              href={href}
+              onClick={close}
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+        <a className="nav-cta" href="#download" onClick={close}>Get the app</a>
       </div>
     </header>
   );
@@ -55,7 +117,7 @@ function Hero() {
   return (
     <section className="hero" data-screen-label="01 Hero">
       <div className="hero-bg"/>
-      <div className="shell" style={{ paddingTop: 140, paddingBottom: 100, display:'grid', gridTemplateColumns:'1fr', gap: 60, position:'relative' }}>
+      <div className="shell" style={{ paddingTop: 'clamp(112px, 18vw, 140px)', paddingBottom: 'clamp(64px, 12vw, 100px)', display:'grid', gridTemplateColumns:'1fr', gap: 60, position:'relative' }}>
         <div style={{ display:'grid', gridTemplateColumns:'minmax(0,1.1fr) minmax(0,0.9fr)', gap: 40, alignItems:'center' }} className="hero-grid">
           <div>
             <span className="chip chip-dark" style={{ marginBottom: 28 }}>
@@ -83,17 +145,17 @@ function Hero() {
               </a>
             </div>
 
-            <div style={{ marginTop: 48, display:'flex', gap: 36, alignItems:'center', flexWrap:'wrap' }}>
+            <div className="hero-stats" style={{ marginTop: 48, display:'flex', gap: 'clamp(20px, 4vw, 36px)', alignItems:'center', flexWrap:'wrap' }}>
               <div>
                 <div style={{ fontSize: 28, fontWeight: 800, letterSpacing:'-0.025em' }}>20k+</div>
                 <div style={{ fontSize: 12, color:'rgba(255,255,255,0.6)', fontWeight: 500, marginTop: 2 }}>Users</div>
               </div>
-              <div style={{ width: 1, height: 36, background:'rgba(255,255,255,0.18)' }}/>
+              <div className="hero-stats-sep" style={{ width: 1, height: 36, background:'rgba(255,255,255,0.18)' }}/>
               <div>
                 <div style={{ fontSize: 28, fontWeight: 800, letterSpacing:'-0.025em' }}>4.5<span style={{ opacity:.5, fontSize: 20 }}>/5</span></div>
                 <div style={{ fontSize: 12, color:'rgba(255,255,255,0.6)', fontWeight: 500, marginTop: 2 }}>App Store ratings</div>
               </div>
-              <div style={{ width: 1, height: 36, background:'rgba(255,255,255,0.18)' }}/>
+              <div className="hero-stats-sep" style={{ width: 1, height: 36, background:'rgba(255,255,255,0.18)' }}/>
               <div>
                 <div style={{ fontSize: 28, fontWeight: 800, letterSpacing:'-0.025em' }}>250M+</div>
                 <div style={{ fontSize: 12, color:'rgba(255,255,255,0.6)', fontWeight: 500, marginTop: 2 }}>Steps tracked</div>
@@ -128,6 +190,10 @@ function Hero() {
         @media (max-width: 900px) {
           .hero-grid { grid-template-columns: 1fr !important; }
           .hero-grid > div:last-child { order: -1; }
+        }
+        @media (max-width: 560px) {
+          .hero-stats-sep { display: none; }
+          .hero-stats { gap: 24px 28px; }
         }
       `}</style>
     </section>
@@ -201,7 +267,7 @@ function HowItWorks() {
 
         <div className="grid-4">
           {steps.map((s) => (
-            <article key={s.n} className="card" style={{ padding: 28, display:'flex', flexDirection:'column', gap: 20, minHeight: 280 }}>
+            <article key={s.n} className="card how-card" style={{ padding: 'clamp(20px, 4vw, 28px)', display:'flex', flexDirection:'column', gap: 20, minHeight: 280 }}>
               <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start' }}>
                 <div style={{
                   width: 48, height: 48, borderRadius: 14,
@@ -220,6 +286,11 @@ function HowItWorks() {
           ))}
         </div>
       </div>
+      <style>{`
+        @media (max-width: 640px) {
+          .how-card { min-height: auto !important; }
+        }
+      `}</style>
     </section>
   );
 }
@@ -232,16 +303,21 @@ function Showcase() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isSmall = () => window.innerWidth < 900;
+
     const update = () => {
       const sec = sectionRef.current;
       const phone = phoneRef.current;
       if (!sec || !phone) return;
+      if (prefersReducedMotion || isSmall()) {
+        phone.style.transform = '';
+        return;
+      }
       const rect = sec.getBoundingClientRect();
       const vh = window.innerHeight;
-      // progress: 0 when section bottom touches top of viewport, 1 when section top touches bottom of viewport
       const total = vh + rect.height;
       const progress = Math.max(0, Math.min(1, (vh - rect.top) / total));
-      // map progress 0→1 to rotate -8° → +8° and translateY +30 → -30
       const rotate = (progress - 0.5) * 16;
       const ty = (0.5 - progress) * 60;
       const scale = 1 + Math.sin(progress * Math.PI) * 0.04;
@@ -258,7 +334,7 @@ function Showcase() {
 
   return (
     <section ref={sectionRef} className="blue-surface" data-screen-label="04 Showcase">
-      <div className="shell" style={{ display:'grid', gridTemplateColumns:'1.1fr 0.9fr', gap: 80, alignItems:'center' }} >
+      <div className="shell" style={{ display:'grid', gridTemplateColumns:'1.1fr 0.9fr', gap: 'clamp(40px, 8vw, 80px)', alignItems:'center' }} >
         <div>
           <span className="chip chip-dark" style={{ marginBottom: 24 }}>
             <span className="dot" style={{ background:'#7DFFA8' }}/>
@@ -300,7 +376,7 @@ function Showcase() {
             ref={phoneRef}
             className="phone"
             style={{
-              width: 290,
+              width: 'min(290px, 76vw)',
               transition: 'transform 0.25s cubic-bezier(0.22, 1, 0.36, 1)',
               willChange: 'transform',
             }}
