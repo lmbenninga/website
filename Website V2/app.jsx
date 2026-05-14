@@ -157,7 +157,7 @@ function Hero() {
               </div>
               <div className="hero-stats-sep" style={{ width: 1, height: 36, background:'rgba(255,255,255,0.18)' }}/>
               <div>
-                <div style={{ fontSize: 28, fontWeight: 800, letterSpacing:'-0.025em' }}>250M+</div>
+                <div style={{ fontSize: 28, fontWeight: 800, letterSpacing:'-0.025em' }}>2.4B+</div>
                 <div style={{ fontSize: 12, color:'rgba(255,255,255,0.6)', fontWeight: 500, marginTop: 2 }}>Steps tracked</div>
               </div>
             </div>
