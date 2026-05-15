@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy — Social Limits</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    .doc { max-width: 820px; margin: 0 auto; padding: 140px 24px 120px; }
+    .doc h1 { font-size: clamp(40px, 5vw, 64px); font-weight: 800; letter-spacing: -0.03em; line-height: 1; margin: 0 0 12px; }
+    .doc .meta { color: var(--rich-grey); font-size: 14px; margin-bottom: 40px; }
+    .doc .lede { color: var(--ink); font-size: 17px; line-height: 1.65; margin-bottom: 32px; }
+    .doc h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.015em; margin: 56px 0 16px; color: var(--ink); }
+    .doc h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; margin: 28px 0 10px; color: var(--ink); }
+    .doc p, .doc li { color: var(--rich-grey); line-height: 1.7; font-size: 16px; }
+    .doc ul { padding-left: 20px; }
+    .doc a { color: var(--electric-blue); border-bottom: 1px solid currentColor; }
+    .callout {
+      background: var(--faded-blue);
+      color: var(--electric-blue-deep, #1A1AB8);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin: 28px 0 36px;
+      font-size: 15px; line-height: 1.6;
+    }
+    .callout strong { color: var(--electric-blue); }
+    table.policy {
+      width: 100%; border-collapse: collapse;
+      margin: 16px 0 8px;
+      font-size: 14px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(8,8,31,0.08);
+    }
+    table.policy th {
+      background: var(--pale-grey);
+      color: var(--ink);
+      font-weight: 600;
+      text-align: left;
+      padding: 12px 16px;
+      letter-spacing: -0.005em;
+      font-size: 13px;
+      border-bottom: 1px solid rgba(8,8,31,0.08);
+    }
+    table.policy td {
+      padding: 14px 16px;
+      color: var(--rich-grey);
+      vertical-align: top;
+      border-bottom: 1px solid rgba(8,8,31,0.06);
+      line-height: 1.55;
+    }
+    table.policy tr:last-child td { border-bottom: none; }
+    table.policy td strong { color: var(--ink); font-weight: 600; }
+    .doc-footer-note { font-size: 13px; color: var(--rich-grey); margin-top: 64px; padding-top: 24px; border-top: 1px solid rgba(8,8,31,0.08); }
+    .top-nav {
+      position: fixed;
+      top: max(16px, env(safe-area-inset-top));
+      left: 0; right: 0; z-index: 70;
+      display: flex; justify-content: center;
+      padding: 0 var(--s-3);
+      pointer-events: none;
+    }
+    .top-nav .nav-inner { pointer-events: auto; }
+    .top-nav .nav-inner {
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(8,8,31,0.08);
+      box-shadow: 0 10px 32px -16px rgba(0,0,80,0.18);
+    }
+    .top-nav a { color: var(--ink); }
+    .top-nav .brand-mark { color: var(--ink); }
+    .top-nav .nav-link { color: rgba(8,8,31,0.7); }
+    .top-nav .nav-link:hover { background: rgba(8,8,31,0.06); color: var(--ink); }
+    .top-nav .nav-cta { background: var(--electric-blue); color: #fff; }
+    .top-nav .nav-toggle {
+      background: rgba(8,8,31,0.05);
+      border-color: rgba(8,8,31,0.12);
+      color: var(--ink);
+    }
+    .top-nav .nav-toggle-icon::before,
+    .top-nav .nav-toggle-icon::after,
+    .top-nav .nav-toggle-icon span { background: var(--ink); }
+    .footer-mini { background: #08081F; color: rgba(255,255,255,0.6); padding: 36px 0; text-align: center; font-size: 13px; }
+    .footer-mini a { color: rgba(255,255,255,0.85); margin: 0 12px; }
+    /* Privacy doc — fluid horizontal padding */
+    .doc { padding: clamp(100px, 18vw, 140px) clamp(20px, 5vw, 24px) clamp(80px, 14vw, 120px); }
+  </style>
+</head>
+<body>
+  <header class="top-nav nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand-mark">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:8px; background:var(--faded-blue); flex-shrink:0;">
+          <img src="assets/social-limits-logo.png" alt="Social Limits" style="max-width:85%; max-height:85%; width:auto; height:auto; object-fit:contain; display:block;"/>
+        </span>
+        <span style="font-size:16px; font-weight:800; letter-spacing:-0.01em;">Social Limits</span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link" href="index.html#how">How it works</a>
+        <a class="nav-link" href="index.html#science">Why it works</a>
+        <a class="nav-link" href="our-story.html">Our story</a>
+      </div>
+      <a class="nav-cta" href="index.html#download">Get the app</a>
+      <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer" data-nav-toggle>
+        <span class="nav-toggle-icon"><span></span></span>
+      </button>
+    </div>
+
+    <div id="nav-drawer" class="nav-drawer" data-open="false" role="dialog" aria-modal="true" aria-label="Site navigation">
+      <div class="nav-drawer-links">
+        <a class="nav-link" href="index.html#how" data-nav-close>How it works</a>
+        <a class="nav-link" href="index.html#science" data-nav-close>Why it works</a>
+        <a class="nav-link" href="our-story.html" data-nav-close>Our story</a>
+        <a class="nav-link" href="index.html#reviews" data-nav-close>Reviews</a>
+        <a class="nav-link" href="index.html#partners" data-nav-close>Partners</a>
+      </div>
+      <a class="nav-cta" href="index.html#download" data-nav-close>Get the app</a>
+    </div>
+  </header>
+
+  <script>
+    (function () {
+      var toggle = document.querySelector('[data-nav-toggle]');
+      var drawer = document.getElementById('nav-drawer');
+      if (!toggle || !drawer) return;
+      var closers = drawer.querySelectorAll('[data-nav-close]');
+      function setOpen(open) {
+        drawer.setAttribute('data-open', open ? 'true' : 'false');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        document.body.setAttribute('data-nav-open', open ? 'true' : 'false');
+        if (open) {
+          var first = drawer.querySelector('a, button');
+          if (first) setTimeout(function () { first.focus(); }, 50);
+        } else {
+          toggle.focus();
+        }
+      }
+      toggle.addEventListener('click', function () {
+        setOpen(drawer.getAttribute('data-open') !== 'true');
+      });
+      closers.forEach(function (el) {
+        el.addEventListener('click', function () { setOpen(false); });
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && drawer.getAttribute('data-open') === 'true') setOpen(false);
+      });
+    })();
+  </script>
+
+  <main class="doc">
+    <div style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:var(--faded-blue); color:var(--electric-blue); font-size:12px; font-weight:600; margin-bottom: 20px;">Legal</div>
+    <h1>Privacy Policy</h1>
+    <div class="meta">Last updated: 27 July 2025 · Social Limits Pty Ltd</div>
+
+    <p class="lede">Thank you for choosing to be part of the Social Limits community ("Company", "we", "us" or "our"). We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains what information we collect, how we use it, how we store and protect it, and what rights you have in relation to it. It is designed to meet the disclosure requirements of the Google Play Developer Program Policy, including the Health Apps and User Data sections.</p>
+
+    <div class="callout">
+      <strong>Important — Wellness Only.</strong> Social Limits is not a medical device and does not provide medical or clinical advice. The Services are intended solely for general wellness and habit-formation purposes.
+    </div>
+
+    <h2>1. Definitions</h2>
+    <p>For the purposes of this Privacy Policy:</p>
+    <div class="table-wrap"><table class="policy">
+      <thead>
+        <tr><th style="width: 34%;">Term</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Application / Service</strong></td>
+          <td>The Social Limits mobile application, website and any associated services.</td>
+        </tr>
+        <tr>
+          <td><strong>Health &amp; Fitness Data</strong></td>
+          <td>Personal and sensitive data related to your physical activity (e.g. step count, distance walked, active minutes, activity recognition) that our app accesses through Google Fit, Health Connect, Apple Health, device motion &amp; fitness sensors, or on-device APIs.</td>
+        </tr>
+        <tr>
+          <td><strong>Personal Data</strong></td>
+          <td>Any information that relates to an identified or identifiable individual, including Health &amp; Fitness Data.</td>
+        </tr>
+        <tr>
+          <td><strong>Processing</strong></td>
+          <td>Any operation performed on Personal Data such as collection, storage, use, sharing, or deletion.</td>
+        </tr>
+      </tbody>
+    </table></div>
+
+    <h2>2. What Data We Collect</h2>
+    <h3>2.1 Account &amp; Contact Data</h3>
+    <ul>
+      <li>Email address</li>
+      <li>First and last name</li>
+      <li>Password or authentication token</li>
+    </ul>
+
+    <h3>2.2 Usage Data</h3>
+    <p>Automatically collected technical data about how you interact with the Service (e.g. IP address, device model, OS version, time stamps, in-app events).</p>
+
+    <h3>2.3 Health &amp; Fitness Data</h3>
+    <div class="table-wrap"><table class="policy">
+      <thead>
+        <tr><th>Data type</th><th>Source</th><th>Purpose</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Step count &amp; distance</strong></td>
+          <td>Google Fit / Health Connect / Apple Health or phone motion sensors</td>
+          <td>Core feature — unlocks social apps once your daily goal is reached</td>
+        </tr>
+        <tr>
+          <td><strong>Activity state</strong> (walking, running, idle)</td>
+          <td>On-device Activity Recognition API</td>
+          <td>Gamification (leaderboard, streaks) &amp; accurate goal tracking</td>
+        </tr>
+      </tbody>
+    </table></div>
+    <p style="margin-top: 14px;">We do not collect heart-rate, location routes, medical conditions, or any other sensitive health data.</p>
+
+    <h2>3. How We Use Your Data</h2>
+    <div class="table-wrap"><table class="policy">
+      <thead>
+        <tr><th>Purpose</th><th>Lawful basis</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Provide and maintain the Service (e.g. determine when social media blocking is lifted)</td>
+          <td>Performance of contract — providing the features you requested</td>
+        </tr>
+        <tr>
+          <td>Analytics &amp; product improvement (aggregate, de-identified metrics only)</td>
+          <td>Legitimate interests — improving app reliability &amp; user experience</td>
+        </tr>
+        <tr>
+          <td>Send service-related communications (e.g. goal reminders, policy updates)</td>
+          <td>Legitimate interests / Consent</td>
+        </tr>
+        <tr>
+          <td>Legal compliance &amp; security (fraud prevention, dispute resolution)</td>
+          <td>Legal obligation / Legitimate interests</td>
+        </tr>
+      </tbody>
+    </table></div>
+    <p style="margin-top: 14px;">Health &amp; Fitness Data is never used for advertising, marketing, credit scoring, or sold to third parties. We do not combine it with other data to infer sensitive attributes.</p>
+
+    <h2>4. Sharing &amp; Disclosure</h2>
+    <p>We share Personal Data only in the following situations:</p>
+    <ul>
+      <li><strong>Service providers</strong> — cloud hosting, analytics, crash reporting. They act under written agreements that require confidentiality and security.</li>
+      <li><strong>Platform integrations</strong> — when you connect Google Fit, Health Connect, or Apple Health, activity data flows between your device and those platforms on your instruction. We do not receive other data stored in those services.</li>
+      <li><strong>Legal obligations</strong> — to comply with court orders or lawful requests.</li>
+      <li><strong>Business transfers</strong> — in the event of a merger or acquisition (with notice to you).</li>
+    </ul>
+    <p>We do not share Health &amp; Fitness Data with advertising networks, data brokers, or other unrelated third parties.</p>
+
+    <h2>5. Retention</h2>
+    <ul>
+      <li><strong>Account &amp; Contact Data:</strong> kept while your account is active plus 12 months, then deleted or irreversibly anonymised.</li>
+      <li><strong>Health &amp; Fitness Data:</strong> stored locally on your device and retained on our servers only as long as necessary to compute goal completion (maximum 30 days), after which it is aggregated or deleted.</li>
+      <li><strong>Usage Data:</strong> retained for 24 months for security and analytics, then aggregated.</li>
+    </ul>
+    <p>You can delete your account at any time from the in-app settings or by emailing <a href="mailto:privacy@social-limits.com">privacy@social-limits.com</a>. Deletion triggers irreversible erasure of associated Personal Data within 30 days unless retention is required by law.</p>
+
+    <h2>6. Security</h2>
+    <p>We apply industry-standard safeguards to protect Personal Data:</p>
+    <ul>
+      <li>Encryption in transit (TLS 1.2+) and encryption at rest (AES-256).</li>
+      <li>Strict access controls, least-privilege policies, and multi-factor authentication for employees.</li>
+      <li>Regular security audits and vulnerability scanning.</li>
+    </ul>
+    <p>Despite our efforts, no internet transmission or storage system can be 100% secure. We therefore cannot guarantee absolute security.</p>
+
+    <h2>7. Your Rights &amp; Choices</h2>
+    <p>Depending on your jurisdiction, you may have rights to:</p>
+    <ul>
+      <li>Access the personal information we hold about you.</li>
+      <li>Rectify inaccurate or incomplete data.</li>
+      <li>Delete your data ("right to be forgotten").</li>
+      <li>Object / restrict certain processing.</li>
+      <li>Data portability.</li>
+      <li>Withdraw consent at any time (this does not affect processing carried out before withdrawal).</li>
+    </ul>
+    <p>Requests can be made via the in-app settings or by emailing <a href="mailto:privacy@social-limits.com">privacy@social-limits.com</a>. We respond within 30 days.</p>
+
+    <h2>8. Children's Privacy</h2>
+    <p>The Service is not directed to children under 13. We do not knowingly collect data from children. If we become aware that we have inadvertently collected such information, we will delete it promptly.</p>
+
+    <h2>9. International Transfers</h2>
+    <p>We may process data on servers located outside your country. When we do so, we rely on standard contractual clauses or equivalent legal mechanisms to ensure adequate protection.</p>
+
+    <h2>10. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. The updated version will be indicated by an updated "Last updated" date and will be effective as soon as it is accessible. We will notify you of material changes via email or an in-app notice.</p>
+
+    <h2>11. Contact Us</h2>
+    <p>If you have questions about this Privacy Policy or our privacy practices, please contact us:</p>
+    <p>Email: <a href="mailto:sociallimitsb@gmail.com">sociallimitsb@gmail.com</a></p>
+
+    <h2>Health Connect &amp; Platform Disclosure (Android-specific)</h2>
+    <p>When you connect Social Limits to Google Fit or Health Connect, Android will present a permissions dialog describing the exact data types (e.g. Steps, Distance) that the app requests. Granting permission allows Social Limits to read those data types solely to enable the core feature of unlocking social media once your daily step goal is achieved. Social Limits does not write data back to Google Fit/Health Connect and does not share the retrieved data with third parties. You can revoke access at any time in <strong>Android → Settings → Security &amp; privacy → Health Connect</strong>.</p>
+
+    <h2>Data Safety Summary (Google Play Console)</h2>
+    <div class="table-wrap"><table class="policy">
+      <thead>
+        <tr>
+          <th>Data Type</th>
+          <th>Collected?</th>
+          <th>Shared?</th>
+          <th>Purpose</th>
+          <th>Required?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Step count &amp; distance</strong> (Health &amp; Fitness)</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>Core functionality (unlock)</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td><strong>Activity recognition</strong></td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>Goal tracking &amp; analytics</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td><strong>Email, name</strong></td>
+          <td>Yes</td>
+          <td>Yes (auth &amp; messaging provider)</td>
+          <td>Account creation, communication</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td><strong>Usage diagnostics</strong></td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>Analytics, crash detection</td>
+          <td>No (opt-out)</td>
+        </tr>
+      </tbody>
+    </table></div>
+    <p style="margin-top: 14px;">This table is provided for transparency; the authoritative source is the Data Safety form in the Play Console.</p>
+
+    <div class="doc-footer-note">© 2025 Social Limits Pty Ltd. All rights reserved.</div>
+  </main>
+
+  <div class="footer-mini">
+    © 2025 Social Limits Pty Ltd · <a href="index.html">Home</a> · <a href="mailto:sociallimitsb@gmail.com">Contact</a>
+  </div>
+</body>
+</html>
