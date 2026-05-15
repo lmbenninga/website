@@ -31,11 +31,11 @@ function BrandMark({ color = '#fff', logoSize = 22 }) {
 // Nav
 // ─────────────────────────────────────────────────────────────
 const NAV_LINKS = [
-  ['How it works', 'index.html#how'],
-  ['Why it works', 'index.html#science'],
-  ['Our story',    'our-story.html'],
-  ['Reviews',      'index.html#reviews'],
-  ['Partners',     'index.html#partners'],
+  ['How it works', '#how'],
+  ['Why it works', '#science'],
+  ['Our story',    '/our-story'],
+  ['Reviews',      '#reviews'],
+  ['Partners',     '#partners'],
 ];
 
 function Nav() {
@@ -715,18 +715,18 @@ function Footer() {
           </div>
 
           <FooterCol title="Product" links={[
-            ['How it works', 'index.html#how'],
-            ['Why it works', 'index.html#science'],
-            ['Reviews', 'index.html#reviews'],
-            ['Partners', 'index.html#partners'],
+            ['How it works', '#how'],
+            ['Why it works', '#science'],
+            ['Reviews', '#reviews'],
+            ['Partners', '#partners'],
           ]}/>
           <FooterCol title="Company" links={[
-            ['Our story', 'our-story.html'],
+            ['Our story', '/our-story'],
             ['Contact', 'mailto:sociallimitsb@gmail.com'],
             ['Twitter / X', 'https://twitter.com/sociallimits'],
           ]}/>
           <FooterCol title="Legal" links={[
-            ['Privacy Policy', 'privacy.html'],
+            ['Privacy Policy', '/privacy-policy'],
             ['Terms (Apple EULA)', '#'],
           ]}/>
         </div>
