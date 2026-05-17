@@ -14,34 +14,34 @@
     body {
       font-family: 'Poppins', system-ui, sans-serif;
       background: #EFEFEF;
-      min-height: 100vh;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 40px 20px;
+      padding: clamp(16px, 3vh, 28px) 20px;
     }
 
     .page {
       width: 100%;
-      max-width: 520px;
+      max-width: 460px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 0;
     }
 
     .collab-row {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 16px;
-      margin-bottom: 28px;
-      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: clamp(10px, 2vh, 20px);
     }
 
     .brand-title {
-      font-size: clamp(64px, 14vw, 96px);
+      font-size: clamp(28px, 7vw, 44px);
       font-weight: 900;
       line-height: 1;
       color: #2020EE;
@@ -50,7 +50,7 @@
     }
 
     .collab-x {
-      font-size: clamp(40px, 9vw, 60px);
+      font-size: clamp(18px, 4.5vw, 28px);
       font-weight: 300;
       color: #999;
       line-height: 1;
@@ -58,45 +58,45 @@
     }
 
     .bft-logo {
-      height: clamp(128px, 28vw, 192px);
+      height: clamp(56px, 14vw, 88px);
       width: auto;
       object-fit: contain;
       flex-shrink: 0;
     }
 
     .tagline {
-      font-size: 16px;
+      font-size: clamp(12px, 2.8vw, 14px);
       font-weight: 400;
       color: #666;
-      line-height: 1.5;
-      max-width: 320px;
-      margin-bottom: 32px;
+      line-height: 1.45;
+      max-width: 300px;
+      margin-bottom: clamp(10px, 2vh, 20px);
     }
 
     .offer-card {
       width: 100%;
       border: 2.5px solid #2020EE;
-      border-radius: 24px;
+      border-radius: 20px;
       background: #fff;
-      padding: 32px 28px 28px;
+      padding: clamp(14px, 2.5vh, 24px) 22px clamp(12px, 2vh, 20px);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
-      margin-bottom: 16px;
+      gap: 3px;
+      margin-bottom: 10px;
     }
 
     .offer-eyebrow {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: #2020EE;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .offer-claim {
-      font-size: clamp(48px, 11vw, 72px);
+      font-size: clamp(26px, 6.5vw, 40px);
       font-weight: 900;
       line-height: 1;
       color: #2020EE;
@@ -104,27 +104,27 @@
     }
 
     .offer-desc {
-      font-size: 14px;
+      font-size: clamp(12px, 2.8vw, 13px);
       font-weight: 400;
       color: #888;
-      line-height: 1.5;
-      max-width: 260px;
-      margin-top: 12px;
+      line-height: 1.4;
+      max-width: 240px;
+      margin-top: 8px;
     }
 
     .cta-btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
       width: 100%;
-      padding: 20px 28px;
+      padding: clamp(13px, 2vh, 17px) 22px;
       background: #2020EE;
       color: #fff;
       font-family: 'Poppins', system-ui, sans-serif;
-      font-size: 15px;
+      font-size: clamp(13px, 3vw, 14px);
       font-weight: 700;
-      border-radius: 18px;
+      border-radius: 15px;
       border: none;
       cursor: pointer;
       text-decoration: none;
@@ -142,7 +142,7 @@
     }
 
     .cta-arrow {
-      font-size: 18px;
+      font-size: 15px;
       line-height: 1;
     }
   </style>
@@ -161,7 +161,7 @@
     <div class="offer-card">
       <div class="offer-eyebrow">Exclusive BFT Offer</div>
       <div class="offer-claim">Claim your free</div>
-      <p class="offer-desc">This promo gives you access to eight weeks free to Social Limits.</p>
+      <p class="offer-desc">This promo gives you access to 8 weeks free to Social Limits.</p>
     </div>
 
     <a class="cta-btn" href="https://apps.apple.com/au/app/social-limits-screen-time-app/id6471964510" target="_blank" rel="noopener">
