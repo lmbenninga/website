@@ -117,7 +117,7 @@ function Hero() {
   return (
     <section className="hero" data-screen-label="01 Hero">
       <div className="hero-bg"/>
-      <div className="shell" style={{ paddingTop: 'clamp(72px, 10vh, 108px)', paddingBottom: 'clamp(16px, 3vh, 40px)', display:'grid', gridTemplateColumns:'1fr', gap: 32, position:'relative' }}>
+      <div className="shell" style={{ paddingTop: 'clamp(96px, 13vh, 132px)', paddingBottom: 'clamp(20px, 3.5vh, 48px)', display:'grid', gridTemplateColumns:'1fr', gap: 32, position:'relative' }}>
         <div style={{ display:'grid', gridTemplateColumns:'minmax(0,1.1fr) minmax(0,0.9fr)', gap: 'clamp(20px, 3vw, 40px)', alignItems:'center' }} className="hero-grid">
           <div>
             <span className="chip chip-dark" style={{ marginBottom: 'clamp(10px, 1.5vh, 20px)' }}>
@@ -125,7 +125,7 @@ function Hero() {
               v3.1.2 · Liquid Glass UI now live
             </span>
 
-            <h1 className="h-display" style={{ marginTop: 0, marginBottom: 'clamp(10px, 1.5vh, 20px)' }}>
+            <h1 className="h-display" style={{ marginTop: 0, marginBottom: 'clamp(10px, 1.5vh, 20px)', fontSize: 'clamp(40px, min(9vw, 11vh), 100px)' }}>
               Move more.<br/>
               <span className="gradient-text">Scroll less.</span>
             </h1>
@@ -147,17 +147,17 @@ function Hero() {
 
             <div className="hero-stats" style={{ marginTop: 'clamp(14px, 2.5vh, 36px)', display:'flex', gap: 'clamp(20px, 4vw, 36px)', alignItems:'center', flexWrap:'wrap' }}>
               <div>
-                <div style={{ fontSize: 28, fontWeight: 800, letterSpacing:'-0.025em' }}>20k+</div>
+                <div style={{ fontSize: 'clamp(18px, 2.5vh, 28px)', fontWeight: 800, letterSpacing:'-0.025em' }}>20k+</div>
                 <div style={{ fontSize: 12, color:'rgba(255,255,255,0.6)', fontWeight: 500, marginTop: 2 }}>Users</div>
               </div>
-              <div className="hero-stats-sep" style={{ width: 1, height: 36, background:'rgba(255,255,255,0.18)' }}/>
+              <div className="hero-stats-sep" style={{ width: 1, height: 32, background:'rgba(255,255,255,0.18)' }}/>
               <div>
-                <div style={{ fontSize: 28, fontWeight: 800, letterSpacing:'-0.025em' }}>4.5<span style={{ opacity:.5, fontSize: 20 }}>/5</span></div>
+                <div style={{ fontSize: 'clamp(18px, 2.5vh, 28px)', fontWeight: 800, letterSpacing:'-0.025em' }}>4.5<span style={{ opacity:.5, fontSize: 'clamp(14px, 2vh, 20px)' }}>/5</span></div>
                 <div style={{ fontSize: 12, color:'rgba(255,255,255,0.6)', fontWeight: 500, marginTop: 2 }}>App Store ratings</div>
               </div>
-              <div className="hero-stats-sep" style={{ width: 1, height: 36, background:'rgba(255,255,255,0.18)' }}/>
+              <div className="hero-stats-sep" style={{ width: 1, height: 32, background:'rgba(255,255,255,0.18)' }}/>
               <div>
-                <div style={{ fontSize: 28, fontWeight: 800, letterSpacing:'-0.025em' }}>2.4B+</div>
+                <div style={{ fontSize: 'clamp(18px, 2.5vh, 28px)', fontWeight: 800, letterSpacing:'-0.025em' }}>2.4B+</div>
                 <div style={{ fontSize: 12, color:'rgba(255,255,255,0.6)', fontWeight: 500, marginTop: 2 }}>Steps tracked</div>
               </div>
             </div>
@@ -180,7 +180,7 @@ function Hero() {
                 width: 'auto',
                 height: 'auto',
                 maxWidth: 312,
-                maxHeight: 'calc(100vh - 148px)',
+                maxHeight: 'calc(100dvh - 172px)',
                 filter: 'drop-shadow(0 50px 80px rgba(0,0,80,0.45)) drop-shadow(0 20px 40px rgba(0,0,120,0.35))',
               }}
             />
