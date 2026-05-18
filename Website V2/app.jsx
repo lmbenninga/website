@@ -117,20 +117,20 @@ function Hero() {
   return (
     <section className="hero" data-screen-label="01 Hero">
       <div className="hero-bg"/>
-      <div className="shell" style={{ paddingTop: 'clamp(112px, 18vw, 140px)', paddingBottom: 'clamp(64px, 12vw, 100px)', display:'grid', gridTemplateColumns:'1fr', gap: 60, position:'relative' }}>
-        <div style={{ display:'grid', gridTemplateColumns:'minmax(0,1.1fr) minmax(0,0.9fr)', gap: 40, alignItems:'center' }} className="hero-grid">
+      <div className="shell" style={{ paddingTop: 'clamp(72px, 10vh, 108px)', paddingBottom: 'clamp(16px, 3vh, 40px)', display:'grid', gridTemplateColumns:'1fr', gap: 32, position:'relative' }}>
+        <div style={{ display:'grid', gridTemplateColumns:'minmax(0,1.1fr) minmax(0,0.9fr)', gap: 'clamp(20px, 3vw, 40px)', alignItems:'center' }} className="hero-grid">
           <div>
-            <span className="chip chip-dark" style={{ marginBottom: 28 }}>
+            <span className="chip chip-dark" style={{ marginBottom: 'clamp(10px, 1.5vh, 20px)' }}>
               <span className="dot" style={{ background:'#7DFFA8' }}/>
               v3.1.2 · Liquid Glass UI now live
             </span>
 
-            <h1 className="h-display" style={{ marginTop: 0, marginBottom: 28 }}>
+            <h1 className="h-display" style={{ marginTop: 0, marginBottom: 'clamp(10px, 1.5vh, 20px)' }}>
               Move more.<br/>
               <span className="gradient-text">Scroll less.</span>
             </h1>
 
-            <p className="body-l" style={{ maxWidth: 520, color: 'rgba(255,255,255,0.82)', marginBottom: 36 }}>
+            <p className="body-l" style={{ maxWidth: 520, color: 'rgba(255,255,255,0.82)', marginBottom: 'clamp(14px, 2.5vh, 28px)' }}>
               Your social apps stay locked every morning. They unlock when you hit your step goal.
               A simple behavioural switch that puts movement before the feed.
             </p>
@@ -145,7 +145,7 @@ function Hero() {
               </a>
             </div>
 
-            <div className="hero-stats" style={{ marginTop: 48, display:'flex', gap: 'clamp(20px, 4vw, 36px)', alignItems:'center', flexWrap:'wrap' }}>
+            <div className="hero-stats" style={{ marginTop: 'clamp(14px, 2.5vh, 36px)', display:'flex', gap: 'clamp(20px, 4vw, 36px)', alignItems:'center', flexWrap:'wrap' }}>
               <div>
                 <div style={{ fontSize: 28, fontWeight: 800, letterSpacing:'-0.025em' }}>20k+</div>
                 <div style={{ fontSize: 12, color:'rgba(255,255,255,0.6)', fontWeight: 500, marginTop: 2 }}>Users</div>
@@ -173,12 +173,14 @@ function Hero() {
             <img
               src={(typeof window !== 'undefined' && window.__resources && window.__resources.heroPhone) || 'assets/hero-phone.png'}
               alt="Social Limits app — step ring and blocked apps"
-              className="float"
+              className="float hero-phone-img"
               style={{
                 position: 'relative',
-                width: '100%',
-                maxWidth: 312,
+                display: 'block',
+                width: 'auto',
                 height: 'auto',
+                maxWidth: 312,
+                maxHeight: 'calc(100vh - 148px)',
                 filter: 'drop-shadow(0 50px 80px rgba(0,0,80,0.45)) drop-shadow(0 20px 40px rgba(0,0,120,0.35))',
               }}
             />
@@ -190,6 +192,8 @@ function Hero() {
         @media (max-width: 900px) {
           .hero-grid { grid-template-columns: 1fr !important; }
           .hero-grid > div:last-child { order: -1; }
+          .hero-phone-img { max-width: 200px !important; max-height: 32vh !important; }
+          .hero-stats { display: none !important; }
         }
         @media (max-width: 560px) {
           .hero-stats-sep { display: none; }

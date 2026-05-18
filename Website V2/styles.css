@@ -126,11 +126,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* ─────────────────── Hero gradient ─────────────────── */
 .hero {
   position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
   color: #fff;
   overflow: hidden;
   isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .hero-bg {
   position: absolute; inset: 0; z-index: -1;
