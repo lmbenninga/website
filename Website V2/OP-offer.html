@@ -34,11 +34,11 @@
 
     .collab-row {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 8px;
       margin-bottom: clamp(10px, 2vh, 20px);
-      flex-wrap: wrap;
     }
 
     .brand-title {
@@ -47,22 +47,21 @@
       line-height: 1;
       color: #2020EE;
       letter-spacing: -0.03em;
-      text-align: left;
+      text-align: center;
     }
 
     .collab-x {
-      font-size: clamp(18px, 4.5vw, 28px);
+      font-size: clamp(14px, 3.5vw, 20px);
       font-weight: 300;
       color: #999;
       line-height: 1;
-      flex-shrink: 0;
     }
 
     .partner-logo {
-      height: clamp(32px, 8vw, 52px);
+      height: clamp(40px, 10vw, 68px);
       width: auto;
+      max-width: 100%;
       object-fit: contain;
-      flex-shrink: 0;
       mix-blend-mode: multiply;
     }
 
@@ -153,7 +152,7 @@
 <body>
   <div class="page">
     <div class="collab-row">
-      <h1 class="brand-title">Social<br>Limits</h1>
+      <h1 class="brand-title">Social Limits</h1>
       <span class="collab-x">×</span>
       <img class="partner-logo" src="assets/op-logo.webp" alt="One Playground"/>
     </div>
