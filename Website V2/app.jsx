@@ -726,6 +726,7 @@ function Footer() {
           ]}/>
           <FooterCol title="Company" links={[
             ['Our story', '/our-story'],
+            ['Case Study', '/hoca'],
             ['Contact', 'mailto:sociallimitsb@gmail.com'],
             ['Twitter / X', 'https://twitter.com/sociallimits'],
           ]}/>

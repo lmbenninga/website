@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>January Challenge — Case Study · Social Limits</title>
+  <meta name="description" content="220 participants. 49 million steps. How Social Limits powered the January Challenge across Canberra, Melbourne and Sydney."/>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" href="assets/favicon.png"/>
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    /* ── Hero ── */
+    .cs-hero {
+      position: relative;
+      color: #fff;
+      padding: clamp(140px, 20vw, 200px) 0 clamp(80px, 12vw, 120px);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .cs-hero-bg {
+      position: absolute; inset: 0; z-index: -1;
+      background:
+        radial-gradient(140% 80% at 90% 10%, #7B5BFF 0%, transparent 50%),
+        radial-gradient(120% 80% at 10% 90%, #00B4FF 0%, transparent 50%),
+        radial-gradient(80% 60% at 50% 50%, #2A2AFF 0%, transparent 70%),
+        linear-gradient(180deg, #0A0AB8 0%, #1414DD 50%, #0606A0 100%);
+    }
+    .cs-hero-bg::before {
+      content:''; position:absolute; inset:0;
+      background-image:
+        linear-gradient(transparent 0, transparent calc(100% - 1px), rgba(255,255,255,0.05) 100%),
+        linear-gradient(90deg, transparent 0, transparent calc(100% - 1px), rgba(255,255,255,0.05) 100%);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    }
+
+    /* ── Stat grid ── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: rgba(8,8,31,0.06);
+      border-radius: 32px;
+      overflow: hidden;
+    }
+    .stat-cell {
+      background: #fff;
+      padding: clamp(28px, 5vw, 52px) clamp(20px, 3vw, 36px);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .stat-num {
+      font-size: clamp(52px, 8vw, 100px);
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      line-height: 0.9;
+      background: linear-gradient(180deg, #0000FF 0%, #7B5BFF 120%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .stat-label {
+      font-size: clamp(14px, 1.4vw, 17px);
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+    .stat-sub {
+      font-size: 13px;
+      color: var(--rich-grey);
+      line-height: 1.4;
+    }
+
+    /* ── Dark stat strip ── */
+    .dark-strip {
+      background: #08081F;
+      color: #fff;
+    }
+    .dark-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 28px;
+      overflow: hidden;
+    }
+    .dark-stat-cell {
+      background: #0D0D2A;
+      padding: clamp(24px, 4vw, 44px) clamp(20px, 3vw, 32px);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .dark-stat-num {
+      font-size: clamp(44px, 6vw, 80px);
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      line-height: 0.9;
+      background: linear-gradient(180deg, #fff 0%, #7B5BFF 140%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .dark-stat-label {
+      font-size: clamp(13px, 1.2vw, 15px);
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.3;
+    }
+    .dark-stat-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.4;
+    }
+
+    /* ── Events section ── */
+    .event-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(8,8,31,0.08);
+    }
+    .event-num {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--electric-blue);
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      padding-top: 3px;
+      flex-shrink: 0;
+      width: 28px;
+    }
+
+    /* ── Pullout quote ── */
+    .pullout {
+      background: var(--faded-blue);
+      border-radius: 24px;
+      padding: clamp(28px, 5vw, 52px);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* ── Nav ── */
+    .cs-topnav {
+      position: fixed;
+      top: max(16px, env(safe-area-inset-top));
+      left: 0; right: 0;
+      z-index: 70;
+      display: flex;
+      justify-content: center;
+      padding: 0 20px;
+      pointer-events: none;
+    }
+    .cs-topnav-inner {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 10px 10px 20px;
+      border-radius: 999px;
+      background: rgba(10,10,40,0.32);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border: 1px solid rgba(255,255,255,0.15);
+      max-width: 860px;
+      width: 100%;
+    }
+    .cs-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+    }
+    .cs-brand-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px; height: 30px;
+      border-radius: 8px;
+      background: #fff;
+      flex-shrink: 0;
+    }
+    .cs-brand-icon img {
+      width: 78%; height: 78%;
+      object-fit: contain;
+    }
+    .cs-back {
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--electric-blue);
+      font-weight: 600;
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .stat-grid { grid-template-columns: repeat(2, 1fr); }
+      .dark-stat-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .stat-grid { grid-template-columns: 1fr; }
+      .dark-stat-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      .event-row { flex-direction: column; gap: 8px; }
+    }
+  </style>
+  <script async src="https://elu.dev/v1/elu_pk_live_SyBLjaq3HIu0doY2LFBlPR4peI.js"></script>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="cs-topnav" aria-label="Site navigation">
+    <div class="cs-topnav-inner">
+      <a class="cs-brand" href="/">
+        <span class="cs-brand-icon">
+          <img src="assets/social-limits-logo.png" alt="Social Limits"/>
+        </span>
+        Social Limits
+      </a>
+      <a class="cs-back" href="/">← Back to home</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="cs-hero">
+    <div class="cs-hero-bg"></div>
+    <div class="shell">
+      <span class="eyebrow" style="color:rgba(255,255,255,0.6); margin-bottom:20px; display:block;">Case Study · January 2025</span>
+      <h1 class="h-display" style="max-width:900px; margin-bottom:28px;">
+        220 people.<br/>
+        <span style="background:linear-gradient(180deg,#fff 0%,#C4C4FF 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">49 million steps.</span>
+      </h1>
+      <p class="body-l" style="color:rgba(255,255,255,0.78); max-width:620px; margin-bottom:40px;">
+        The January Challenge brought together a community of movers across Canberra, Melbourne and Sydney — powered by Social Limits. Here's what happened.
+      </p>
+      <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+        <span style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.22); border-radius:999px; padding:8px 16px; font-size:13px; font-weight:600; color:#fff;">📍 Canberra · Melbourne · Sydney</span>
+        <span style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.22); border-radius:999px; padding:8px 16px; font-size:13px; font-weight:600; color:#fff;">📅 January 2025</span>
+        <span style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.22); border-radius:999px; padding:8px 16px; font-size:13px; font-weight:600; color:#fff;">🏃 31 days</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Top 4 headline stats -->
+  <section style="background:var(--pale-grey); padding:clamp(48px,8vw,80px) 0;">
+    <div class="shell">
+      <div class="section-head" style="margin-bottom:clamp(28px,4vw,48px);">
+        <span class="eyebrow" style="color:var(--electric-blue);">By the numbers</span>
+        <h2 class="h-1">The challenge in full.</h2>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-cell">
+          <div class="stat-num">220</div>
+          <div class="stat-label">People joined the challenge</div>
+          <div class="stat-sub">A community that signed up, showed up, and moved.</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">49M</div>
+          <div class="stat-label">Steps logged across the challenge</div>
+          <div class="stat-sub">Forty-nine million reasons movement is contagious.</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">8,500</div>
+          <div class="stat-label">Average steps per day, per user</div>
+          <div class="stat-sub">Comfortably above the global daily average of 4,000–5,000.</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">8k hrs</div>
+          <div class="stat-label">Hours of people actively moving</div>
+          <div class="stat-sub">6,000–8,000 hours of real movement across 31 days.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pullout -->
+  <section style="background:#fff; padding:clamp(40px,6vw,72px) 0;">
+    <div class="shell">
+      <div class="pullout">
+        <div style="font-size:clamp(28px,4vw,52px); font-weight:800; letter-spacing:-0.035em; color:var(--electric-blue); line-height:1.05;">
+          "8,500 steps a day, on average, for a whole month."
+        </div>
+        <p class="body-l" style="color:var(--electric-blue-deep); max-width:680px; margin:0; opacity:0.8;">
+          That's not a one-off spike. That's sustained daily movement — the kind that creates lasting habit change, not just a New Year's resolution.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events + dark stats -->
+  <section class="dark-strip" style="padding:clamp(48px,8vw,80px) 0;">
+    <div class="shell">
+      <div class="section-head" style="margin-bottom:clamp(28px,4vw,48px);">
+        <span class="eyebrow" style="color:#7B5BFF;">In-person events</span>
+        <h2 class="h-1">Movement that got off the app and into the streets.</h2>
+        <p class="body-l" style="color:rgba(255,255,255,0.72); max-width:600px;">
+          Five events. Three cities. Hundreds of people who made the choice to show up.
+        </p>
+      </div>
+
+      <div class="dark-stat-grid" style="margin-bottom:clamp(36px,6vw,64px);">
+        <div class="dark-stat-cell">
+          <div class="dark-stat-num">5</div>
+          <div class="dark-stat-label">Events hosted</div>
+          <div class="dark-stat-sub">Across Canberra, Melbourne and Sydney</div>
+        </div>
+        <div class="dark-stat-cell">
+          <div class="dark-stat-num">~370</div>
+          <div class="dark-stat-label">People showed up in person</div>
+          <div class="dark-stat-sub">Across all events combined</div>
+        </div>
+        <div class="dark-stat-cell">
+          <div class="dark-stat-num">240</div>
+          <div class="dark-stat-label">At the closing run club</div>
+          <div class="dark-stat-sub">Sydney — the biggest single event of the challenge</div>
+        </div>
+        <div class="dark-stat-cell">
+          <div class="dark-stat-num">60+</div>
+          <div class="dark-stat-label">Pieces of content delivered</div>
+          <div class="dark-stat-sub">Across organic and paid reach</div>
+        </div>
+      </div>
+
+      <!-- Event list -->
+      <div style="border-top:1px solid rgba(255,255,255,0.08);">
+        <div class="event-row">
+          <div class="event-num">01</div>
+          <div>
+            <div style="font-size:17px; font-weight:700; margin-bottom:6px;">Canberra Kick-off</div>
+            <div class="body-s" style="color:rgba(255,255,255,0.6);">Launching the challenge with the Canberra community — setting the tone for 31 days of movement.</div>
+          </div>
+        </div>
+        <div class="event-row">
+          <div class="event-num">02</div>
+          <div>
+            <div style="font-size:17px; font-weight:700; margin-bottom:6px;">Melbourne Run #1</div>
+            <div class="body-s" style="color:rgba(255,255,255,0.6);">Bringing the challenge south — Melbourne's first group run of the month.</div>
+          </div>
+        </div>
+        <div class="event-row">
+          <div class="event-num">03</div>
+          <div>
+            <div style="font-size:17px; font-weight:700; margin-bottom:6px;">Melbourne Run #2</div>
+            <div class="body-s" style="color:rgba(255,255,255,0.6);">A second Melbourne event to keep momentum alive through the mid-month dip.</div>
+          </div>
+        </div>
+        <div class="event-row">
+          <div class="event-num">04</div>
+          <div>
+            <div style="font-size:17px; font-weight:700; margin-bottom:6px;">Sydney Mid-Month Run</div>
+            <div class="body-s" style="color:rgba(255,255,255,0.6);">Sydney's mid-challenge gathering to re-energise participants heading into the final stretch.</div>
+          </div>
+        </div>
+        <div class="event-row" style="border-bottom:none;">
+          <div class="event-num">05</div>
+          <div>
+            <div style="font-size:17px; font-weight:700; margin-bottom:6px;">Sydney Closing Run Club <span style="background:#7B5BFF; color:#fff; font-size:11px; padding:2px 8px; border-radius:999px; margin-left:8px; vertical-align:middle; font-weight:600;">240 people</span></div>
+            <div class="body-s" style="color:rgba(255,255,255,0.6);">The finale. 240 people crossed the finish line together in Sydney — the largest event of the challenge and a testament to what a month of movement can build.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:var(--pale-grey); padding:clamp(64px,10vw,120px) 0; text-align:center;">
+    <div class="shell" style="display:flex; flex-direction:column; align-items:center; gap:24px;">
+      <span class="chip">Ready to move?</span>
+      <h2 class="h-1" style="max-width:720px;">Build your own streak.<br/>Start tomorrow morning.</h2>
+      <p class="body-l" style="color:var(--rich-grey); max-width:520px; margin:0;">
+        Social Limits locks your social apps until you hit your daily step goal. Simple habit. Real results.
+      </p>
+      <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:8px;">
+        <a href="https://apps.apple.com/au/app/social-limits-screen-time-app/id6471964510" target="_blank" rel="noopener" class="btn btn-solid" style="padding:18px 32px; font-size:15px;">
+          Download on the App Store
+        </a>
+        <a href="/" class="btn btn-ghost-light" style="padding:18px 28px; font-size:15px;">
+          Learn more ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background:#08081F; color:#fff; padding:48px 0 32px;">
+    <div class="shell" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+      <div style="font-size:13px; color:rgba(255,255,255,0.45);">© 2025 Social Limits Pty Ltd · <a href="/privacy-policy" style="color:rgba(255,255,255,0.45);">Privacy Policy</a></div>
+      <a href="/" style="color:rgba(255,255,255,0.55); font-size:13px; font-weight:500;">← Back to social-limits.com</a>
+    </div>
+  </footer>
+
+</body>
+</html>
