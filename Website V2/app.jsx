@@ -586,7 +586,7 @@ function Partners() {
           display:'grid', gridTemplateColumns:'1fr 1fr', gap: 24,
           borderRadius: 32, padding: 8, background:'var(--pale-grey)',
         }} className="logo-wall">
-          <a href="hoka.html" style={{ textDecoration: 'none' }}><LogoCell><HokaLogo/></LogoCell></a>
+          <a href="/hoka" style={{ textDecoration: 'none' }}><LogoCell><HokaLogo/></LogoCell></a>
           <LogoCell><GarminLogo/></LogoCell>
         </div>
       </div>
