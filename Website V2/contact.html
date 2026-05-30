@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact · Social Limits</title>
+  <meta name="description" content="Get in touch with Lino Benninga, Founder of Social Limits."/>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" href="assets/favicon.png"/>
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    /* ── Nav ── */
+    .cs-topnav {
+      position: fixed;
+      top: max(16px, env(safe-area-inset-top));
+      left: 0; right: 0;
+      z-index: 70;
+      display: flex;
+      justify-content: center;
+      padding: 0 20px;
+      pointer-events: none;
+    }
+    .cs-topnav-inner {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 10px 10px 20px;
+      border-radius: 999px;
+      background: rgba(10,10,40,0.32);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border: 1px solid rgba(255,255,255,0.15);
+      max-width: 860px;
+      width: 100%;
+    }
+    .cs-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+    }
+    .cs-brand-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px; height: 30px;
+      border-radius: 8px;
+      background: #fff;
+      flex-shrink: 0;
+    }
+    .cs-brand-icon img {
+      width: 78%; height: 78%;
+      object-fit: contain;
+    }
+    .cs-back {
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--electric-blue);
+      font-weight: 600;
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    /* ── Hero ── */
+    .contact-hero {
+      position: relative;
+      color: #fff;
+      padding: clamp(140px, 20vw, 200px) 0 clamp(80px, 12vw, 120px);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .contact-hero-bg {
+      position: absolute; inset: 0; z-index: -1;
+      background:
+        radial-gradient(140% 80% at 90% 10%, #7B5BFF 0%, transparent 50%),
+        radial-gradient(120% 80% at 10% 90%, #00B4FF 0%, transparent 50%),
+        radial-gradient(80% 60% at 50% 50%, #2A2AFF 0%, transparent 70%),
+        linear-gradient(180deg, #0A0AB8 0%, #1414DD 50%, #0606A0 100%);
+    }
+    .contact-hero-bg::before {
+      content:''; position:absolute; inset:0;
+      background-image:
+        linear-gradient(transparent 0, transparent calc(100% - 1px), rgba(255,255,255,0.05) 100%),
+        linear-gradient(90deg, transparent 0, transparent calc(100% - 1px), rgba(255,255,255,0.05) 100%);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    }
+
+    /* ── Contact card ── */
+    .contact-card {
+      background: #fff;
+      border-radius: 32px;
+      padding: clamp(40px, 6vw, 72px);
+      box-shadow: 0 2px 0 rgba(8,8,31,0.06), 0 24px 64px -16px rgba(8,8,31,0.12);
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .contact-person {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .contact-avatar {
+      width: 80px; height: 80px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #0000FF 0%, #7B5BFF 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.03em;
+      flex-shrink: 0;
+    }
+    .contact-divider {
+      height: 1px;
+      background: rgba(8,8,31,0.07);
+    }
+    .contact-email-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .contact-email-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--rich-grey);
+      margin-bottom: 6px;
+    }
+    .contact-email-address {
+      font-size: clamp(18px, 2.2vw, 26px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    @media (max-width: 560px) {
+      .contact-person { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .contact-email-row { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+  <script async src="https://elu.dev/v1/elu_pk_live_SyBLjaq3HIu0doY2LFBlPR4peI.js"></script>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="cs-topnav" aria-label="Site navigation">
+    <div class="cs-topnav-inner">
+      <a class="cs-brand" href="/">
+        <span class="cs-brand-icon">
+          <img src="assets/social-limits-logo.png" alt="Social Limits"/>
+        </span>
+        Social Limits
+      </a>
+      <a class="cs-back" href="/">← Back to home</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="contact-hero">
+    <div class="contact-hero-bg"></div>
+    <div class="shell">
+      <span class="eyebrow" style="color:rgba(255,255,255,0.6); margin-bottom:20px; display:block;">Get in touch</span>
+      <h1 class="h-display" style="max-width:760px; margin-bottom:24px;">
+        Contact Us
+      </h1>
+      <p class="body-l" style="color:rgba(255,255,255,0.78); max-width:560px;">
+        Partnerships, press, or anything else — drop us a line and we'll get back to you.
+      </p>
+    </div>
+  </header>
+
+  <!-- Contact card -->
+  <section style="background:var(--pale-grey); padding:clamp(56px,9vw,96px) 0;">
+    <div class="shell" style="max-width:680px;">
+      <div class="contact-card">
+
+        <!-- Person -->
+        <div class="contact-person">
+          <div class="contact-avatar">LB</div>
+          <div>
+            <div class="h-3" style="margin-bottom:4px;">Lino Benninga</div>
+            <div style="font-size:15px; font-weight:600; color:var(--electric-blue);">Founder</div>
+            <div style="font-size:14px; color:var(--rich-grey); margin-top:2px;">Social Limits</div>
+          </div>
+        </div>
+
+        <div class="contact-divider"></div>
+
+        <!-- Email -->
+        <div class="contact-email-row">
+          <div>
+            <div class="contact-email-label">Email</div>
+            <div class="contact-email-address">Lino@SocialLimits.com</div>
+          </div>
+          <a href="mailto:lino@social-limits.com" class="btn btn-solid" style="padding:16px 28px; font-size:15px; white-space:nowrap;">
+            Send an email ↗
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background:#08081F; color:#fff; padding:48px 0 32px;">
+    <div class="shell" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+      <div style="font-size:13px; color:rgba(255,255,255,0.45);">© 2025 Social Limits Pty Ltd · <a href="/privacy-policy" style="color:rgba(255,255,255,0.45);">Privacy Policy</a></div>
+      <a href="/" style="color:rgba(255,255,255,0.55); font-size:13px; font-weight:500;">← Back to social-limits.com</a>
+    </div>
+  </footer>
+
+</body>
+</html>
