@@ -728,7 +728,6 @@ function Footer() {
             ['Our story', '/our-story'],
             ['Case Study', '/hoca'],
             ['Contact', '/contact'],
-            ['Twitter / X', 'https://twitter.com/sociallimits'],
           ]}/>
           <FooterCol title="Legal" links={[
             ['Privacy Policy', '/privacy-policy'],
