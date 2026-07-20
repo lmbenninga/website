@@ -24,6 +24,8 @@
 
 * { box-sizing: border-box; }
 
+html { scroll-behavior: smooth; }
+
 html, body {
   margin: 0; padding: 0;
   font-family: 'Poppins', system-ui, sans-serif;
@@ -110,6 +112,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     0 18px 30px -10px rgba(0,0,40,0.35);
 }
 .btn-glass:hover { box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 22px 36px -10px rgba(0,0,40,0.5); }
+.btn-glass { position: relative; overflow: hidden; }
+.btn-glass::after {
+  content: '';
+  position: absolute; top: 0; bottom: 0; left: -70%;
+  width: 45%;
+  background: linear-gradient(105deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: skewX(-20deg);
+  pointer-events: none;
+  transition: left .6s ease;
+}
+.btn-glass:hover::after { left: 130%; }
 .btn-solid {
   color: #fff;
   background: var(--electric-blue);
@@ -152,11 +165,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
 }
 .hero-bg::after {
-  content: ''; position: absolute; inset: 0;
+  content: ''; position: absolute; inset: -6%;
   background:
     radial-gradient(ellipse at 70% 30%, rgba(255,255,255,0.18), transparent 40%),
     radial-gradient(ellipse at 20% 70%, rgba(123, 91, 255, 0.4), transparent 50%);
   filter: blur(40px);
+  will-change: transform;
+  animation: bg-drift 16s ease-in-out infinite alternate;
+}
+@keyframes bg-drift {
+  0%   { transform: translate3d(-2%, -1.5%, 0) scale(1); }
+  100% { transform: translate3d(2%, 2%, 0) scale(1.07); }
 }
 
 /* Reusable blue gradient surface */
@@ -188,6 +207,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   padding: 8px 8px 8px 20px;
   border-radius: 999px;
   max-width: calc(100vw - var(--s-4));
+  transition: background .35s ease, box-shadow .35s ease;
+}
+/* Slightly more solid pill once the page scrolls, so it reads over any surface */
+body[data-scrolled="true"] .nav-inner {
+  background: rgba(8,8,31,0.62) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.16),
+    0 14px 34px -14px rgba(0,0,40,0.55);
 }
 /* When drawer is open, give the pill a more solid backdrop so brand + close button stay readable */
 body[data-nav-open="true"] .nav-inner {
@@ -455,4 +482,71 @@ section { padding: var(--s-8) 0; }
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   margin: 16px 0 8px;
+}
+
+/* ─────────────────── Live users pill ─────────────────── */
+.live-pill {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 8px 18px 8px 10px;
+  border-radius: 999px;
+  font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,0.85);
+}
+.live-avatars { display: inline-flex; }
+.live-avatar {
+  width: 24px; height: 24px; border-radius: 999px;
+  border: 2px solid rgba(12,12,80,0.55);
+  margin-left: -8px;
+}
+.live-avatar:first-child { margin-left: 0; }
+.live-count { font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+.live-dot {
+  position: relative;
+  width: 8px; height: 8px; border-radius: 999px;
+  background: #4ADE80;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(74,222,128,0.8);
+}
+.live-dot::before {
+  content: '';
+  position: absolute; inset: -4px;
+  border-radius: 999px;
+  background: rgba(74,222,128,0.45);
+  animation: live-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes live-ping {
+  0%       { transform: scale(0.6); opacity: 0.9; }
+  75%, 100% { transform: scale(2);  opacity: 0; }
+}
+
+/* ─────────────────── Scroll reveal ─────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity .7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform .7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0s);
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* ─────────────────── Hero entrance ─────────────────── */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: none; }
+}
+.hero-grid > div:first-child { animation: rise-in .9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.hero-grid > div:last-child  { animation: rise-in .9s .15s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* ─────────────────── Slow pan for oversized background type ─────────────────── */
+@keyframes slow-pan {
+  from { transform: translateX(2.5%); }
+  to   { transform: translateX(-2.5%); }
+}
+.bg-type { animation: slow-pan 18s ease-in-out infinite alternate; will-change: transform; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .live-dot::before, .bg-type, .hero-bg::after,
+  .hero-grid > div:first-child, .hero-grid > div:last-child { animation: none !important; }
 }

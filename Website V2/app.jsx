@@ -28,6 +28,89 @@ function BrandMark({ color = '#fff', logoSize = 22 }) {
 }
 
 // ─────────────────────────────────────────────────────────────
+// Live users pill — animated counter with pulsing presence dot
+// ─────────────────────────────────────────────────────────────
+function useLiveCount(base) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) { setCount(base); return; }
+    let raf;
+    const t0 = performance.now();
+    const ramp = (t) => {
+      const p = Math.min(1, (t - t0) / 1600);
+      setCount(Math.round(base * (1 - Math.pow(1 - p, 3))));
+      if (p < 1) raf = requestAnimationFrame(ramp);
+    };
+    raf = requestAnimationFrame(ramp);
+    const drift = setInterval(() => {
+      setCount(c => {
+        const delta = Math.floor(Math.random() * 9) - 4;
+        return Math.max(base - 60, Math.min(base + 90, c + delta));
+      });
+    }, 2400);
+    return () => { cancelAnimationFrame(raf); clearInterval(drift); };
+  }, [base]);
+  return count;
+}
+
+function LiveUsersPill({ style }) {
+  const count = useLiveCount(1284);
+  return (
+    <div className="live-pill glass-dark" style={style} role="status">
+      <span className="live-avatars" aria-hidden="true">
+        {[['#FFB47D', '#FF6B6B'], ['#7DFFA8', '#00B48A'], ['#8FB4FF', '#7B5BFF']].map((g, i) => (
+          <span key={i} className="live-avatar" style={{ background: `linear-gradient(135deg, ${g[0]}, ${g[1]})` }}/>
+        ))}
+      </span>
+      <span className="live-dot" aria-hidden="true"/>
+      <span className="live-label">
+        <span className="live-count">{count.toLocaleString()}</span> people moving right now
+      </span>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// CountUp — animates a stat value when it scrolls into view
+// ─────────────────────────────────────────────────────────────
+function CountUp({ value, duration = 1400 }) {
+  const m = String(value).match(/^([^\d]*)([\d.,]+)(.*)$/);
+  const ref = useRef(null);
+  const [display, setDisplay] = useState(() => {
+    if (!m) return value;
+    const decimals = (m[2].split('.')[1] || '').length;
+    return m[1] + (0).toFixed(decimals) + m[3];
+  });
+
+  useEffect(() => {
+    if (!m) return;
+    const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced || !('IntersectionObserver' in window)) { setDisplay(value); return; }
+    const target = parseFloat(m[2].replace(/,/g, ''));
+    const decimals = (m[2].split('.')[1] || '').length;
+    let raf, started = false;
+    const io = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting || started) return;
+      started = true;
+      io.disconnect();
+      const t0 = performance.now();
+      const tick = (t) => {
+        const p = Math.min(1, (t - t0) / duration);
+        const ease = 1 - Math.pow(1 - p, 3);
+        setDisplay(m[1] + (target * ease).toFixed(decimals) + m[3]);
+        if (p < 1) raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
+    }, { threshold: 0.4 });
+    if (ref.current) io.observe(ref.current);
+    return () => { io.disconnect(); cancelAnimationFrame(raf); };
+  }, []);
+
+  return <span ref={ref} style={{ fontVariantNumeric: 'tabular-nums' }}>{display}</span>;
+}
+
+// ─────────────────────────────────────────────────────────────
 // Nav
 // ─────────────────────────────────────────────────────────────
 const NAV_LINKS = [
@@ -54,6 +137,15 @@ function Nav() {
       clearTimeout(t);
     };
   }, [open]);
+
+  useEffect(() => {
+    const onScroll = () => {
+      document.body.dataset.scrolled = window.scrollY > 24 ? 'true' : 'false';
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const close = () => {
     setOpen(false);
@@ -120,10 +212,7 @@ function Hero() {
       <div className="shell" style={{ paddingTop: 'clamp(96px, 13vh, 132px)', paddingBottom: 'clamp(20px, 3.5vh, 48px)', display:'grid', gridTemplateColumns:'1fr', gap: 32, position:'relative' }}>
         <div style={{ display:'grid', gridTemplateColumns:'minmax(0,1.1fr) minmax(0,0.9fr)', gap: 'clamp(20px, 3vw, 40px)', alignItems:'center' }} className="hero-grid">
           <div>
-            <span className="chip chip-dark" style={{ marginBottom: 'clamp(10px, 1.5vh, 20px)' }}>
-              <span className="dot" style={{ background:'#7DFFA8' }}/>
-              v3.1.2 · Liquid Glass UI now live
-            </span>
+            <LiveUsersPill style={{ marginBottom: 'clamp(10px, 1.5vh, 20px)' }}/>
 
             <h1 className="h-display" style={{ marginTop: 0, marginBottom: 'clamp(10px, 1.5vh, 20px)', fontSize: 'clamp(40px, min(9vw, 11vh), 100px)' }}>
               Move more.<br/>
@@ -147,17 +236,17 @@ function Hero() {
 
             <div className="hero-stats" style={{ marginTop: 'clamp(14px, 2.5vh, 36px)', display:'flex', gap: 'clamp(20px, 4vw, 36px)', alignItems:'center', flexWrap:'wrap' }}>
               <div>
-                <div style={{ fontSize: 'clamp(18px, 2.5vh, 28px)', fontWeight: 800, letterSpacing:'-0.025em' }}>20k+</div>
+                <div style={{ fontSize: 'clamp(18px, 2.5vh, 28px)', fontWeight: 800, letterSpacing:'-0.025em' }}><CountUp value="20k+"/></div>
                 <div style={{ fontSize: 12, color:'rgba(255,255,255,0.6)', fontWeight: 500, marginTop: 2 }}>Users</div>
               </div>
               <div className="hero-stats-sep" style={{ width: 1, height: 32, background:'rgba(255,255,255,0.18)' }}/>
               <div>
-                <div style={{ fontSize: 'clamp(18px, 2.5vh, 28px)', fontWeight: 800, letterSpacing:'-0.025em' }}>4.5<span style={{ opacity:.5, fontSize: 'clamp(14px, 2vh, 20px)' }}>/5</span></div>
+                <div style={{ fontSize: 'clamp(18px, 2.5vh, 28px)', fontWeight: 800, letterSpacing:'-0.025em' }}><CountUp value="4.5"/><span style={{ opacity:.5, fontSize: 'clamp(14px, 2vh, 20px)' }}>/5</span></div>
                 <div style={{ fontSize: 12, color:'rgba(255,255,255,0.6)', fontWeight: 500, marginTop: 2 }}>App Store ratings</div>
               </div>
               <div className="hero-stats-sep" style={{ width: 1, height: 32, background:'rgba(255,255,255,0.18)' }}/>
               <div>
-                <div style={{ fontSize: 'clamp(18px, 2.5vh, 28px)', fontWeight: 800, letterSpacing:'-0.025em' }}>2.4B+</div>
+                <div style={{ fontSize: 'clamp(18px, 2.5vh, 28px)', fontWeight: 800, letterSpacing:'-0.025em' }}><CountUp value="2.4B+"/></div>
                 <div style={{ fontSize: 12, color:'rgba(255,255,255,0.6)', fontWeight: 500, marginTop: 2 }}>Steps tracked</div>
               </div>
             </div>
@@ -231,7 +320,7 @@ function Problem() {
               <div style={{ fontSize: 80, fontWeight: 800, letterSpacing: '-0.05em', lineHeight: 1,
                 background: 'linear-gradient(180deg,#fff 0%, #7B5BFF 120%)',
                 WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent',
-              }}>{s.v}</div>
+              }}><CountUp value={s.v}/></div>
               <div style={{ marginTop: 18, fontSize: 17, fontWeight: 500, lineHeight: 1.4 }}>{s.l}</div>
               <div style={{ marginTop: 14, fontSize: 13, color:'rgba(255,255,255,0.55)' }}>{s.s}</div>
             </div>
@@ -339,7 +428,7 @@ function Showcase() {
   return (
     <section ref={sectionRef} className="blue-surface" data-screen-label="04 Showcase">
       <div className="shell" style={{ display:'grid', gridTemplateColumns:'1.1fr 0.9fr', gap: 'clamp(40px, 8vw, 80px)', alignItems:'center' }} >
-        <div>
+        <div data-reveal>
           <span className="chip chip-dark" style={{ marginBottom: 24 }}>
             <span className="dot" style={{ background:'#7DFFA8' }}/>
             The unlock moment
@@ -375,7 +464,7 @@ function Showcase() {
           </ul>
         </div>
 
-        <div style={{ display:'flex', justifyContent:'center', perspective: '1200px' }}>
+        <div data-reveal style={{ display:'flex', justifyContent:'center', perspective: '1200px' }}>
           <div
             ref={phoneRef}
             className="phone"
@@ -495,7 +584,7 @@ function Science() {
           ))}
         </div>
 
-        <div style={{
+        <div data-reveal style={{
           marginTop: 44, padding: '24px 28px', borderRadius: 20,
           background:'var(--faded-blue)', color:'var(--electric-blue-deep)',
           display:'flex', gap: 20, alignItems:'center', flexWrap:'wrap', justifyContent:'space-between',
@@ -534,7 +623,7 @@ function Reviews() {
     <section id="reviews" style={{ background:'var(--pale-grey)' }} data-screen-label="07 Reviews">
       <div className="shell">
         <div className="section-head" style={{ flexDirection:'row', justifyContent:'space-between', alignItems:'flex-end', maxWidth:'none', flexWrap:'wrap', gap: 20 }}>
-          <div style={{ display:'flex', flexDirection:'column', gap: 20, maxWidth: 640 }}>
+          <div style={{ display:'flex', flexDirection:'column', alignItems:'flex-start', gap: 20, maxWidth: 640 }}>
             <span className="chip">Reviews</span>
             <h2 className="h-1">Real people. Real mornings.</h2>
           </div>
@@ -670,13 +759,13 @@ function DownloadCTA() {
     <section id="download" className="blue-surface" data-screen-label="09 Download" style={{ padding: '120px 0' }}>
       {/* Big background type */}
       <div style={{ position:'absolute', inset: 0, display:'flex', alignItems:'center', justifyContent:'center', overflow:'hidden', pointerEvents:'none' }}>
-        <div style={{
+        <div className="bg-type" style={{
           fontSize: 'clamp(140px, 22vw, 360px)', fontWeight: 900, letterSpacing:'-0.05em',
           color:'rgba(255,255,255,0.04)', lineHeight: 0.9, whiteSpace:'nowrap',
         }}>MOVE MORE</div>
       </div>
 
-      <div className="shell" style={{ position:'relative', textAlign:'center', display:'flex', flexDirection:'column', alignItems:'center', gap: 32 }}>
+      <div data-reveal className="shell" style={{ position:'relative', textAlign:'center', display:'flex', flexDirection:'column', alignItems:'center', gap: 32 }}>
         <span className="chip chip-dark"><span className="dot" style={{ background:'#7DFFA8' }}/> Free to try</span>
         <h2 className="h-display" style={{ margin: 0, maxWidth: 1000 }}>
           Tomorrow morning,<br/><span className="gradient-text">earn your feed.</span>
@@ -767,6 +856,39 @@ function FooterCol({ title, links }) {
 // App
 // ─────────────────────────────────────────────────────────────
 function App() {
+  // Scroll-reveal: fade/slide sections and cards in as they enter the viewport
+  useEffect(() => {
+    const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced || !('IntersectionObserver' in window)) return;
+
+    const els = Array.from(new Set(document.querySelectorAll(
+      '.section-head, .grid-3 > *, .grid-4 > *, .study-row, .logo-wall > *, [data-reveal]'
+    )));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+          // Hand transitions back to the element (e.g. card hover) once the entrance is done
+          setTimeout(() => {
+            entry.target.classList.remove('reveal', 'is-visible');
+            entry.target.style.removeProperty('--reveal-delay');
+          }, 1400);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -48px 0px' });
+
+    els.forEach((el) => {
+      const siblings = el.parentElement ? Array.from(el.parentElement.children) : [];
+      const idx = Math.max(0, siblings.indexOf(el));
+      el.style.setProperty('--reveal-delay', `${Math.min(idx, 5) * 90}ms`);
+      el.classList.add('reveal');
+      io.observe(el);
+    });
+
+    return () => io.disconnect();
+  }, []);
+
   return (
     <>
       <Nav/>
