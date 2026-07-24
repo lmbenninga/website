@@ -825,7 +825,7 @@ function Footer() {
         </div>
 
         <div style={{ paddingTop: 24, display:'flex', justifyContent:'space-between', flexWrap:'wrap', gap: 16, fontSize: 12, color:'rgba(255,255,255,0.45)' }}>
-          <div>© 2025 Social Limits Pty Ltd. Made with movement.</div>
+          <div>© 2026 Social Limits Pty Ltd. Made with movement.</div>
           <div>Available on App Store & Google Play</div>
         </div>
       </div>
