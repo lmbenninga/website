@@ -820,7 +820,7 @@ function Footer() {
           ]}/>
           <FooterCol title="Legal" links={[
             ['Privacy Policy', '/privacy-policy'],
-            ['Terms (Apple EULA)', '#'],
+            ['Terms and Conditions', '/terms'],
           ]}/>
         </div>
 
