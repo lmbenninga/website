@@ -260,7 +260,7 @@ function Hero() {
               filter: 'blur(40px)',
             }}/>
             <img
-              src={(typeof window !== 'undefined' && window.__resources && window.__resources.heroPhone) || 'assets/hero-phone.png'}
+              src={(typeof window !== 'undefined' && window.__resources && window.__resources.heroPhone) || 'assets/hero-phone.webp'}
               alt="Social Limits app — step ring and blocked apps"
               className="float hero-phone-img"
               style={{
