@@ -180,28 +180,78 @@
       color: rgba(8,8,31,0.35);
     }
 
-    /* Fallback hint — only shown if an in-app browser blocks the App Store hand-off */
-    .hint {
-      display: none;
-      margin-top: 16px;
-      padding: 12px 16px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.28);
-      backdrop-filter: blur(14px) saturate(140%);
-      -webkit-backdrop-filter: blur(14px) saturate(140%);
-      font-size: 13px;
-      line-height: 1.45;
-      color: rgba(255,255,255,0.92);
+    /* Toast — shown while handing the page to the system browser */
+    .toast {
+      position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 22px);
+      transform: translate(-50%, 20px);
+      opacity: 0; pointer-events: none;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(8,8,31,0.82);
+      color: #fff;
+      font-size: 13px; font-weight: 600;
+      white-space: nowrap;
+      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.5);
+      transition: opacity .25s ease, transform .25s ease;
+      z-index: 20;
     }
-    .hint.show { display: block; }
-    .hint strong { font-weight: 700; }
-    .hint .dots {
-      display: inline-block;
-      font-weight: 800; letter-spacing: 1px;
-      padding: 0 6px; border-radius: 6px;
-      background: rgba(255,255,255,0.18);
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    /* Fallback sheet — only shown if the in-app browser blocks every App Store route */
+    .sheet-backdrop {
+      position: fixed; inset: 0; z-index: 30;
+      background: rgba(4,4,30,0.55);
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+      opacity: 0; pointer-events: none;
+      transition: opacity .25s ease;
     }
+    .sheet-backdrop.show { opacity: 1; pointer-events: auto; }
+    .sheet {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 31;
+      margin: 0 auto; max-width: 480px;
+      background: #fff; color: var(--ink);
+      border-radius: 28px 28px 0 0;
+      padding: 18px 22px calc(env(safe-area-inset-bottom, 0px) + 22px);
+      transform: translateY(105%);
+      transition: transform .3s cubic-bezier(.2,.8,.2,1);
+      box-shadow: 0 -20px 60px -20px rgba(0,0,60,0.5);
+      text-align: left;
+    }
+    .sheet.show { transform: translateY(0); }
+    .sheet-grab { width: 40px; height: 4px; border-radius: 2px; background: #D9DADB; margin: 0 auto 16px; }
+    .sheet h2 { font-size: 19px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 6px; }
+    .sheet p.lead { font-size: 13.5px; color: var(--rich-grey); line-height: 1.5; margin-bottom: 14px; }
+    .steps { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+    .steps li { display: flex; align-items: flex-start; gap: 12px; font-size: 14.5px; font-weight: 500; line-height: 1.4; }
+    .steps .n {
+      flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%;
+      background: var(--electric-blue); color: #fff;
+      font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .steps .dots {
+      display: inline-block; font-weight: 800; letter-spacing: 1px;
+      padding: 0 7px; border-radius: 6px; background: var(--pale-grey);
+    }
+    .sheet-actions { display: flex; gap: 10px; }
+    .sheet-btn {
+      flex: 1 1 0; min-height: 48px; border-radius: 999px;
+      font-family: inherit; font-size: 14px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      border: 0; cursor: pointer; -webkit-tap-highlight-color: transparent;
+    }
+    .sheet-btn.primary { background: var(--electric-blue); color: #fff; }
+    .sheet-btn.ghost { background: var(--pale-grey); color: var(--ink); }
+    .sheet-btn:active { transform: scale(0.98); }
+
+    /* Diagnostics panel (?test=1) */
+    .test { width: 100%; margin-top: 18px; padding: 14px; border-radius: 16px;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.28);
+      text-align: left; font-size: 12px; line-height: 1.5; }
+    .test code { display: block; word-break: break-all; font-family: ui-monospace, Menlo, monospace; font-size: 10.5px; opacity: .85; margin: 4px 0 10px; }
+    .test .row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .test button, .test a { font-family: inherit; font-size: 12px; font-weight: 600; padding: 9px 12px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.14); color: #fff; text-decoration: none; cursor: pointer; }
 
     .foot {
       margin-top: clamp(20px, 3.5vh, 30px);
@@ -295,12 +345,28 @@
       </a>
     </nav>
 
-    <div class="hint" id="hint" role="status" aria-live="polite">
-      <strong>Didn't open?</strong> Tap <span class="dots">···</span> in the top corner, choose <strong>Open in browser</strong>, then tap the button again.
-    </div>
+    <div class="test" id="test" hidden></div>
 
     <p class="foot"><a href="https://www.social-limits.com/">social-limits.com</a></p>
   </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Opening in your browser…</div>
+
+  <div class="sheet-backdrop" id="sheet-backdrop"></div>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+    <div class="sheet-grab" aria-hidden="true"></div>
+    <h2 id="sheet-title">One more tap to reach the App Store</h2>
+    <p class="lead">Instagram's built-in browser can't open the App Store. Open this page in Safari and it works instantly:</p>
+    <ol class="steps">
+      <li><span class="n">1</span><span>Tap <span class="dots">···</span> in the top-right corner</span></li>
+      <li><span class="n">2</span><span>Choose <strong>Open in browser</strong> (or <strong>Open in Safari</strong>)</span></li>
+      <li><span class="n">3</span><span>Tap <strong>App Store</strong> again</span></li>
+    </ol>
+    <div class="sheet-actions">
+      <button class="sheet-btn ghost" id="sheet-copy" type="button">Copy App Store link</button>
+      <button class="sheet-btn primary" id="sheet-close" type="button">Got it</button>
+    </div>
+  </div>
 
   <script>
   (function () {
@@ -314,14 +380,59 @@
     var isIOS = /iPhone|iPad|iPod/i.test(ua) ||
                 (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     var isAndroid = /Android/i.test(ua);
-    // Meta in-app browsers (Instagram, Facebook, Messenger, Threads) + other common IABs
-    var isMetaIAB  = /Instagram|FBAN|FBAV|FB_IAB|FBIOS|Threads|Barcelona/i.test(ua);
-    var isOtherIAB = /BytedanceWebview|musical_ly|TikTok|Snapchat|LinkedInApp|Pinterest|Twitter|\bLine\//i.test(ua);
-    var isIAB = isMetaIAB || isOtherIAB;
+    var isInstagram = /Instagram/i.test(ua);
+    var isFacebook  = /FBAN|FBAV|FB_IAB|FBIOS/i.test(ua);
+    var isThreads   = /Threads|Barcelona/i.test(ua);
+    var isOtherIAB  = /BytedanceWebview|musical_ly|TikTok|Snapchat|LinkedInApp|Pinterest|\bLine\//i.test(ua);
+    var isIAB = isInstagram || isFacebook || isThreads || isOtherIAB;
+    var params = new URLSearchParams(location.search);
+    var testMode = params.get('test') === '1';
 
     var appStoreBtn = document.getElementById('link-appstore');
     var playBtn     = document.getElementById('link-play');
-    var hint        = document.getElementById('hint');
+    var toast       = document.getElementById('toast');
+    var sheet       = document.getElementById('sheet');
+    var backdrop    = document.getElementById('sheet-backdrop');
+
+    function go(url) { try { window.location.href = url; } catch (_) {} }
+    function extBrowser(url) { return 'instagram://extbrowser/?url=' + encodeURIComponent(url); }
+
+    // "Are we still here?" — becomes false as soon as the OS switches to Safari / the App Store.
+    var left = false;
+    function markLeft() { left = true; hideToast(); }
+    window.addEventListener('pagehide', markLeft);
+    window.addEventListener('blur', markLeft);
+    document.addEventListener('visibilitychange', function () { if (document.hidden) markLeft(); });
+    var stillHere = function () { return !left && !document.hidden; };
+
+    var toastTimer;
+    function showToast(msg) {
+      toast.textContent = msg || 'Opening in your browser…';
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(hideToast, 2600);
+    }
+    function hideToast() { toast.classList.remove('show'); }
+
+    function showSheet() { hideToast(); sheet.classList.add('show'); backdrop.classList.add('show'); }
+    function hideSheet() { sheet.classList.remove('show'); backdrop.classList.remove('show'); }
+    document.getElementById('sheet-close').addEventListener('click', hideSheet);
+    backdrop.addEventListener('click', hideSheet);
+    document.getElementById('sheet-copy').addEventListener('click', function () {
+      var btn = this;
+      var done = function () { btn.textContent = 'Copied ✓'; setTimeout(function () { btn.textContent = 'Copy App Store link'; }, 1800); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(APP_STORE).then(done, function () { legacyCopy(APP_STORE); done(); });
+      } else { legacyCopy(APP_STORE); done(); }
+    });
+    function legacyCopy(text) {
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.top = '-1000px';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); } catch (_) {}
+      document.body.removeChild(ta);
+    }
 
     // ── Android in-app browsers: hand the Play Store link straight to the Play Store app
     //    via an intent URL (falls back to the web listing where intents aren't supported).
@@ -329,50 +440,58 @@
       playBtn.setAttribute('href', PLAY_INTENT);
     }
 
-    // ── iOS in-app browsers: the WebView can't hand apps.apple.com off to the App Store on
-    //    its own (that's the blank-page bug). On tap we escape to Safari / the App Store
-    //    directly, all inside the user-gesture window, and only fall back to a hint if the
-    //    in-app browser blocks every route.
+    // ── iOS in-app browsers.
+    //    Apple answers apps.apple.com with a redirect to itms-appss://, which a WebView cannot
+    //    follow → white page. So we must leave the WebView *before* that redirect. Never load
+    //    apps.apple.com inside the WebView, never window.open (that leaves a blank popup).
     if (isIOS && isIAB) {
-      var armedPlain = false;   // after a failed attempt, the next tap is a plain link tap
+      // Instagram: on arrival, hand this whole page to the system browser (Safari) via
+      // Instagram's own scheme. In Safari every button below works natively. If Instagram
+      // ignores the scheme nothing happens and the visitor simply stays here.
+      if (isInstagram && !testMode) {
+        showToast('Opening in your browser…');
+        go(extBrowser(location.href));
+      }
 
+      // App Store button: escape routes in order of measured reliability, then a manual sheet.
       appStoreBtn.addEventListener('click', function (e) {
-        if (armedPlain) return;             // plain navigation (universal-link path)
         e.preventDefault();
-
-        var left = false;
-        var markLeft = function () { left = true; };
-        window.addEventListener('pagehide', markLeft, { once: true });
-        window.addEventListener('blur', markLeft, { once: true });
-        document.addEventListener('visibilitychange', function onVis() {
-          if (document.hidden) { left = true; document.removeEventListener('visibilitychange', onVis); }
-        });
-
-        var stillHere = function () { return !left && !document.hidden; };
-
-        // Step 1 (Meta IABs): open Safari with the App Store URL — Safari then opens the App Store.
-        if (isMetaIAB) {
-          try { window.open('x-safari-https://apps.apple.com/au/app/social-limits-screen-time-app/id6471964510', '_blank'); } catch (_) {}
+        left = false;
+        showToast('Opening the App Store…');
+        if (isInstagram) {
+          go(extBrowser(APP_STORE));                                   // 1. system browser → App Store
+          setTimeout(function () { if (stillHere()) go(APP_STORE_SCHEME); }, 900);  // 2. App Store scheme
+          setTimeout(function () { if (stillHere()) showSheet(); }, 2200);          // 3. manual
         } else {
-          // Other IABs: go straight to the App Store scheme.
-          try { window.location.href = APP_STORE_SCHEME; } catch (_) {}
+          go(APP_STORE_SCHEME);                                        // Facebook/Threads/TikTok…: scheme
+          setTimeout(function () { if (stillHere()) showSheet(); }, 1400);
         }
-
-        // Step 2 (< 1s, so WebKit still treats it as user-initiated): App Store URL scheme.
-        setTimeout(function () {
-          if (!stillHere()) return;
-          if (isMetaIAB) {
-            try { window.location.href = APP_STORE_SCHEME; } catch (_) {}
-          }
-          // Step 3: nothing worked — arm the button as a plain link and show the Safari hint.
-          setTimeout(function () {
-            if (!stillHere()) return;
-            armedPlain = true;
-            appStoreBtn.setAttribute('href', APP_STORE);
-            hint.classList.add('show');
-          }, 1100);
-        }, 550);
       }, false);
+    }
+
+    // ── Diagnostics: /links?test=1 shows the environment and one button per route.
+    if (testMode) {
+      var panel = document.getElementById('test');
+      panel.hidden = false;
+      panel.innerHTML =
+        '<strong>Diagnostics</strong> — iOS: ' + isIOS + ' · Android: ' + isAndroid +
+        ' · Instagram: ' + isInstagram + ' · Facebook: ' + isFacebook + ' · Threads: ' + isThreads +
+        ' · otherIAB: ' + isOtherIAB + '<code>' + ua + '</code>' +
+        '<div class="row">' +
+          '<button data-route="ext-page">extbrowser → this page</button>' +
+          '<button data-route="ext-store">extbrowser → App Store</button>' +
+          '<button data-route="itms">itms-appss://</button>' +
+          '<a href="x-safari-https://apps.apple.com/au/app/social-limits-screen-time-app/id6471964510">x-safari-https (href)</a>' +
+          '<a href="' + APP_STORE + '">plain https (href)</a>' +
+          '<a href="' + PLAY_INTENT + '">Play intent://</a>' +
+        '</div>';
+      panel.addEventListener('click', function (e) {
+        var r = e.target.getAttribute && e.target.getAttribute('data-route');
+        if (!r) return;
+        if (r === 'ext-page') go(extBrowser(location.href.replace(/[?&]test=1/, '')));
+        if (r === 'ext-store') go(extBrowser(APP_STORE));
+        if (r === 'itms') go(APP_STORE_SCHEME);
+      });
     }
   })();
   </script>
