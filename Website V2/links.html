@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>Social Limits — Get the app</title>
+  <meta name="description" content="Download Social Limits on the App Store or Google Play, follow us on Instagram, or visit our website."/>
+  <meta name="theme-color" content="#0A0AB8"/>
+  <link rel="canonical" href="https://www.social-limits.com/links"/>
+  <meta property="og:title" content="Social Limits — Get the app"/>
+  <meta property="og:description" content="Move more. Scroll less. Download Social Limits."/>
+  <meta property="og:url" content="https://www.social-limits.com/links"/>
+  <meta property="og:image" content="https://www.social-limits.com/assets/apple-touch-icon.png"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" href="assets/favicon.png"/>
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --electric-blue: #0000FF;
+      --electric-blue-deep: #1A1AB8;
+      --pale-grey: #F1F2F2;
+      --rich-grey: #58595B;
+      --ink: #08081F;
+      --white: #FFFFFF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+      color: var(--white);
+      background: #0A0AB8;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding:
+        calc(env(safe-area-inset-top, 0px) + 20px)
+        calc(env(safe-area-inset-right, 0px) + 20px)
+        calc(env(safe-area-inset-bottom, 0px) + 20px)
+        calc(env(safe-area-inset-left, 0px) + 20px);
+      position: relative;
+      isolation: isolate;
+      overflow-x: hidden;
+    }
+
+    /* Brand background — same recipe as the homepage hero */
+    .bg {
+      position: fixed; inset: 0; z-index: -1;
+      background:
+        radial-gradient(140% 80% at 90% 10%, #7B5BFF 0%, transparent 50%),
+        radial-gradient(120% 80% at 10% 90%, #00B4FF 0%, transparent 50%),
+        radial-gradient(80% 60% at 50% 50%, #2A2AFF 0%, transparent 70%),
+        linear-gradient(180deg, #0A0AB8 0%, #1414DD 50%, #0606A0 100%);
+    }
+    .bg::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(transparent 0, transparent calc(100% - 1px), rgba(255,255,255,0.05) 100%),
+        linear-gradient(90deg, transparent 0, transparent calc(100% - 1px), rgba(255,255,255,0.05) 100%);
+      background-size: 80px 80px;
+      -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    }
+    .bg::after {
+      content: ''; position: absolute; inset: -6%;
+      background:
+        radial-gradient(ellipse at 70% 30%, rgba(255,255,255,0.18), transparent 40%),
+        radial-gradient(ellipse at 20% 70%, rgba(123, 91, 255, 0.4), transparent 50%);
+      filter: blur(40px);
+    }
+
+    .page {
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Logo */
+    .logo-tile {
+      width: clamp(76px, 20vw, 92px);
+      height: clamp(76px, 20vw, 92px);
+      border-radius: 24%;
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow:
+        0 24px 48px -16px rgba(0,0,60,0.55),
+        0 0 0 1px rgba(255,255,255,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+      margin-bottom: clamp(14px, 2.4vh, 20px);
+    }
+    .logo-tile img {
+      width: 62%; height: 62%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .brand {
+      font-size: clamp(24px, 6.4vw, 30px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .tagline {
+      margin-top: 8px;
+      font-size: clamp(13px, 3.4vw, 14px);
+      font-weight: 500;
+      color: rgba(255,255,255,0.78);
+      letter-spacing: 0.01em;
+      margin-bottom: clamp(22px, 4.2vh, 34px);
+    }
+
+    /* Buttons */
+    .links {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(10px, 1.6vh, 14px);
+    }
+    .link-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      min-height: 60px;
+      padding: 10px 18px 10px 10px;
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: clamp(15px, 4vw, 16px);
+      letter-spacing: -0.01em;
+      text-align: left;
+      box-shadow:
+        0 18px 34px -18px rgba(0,0,60,0.55),
+        0 1px 0 rgba(255,255,255,0.6) inset;
+      transition: transform .12s ease, box-shadow .2s ease;
+      -webkit-user-select: none; user-select: none;
+      touch-action: manipulation;
+    }
+    .link-btn:active {
+      transform: scale(0.975);
+      box-shadow: 0 8px 18px -12px rgba(0,0,60,0.5);
+    }
+    @media (hover: hover) {
+      .link-btn:hover { transform: translateY(-1px); box-shadow: 0 22px 40px -18px rgba(0,0,60,0.65); }
+    }
+    .link-icon {
+      flex: 0 0 auto;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--pale-grey);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .link-icon svg { width: 22px; height: 22px; display: block; }
+    .link-label { flex: 1 1 auto; }
+    .link-label small {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--rich-grey);
+      letter-spacing: 0.02em;
+      margin-bottom: 1px;
+    }
+    .link-arrow {
+      flex: 0 0 auto;
+      width: 18px; height: 18px;
+      color: rgba(8,8,31,0.35);
+    }
+
+    /* Fallback hint — only shown if an in-app browser blocks the App Store hand-off */
+    .hint {
+      display: none;
+      margin-top: 16px;
+      padding: 12px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.28);
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      font-size: 13px;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.92);
+    }
+    .hint.show { display: block; }
+    .hint strong { font-weight: 700; }
+    .hint .dots {
+      display: inline-block;
+      font-weight: 800; letter-spacing: 1px;
+      padding: 0 6px; border-radius: 6px;
+      background: rgba(255,255,255,0.18);
+    }
+
+    .foot {
+      margin-top: clamp(20px, 3.5vh, 30px);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.55);
+    }
+    .foot a { color: inherit; text-decoration: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .link-btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <main class="page">
+    <div class="logo-tile">
+      <img src="assets/social-limits-logo.png" alt="Social Limits" width="120" height="153"/>
+    </div>
+    <h1 class="brand">Social Limits</h1>
+    <p class="tagline">Move more. Scroll less.</p>
+
+    <nav class="links" aria-label="Social Limits links">
+      <!-- 1. App Store -->
+      <a class="link-btn" id="link-appstore"
+         href="https://apps.apple.com/au/app/social-limits-screen-time-app/id6471964510"
+         data-store="ios">
+        <span class="link-icon" aria-hidden="true">
+          <!-- Apple logo -->
+          <svg viewBox="0 0 24 24" fill="#08081F">
+            <path d="M16.365 12.79c-.026-2.62 2.14-3.878 2.237-3.94-1.22-1.783-3.116-2.028-3.79-2.055-1.613-.163-3.148.95-3.966.95-.817 0-2.08-.927-3.42-.902-1.76.026-3.383 1.023-4.29 2.6-1.83 3.172-.468 7.87 1.314 10.447.872 1.263 1.91 2.68 3.274 2.63 1.313-.052 1.81-.85 3.4-.85 1.588 0 2.035.85 3.424.824 1.415-.026 2.31-1.287 3.176-2.554 1.002-1.466 1.414-2.887 1.438-2.96-.03-.013-2.76-1.06-2.787-4.19zM13.756 5.09c.724-.877 1.213-2.096 1.08-3.31-1.043.042-2.306.695-3.055 1.572-.67.776-1.258 2.017-1.1 3.207 1.163.09 2.35-.59 3.075-1.469z"/>
+          </svg>
+        </span>
+        <span class="link-label"><small>Download on the</small>App Store</span>
+        <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+
+      <!-- 2. Google Play -->
+      <a class="link-btn" id="link-play"
+         href="https://play.google.com/store/apps/details?id=app.sociallimits"
+         data-store="android">
+        <span class="link-icon" aria-hidden="true">
+          <!-- Google Play logo -->
+          <svg viewBox="0 0 24 24">
+            <path fill="#00D7FE" d="M3.62 2.32 13.3 12l-9.68 9.68A1.6 1.6 0 0 1 3 20.4V3.6c0-.5.24-.98.62-1.28z"/>
+            <path fill="#00F076" d="M16.7 8.6 13.3 12 3.62 2.32c.55-.42 1.32-.5 1.98-.13L16.7 8.6z"/>
+            <path fill="#FF3A44" d="M16.7 15.4 5.6 21.81c-.66.37-1.43.29-1.98-.13L13.3 12l3.4 3.4z"/>
+            <path fill="#FFC500" d="M20.4 10.62c.9.52.9 2.24 0 2.76l-3.7 2.02L13.3 12l3.4-3.4 3.7 2.02z"/>
+          </svg>
+        </span>
+        <span class="link-label"><small>Get it on</small>Google Play</span>
+        <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+
+      <!-- 3. Instagram -->
+      <a class="link-btn" id="link-instagram" href="https://www.instagram.com/sociallimits/">
+        <span class="link-icon" aria-hidden="true">
+          <!-- Instagram glyph -->
+          <svg viewBox="0 0 24 24" fill="none">
+            <defs>
+              <linearGradient id="ig-grad" x1="4" y1="20" x2="20" y2="4" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#F9A23B"/>
+                <stop offset="0.35" stop-color="#E4405F"/>
+                <stop offset="0.7" stop-color="#C13584"/>
+                <stop offset="1" stop-color="#5851DB"/>
+              </linearGradient>
+            </defs>
+            <rect x="3" y="3" width="18" height="18" rx="5.2" stroke="url(#ig-grad)" stroke-width="2"/>
+            <circle cx="12" cy="12" r="4.1" stroke="url(#ig-grad)" stroke-width="2"/>
+            <circle cx="17.35" cy="6.65" r="1.25" fill="url(#ig-grad)"/>
+          </svg>
+        </span>
+        <span class="link-label"><small>Follow us on</small>Instagram</span>
+        <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+
+      <!-- 4. Website -->
+      <a class="link-btn" id="link-website" href="https://www.social-limits.com/">
+        <span class="link-icon" aria-hidden="true">
+          <!-- Globe icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0000FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M3 12h18M12 3c2.6 2.6 3.9 5.6 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-5.6-3.9-9S9.4 5.6 12 3z"/>
+          </svg>
+        </span>
+        <span class="link-label"><small>Visit our</small>Website</span>
+        <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+    </nav>
+
+    <div class="hint" id="hint" role="status" aria-live="polite">
+      <strong>Didn't open?</strong> Tap <span class="dots">···</span> in the top corner, choose <strong>Open in browser</strong>, then tap the button again.
+    </div>
+
+    <p class="foot"><a href="https://www.social-limits.com/">social-limits.com</a></p>
+  </main>
+
+  <script>
+  (function () {
+    var APP_STORE = 'https://apps.apple.com/au/app/social-limits-screen-time-app/id6471964510';
+    var APP_STORE_SCHEME = 'itms-appss://apps.apple.com/au/app/social-limits-screen-time-app/id6471964510';
+    var PLAY_STORE = 'https://play.google.com/store/apps/details?id=app.sociallimits';
+    var PLAY_INTENT = 'intent://details?id=app.sociallimits#Intent;scheme=market;package=com.android.vending;S.browser_fallback_url=' +
+                      encodeURIComponent(PLAY_STORE) + ';end';
+
+    var ua = navigator.userAgent || '';
+    var isIOS = /iPhone|iPad|iPod/i.test(ua) ||
+                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    var isAndroid = /Android/i.test(ua);
+    // Meta in-app browsers (Instagram, Facebook, Messenger, Threads) + other common IABs
+    var isMetaIAB  = /Instagram|FBAN|FBAV|FB_IAB|FBIOS|Threads|Barcelona/i.test(ua);
+    var isOtherIAB = /BytedanceWebview|musical_ly|TikTok|Snapchat|LinkedInApp|Pinterest|Twitter|\bLine\//i.test(ua);
+    var isIAB = isMetaIAB || isOtherIAB;
+
+    var appStoreBtn = document.getElementById('link-appstore');
+    var playBtn     = document.getElementById('link-play');
+    var hint        = document.getElementById('hint');
+
+    // ── Android in-app browsers: hand the Play Store link straight to the Play Store app
+    //    via an intent URL (falls back to the web listing where intents aren't supported).
+    if (isAndroid && isIAB) {
+      playBtn.setAttribute('href', PLAY_INTENT);
+    }
+
+    // ── iOS in-app browsers: the WebView can't hand apps.apple.com off to the App Store on
+    //    its own (that's the blank-page bug). On tap we escape to Safari / the App Store
+    //    directly, all inside the user-gesture window, and only fall back to a hint if the
+    //    in-app browser blocks every route.
+    if (isIOS && isIAB) {
+      var armedPlain = false;   // after a failed attempt, the next tap is a plain link tap
+
+      appStoreBtn.addEventListener('click', function (e) {
+        if (armedPlain) return;             // plain navigation (universal-link path)
+        e.preventDefault();
+
+        var left = false;
+        var markLeft = function () { left = true; };
+        window.addEventListener('pagehide', markLeft, { once: true });
+        window.addEventListener('blur', markLeft, { once: true });
+        document.addEventListener('visibilitychange', function onVis() {
+          if (document.hidden) { left = true; document.removeEventListener('visibilitychange', onVis); }
+        });
+
+        var stillHere = function () { return !left && !document.hidden; };
+
+        // Step 1 (Meta IABs): open Safari with the App Store URL — Safari then opens the App Store.
+        if (isMetaIAB) {
+          try { window.open('x-safari-https://apps.apple.com/au/app/social-limits-screen-time-app/id6471964510', '_blank'); } catch (_) {}
+        } else {
+          // Other IABs: go straight to the App Store scheme.
+          try { window.location.href = APP_STORE_SCHEME; } catch (_) {}
+        }
+
+        // Step 2 (< 1s, so WebKit still treats it as user-initiated): App Store URL scheme.
+        setTimeout(function () {
+          if (!stillHere()) return;
+          if (isMetaIAB) {
+            try { window.location.href = APP_STORE_SCHEME; } catch (_) {}
+          }
+          // Step 3: nothing worked — arm the button as a plain link and show the Safari hint.
+          setTimeout(function () {
+            if (!stillHere()) return;
+            armedPlain = true;
+            appStoreBtn.setAttribute('href', APP_STORE);
+            hint.classList.add('show');
+          }, 1100);
+        }, 550);
+      }, false);
+    }
+  })();
+  </script>
+  <script async src="https://elu.dev/v1/elu_pk_live_SyBLjaq3HIu0doY2LFBlPR4peI.js"></script>
+</body>
+</html>
