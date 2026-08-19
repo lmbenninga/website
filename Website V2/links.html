@@ -14,6 +14,16 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png"/>
   <link rel="icon" type="image/png" href="assets/favicon.png"/>
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
+  <!-- PostHog (product analytics) -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_lQWN9tSu8qt8hMsSJhjOOn4TRgPZAJ7UYmAsoOxCpUY', {
+      api_host: 'https://us.i.posthog.com',
+      person_profiles: 'identified_only',
+      capture_pageview: false,   // captured manually below with links-page properties
+      autocapture: false
+    });
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -391,6 +401,26 @@
     var appStoreBtn = document.getElementById('link-appstore');
     var playBtn     = document.getElementById('link-play');
     var toast       = document.getElementById('toast');
+
+    // ── Analytics (PostHog). Every event carries where the visitor is viewing the page from.
+    var source = isInstagram ? 'instagram' : isFacebook ? 'facebook' : isThreads ? 'threads' : isOtherIAB ? 'other_in_app' : 'browser';
+    var platform = isIOS ? 'ios' : isAndroid ? 'android' : 'other';
+    var baseProps = { page: 'links', source: source, platform: platform, in_app_browser: isIAB };
+    function track(name, props) {
+      try {
+        if (!window.posthog || !window.posthog.capture) return;
+        var p = {}; for (var k in baseProps) p[k] = baseProps[k]; for (var j in (props || {})) p[j] = props[j];
+        // send immediately via sendBeacon so the event survives the navigation that follows the tap
+        window.posthog.capture(name, p, { send_instantly: true, transport: 'sendBeacon' });
+      } catch (_) {}
+    }
+    track('$pageview');
+    document.getElementById('link-instagram').addEventListener('click', function () { track('links_instagram_click'); });
+    document.getElementById('link-website').addEventListener('click',   function () { track('links_website_click'); });
+    playBtn.addEventListener('click',     function () { track('links_playstore_click', { route: (isAndroid && isIAB) ? 'play_intent' : 'direct' }); });
+    appStoreBtn.addEventListener('click', function () {
+      track('links_appstore_click', { route: (isIOS && isIAB) ? (isInstagram ? 'instagram_extbrowser' : 'itms_scheme') : 'direct' });
+    });
     var sheet       = document.getElementById('sheet');
     var backdrop    = document.getElementById('sheet-backdrop');
 
@@ -414,12 +444,13 @@
     }
     function hideToast() { toast.classList.remove('show'); }
 
-    function showSheet() { hideToast(); sheet.classList.add('show'); backdrop.classList.add('show'); }
+    function showSheet() { hideToast(); sheet.classList.add('show'); backdrop.classList.add('show'); track('links_appstore_fallback_shown'); }
     function hideSheet() { sheet.classList.remove('show'); backdrop.classList.remove('show'); }
     document.getElementById('sheet-close').addEventListener('click', hideSheet);
     backdrop.addEventListener('click', hideSheet);
     document.getElementById('sheet-copy').addEventListener('click', function () {
       var btn = this;
+      track('links_appstore_copy_link');
       var done = function () { btn.textContent = 'Copied ✓'; setTimeout(function () { btn.textContent = 'Copy App Store link'; }, 1800); };
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(APP_STORE).then(done, function () { legacyCopy(APP_STORE); done(); });
@@ -450,6 +481,7 @@
       // ignores the scheme nothing happens and the visitor simply stays here.
       if (isInstagram && !testMode) {
         showToast('Opening in your browser…');
+        track('links_auto_handoff');
         go(extBrowser(location.href));
       }
 
