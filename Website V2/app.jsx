@@ -118,7 +118,7 @@ const NAV_LINKS = [
   ['Why it works', '#science'],
   ['Our story',    '/our-story'],
   ['Reviews',      '#reviews'],
-  ['Partners',     '#partners'],
+  ['Employers',    '/employers'],
 ];
 
 function Nav() {
@@ -811,7 +811,7 @@ function Footer() {
             ['How it works', '#how'],
             ['Why it works', '#science'],
             ['Reviews', '#reviews'],
-            ['Partners', '#partners'],
+            ['Employers', '/employers'],
           ]}/>
           <FooterCol title="Company" links={[
             ['Our story', '/our-story'],

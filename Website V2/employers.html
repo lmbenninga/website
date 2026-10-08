@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Social Limits for Employers — Corporate Well-being That Employees Actually Use</title>
+  <meta name="description" content="Add Social Limits to your well-being plan. It locks social media every morning until employees hit their step goal — less screen time, more movement, sharper focus at work. Live at Adobe, used in 80+ countries."/>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" href="assets/favicon.png"/>
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_lQWN9tSu8qt8hMsSJhjOOn4TRgPZAJ7UYmAsoOxCpUY', {
+      api_host: 'https://us.i.posthog.com',
+      person_profiles: 'identified_only',
+      capture_pageview: false,
+      autocapture: false
+    });
+  </script>
+  <style>
+    /* ── Page-level tokens ── */
+    :root { --violet: #7B5BFF; --mint: #7DFFA8; }
+    .emp-eyebrow { font-weight: 600; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--electric-blue); }
+    .muted { color: var(--rich-grey); }
+    .num { font-variant-numeric: tabular-nums; }
+
+    /* ── Hero ── */
+    .emp-hero {
+      position: relative; color: #fff; overflow: hidden; isolation: isolate;
+      padding: clamp(130px, 18vw, 180px) 0 clamp(64px, 9vw, 110px);
+    }
+    .emp-hero-grid {
+      display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center;
+    }
+    .emp-hero h1 {
+      font-weight: 800; font-size: clamp(42px, 6vw, 84px); line-height: 0.96; letter-spacing: -0.04em; margin: 0 0 24px;
+    }
+    .emp-hero p.lead { font-size: clamp(16px, 1.3vw, 20px); line-height: 1.55; color: rgba(255,255,255,0.82); max-width: 560px; margin: 0 0 32px; }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-proof { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 40px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.14); }
+    .hero-proof .v { font-size: clamp(24px, 2.6vw, 34px); font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+    .hero-proof .l { font-size: 12px; color: rgba(255,255,255,0.6); font-weight: 500; margin-top: 6px; }
+
+    /* Dashboard mock */
+    .dash {
+      border-radius: 28px; padding: 22px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.08));
+      border: 1px solid rgba(255,255,255,0.32);
+      backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%);
+      box-shadow: 0 40px 80px -30px rgba(0,0,60,0.6), inset 0 1px 0 rgba(255,255,255,0.4);
+      animation: float-y 7s ease-in-out infinite;
+    }
+    .dash-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+    .dash-title { font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+    .dash-live { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.75); }
+    .dash-live i { width: 7px; height: 7px; border-radius: 999px; background: var(--mint); box-shadow: 0 0 0 4px rgba(125,255,168,0.25); }
+    .dash-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+    .dash-kpi { background: rgba(8,8,31,0.35); border-radius: 16px; padding: 14px 14px 12px; }
+    .dash-kpi .k { font-size: 11px; color: rgba(255,255,255,0.6); font-weight: 500; }
+    .dash-kpi .v { font-size: clamp(20px, 2vw, 26px); font-weight: 800; letter-spacing: -0.03em; margin-top: 4px; line-height: 1; }
+    .dash-kpi .d { font-size: 11px; color: var(--mint); font-weight: 600; margin-top: 6px; }
+    .dash-chart { background: rgba(8,8,31,0.35); border-radius: 16px; padding: 14px; }
+    .dash-chart .k { font-size: 11px; color: rgba(255,255,255,0.6); font-weight: 500; margin-bottom: 10px; display: flex; justify-content: space-between; }
+    .bars { display: grid; grid-template-columns: repeat(12, 1fr); gap: 6px; align-items: end; height: 84px; }
+    .bars i { display: block; border-radius: 6px 6px 3px 3px; background: linear-gradient(180deg, #fff, var(--faded-blue)); transform-origin: bottom; animation: bar-in .9s cubic-bezier(.2,.8,.2,1) both; }
+    @keyframes bar-in { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+    .dash-lb { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+    .lb-row { display: flex; align-items: center; gap: 10px; font-size: 12px; background: rgba(8,8,31,0.35); border-radius: 12px; padding: 8px 12px; }
+    .lb-row b { width: 18px; color: rgba(255,255,255,0.55); font-weight: 600; }
+    .lb-row span { flex: 1; font-weight: 600; }
+    .lb-row em { font-style: normal; color: rgba(255,255,255,0.8); }
+
+    /* Trust strip */
+    .trust { background: #fff; padding: 28px 0 8px; }
+    .trust-inner { display: flex; align-items: center; gap: clamp(20px, 4vw, 56px); flex-wrap: wrap; justify-content: center; }
+    .trust-label { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rich-grey); opacity: 0.7; }
+    .wordmark { font-weight: 900; font-size: clamp(20px, 2.2vw, 28px); letter-spacing: -0.03em; color: var(--rich-grey); opacity: 0.7; line-height: 1; display: inline-flex; align-items: center; gap: 8px; }
+    .wordmark.garmin { font-weight: 700; letter-spacing: 0.06em; font-size: clamp(16px, 1.8vw, 22px); }
+
+    /* ── Problem stats ── */
+    .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: rgba(8,8,31,0.06); border-radius: 32px; overflow: hidden; }
+    .stat-cell { background: #fff; padding: clamp(28px, 4vw, 44px) clamp(20px, 2.6vw, 32px); display: flex; flex-direction: column; gap: 10px; }
+    .stat-num { font-size: clamp(48px, 6vw, 84px); font-weight: 800; letter-spacing: -0.045em; line-height: 0.9;
+      background: linear-gradient(180deg, #0000FF 0%, #7B5BFF 120%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .stat-label { font-size: clamp(14px, 1.3vw, 16px); font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; }
+    .stat-sub { font-size: 13px; color: var(--rich-grey); line-height: 1.4; }
+    .sources { font-size: 12px; color: var(--rich-grey); opacity: 0.8; margin-top: 20px; line-height: 1.5; }
+
+    /* Brain cards */
+    .brain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .brain-card { background: #0D0D2A; color: #fff; border-radius: 24px; padding: 28px; border: 1px solid rgba(255,255,255,0.08); }
+    .brain-card .ic { width: 44px; height: 44px; border-radius: 14px; background: rgba(123,91,255,0.25); display: grid; place-items: center; margin-bottom: 18px; color: #C4B5FF; }
+    .brain-card h3 { margin: 0 0 8px; font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
+    .brain-card p { margin: 0; font-size: 14px; color: rgba(255,255,255,0.66); line-height: 1.5; }
+
+    /* ── How it works ── */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .step { position: relative; background: #fff; border-radius: 24px; padding: 28px; border: 1px solid rgba(8,8,31,0.06); box-shadow: 0 18px 48px -28px rgba(0,0,80,0.18); }
+    .step .n { width: 40px; height: 40px; border-radius: 12px; background: var(--electric-blue); color: #fff; font-weight: 800; display: grid; place-items: center; margin-bottom: 18px; }
+    .step h3 { margin: 0 0 6px; font-size: 20px; font-weight: 800; letter-spacing: -0.02em; }
+    .step p { margin: 0; font-size: 14px; color: var(--rich-grey); line-height: 1.5; }
+
+    /* Problem → fix */
+    .fix-table { border-radius: 28px; overflow: hidden; border: 1px solid rgba(8,8,31,0.08); background: #fff; }
+    .fix-row { display: grid; grid-template-columns: 1fr 1.4fr; gap: 24px; padding: 24px clamp(20px, 3vw, 36px); border-top: 1px solid rgba(8,8,31,0.06); align-items: start; }
+    .fix-row.head { background: var(--pale-grey); border-top: none; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rich-grey); padding: 16px clamp(20px, 3vw, 36px); }
+    .fix-row .p { font-weight: 700; font-size: 16px; letter-spacing: -0.01em; display: flex; gap: 10px; align-items: flex-start; }
+    .fix-row .p::before { content: ''; width: 8px; height: 8px; border-radius: 999px; background: #FF5A5A; flex-shrink: 0; margin-top: 7px; }
+    .fix-row .s { font-size: 15px; color: var(--rich-grey); line-height: 1.55; display: flex; gap: 10px; align-items: flex-start; }
+    .fix-row .s::before { content: ''; width: 8px; height: 8px; border-radius: 999px; background: var(--electric-blue); flex-shrink: 0; margin-top: 7px; }
+
+    /* ── Evidence ── */
+    .evi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .evi { background: #fff; border-radius: 24px; padding: 28px; border: 1px solid rgba(8,8,31,0.06); display: flex; flex-direction: column; gap: 12px; }
+    .evi .idx { font-size: 12px; font-weight: 700; color: var(--electric-blue); letter-spacing: 0.1em; }
+    .evi h3 { margin: 0; font-size: 19px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; }
+    .evi p { margin: 0; font-size: 14px; color: var(--rich-grey); line-height: 1.55; flex: 1; }
+    .evi cite { font-style: normal; font-size: 12px; color: var(--rich-grey); opacity: 0.8; padding-top: 12px; border-top: 1px solid rgba(8,8,31,0.06); }
+
+    /* ── Benefits ── */
+    .ben-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .ben { background: #fff; border-radius: 28px; padding: clamp(24px, 3vw, 36px); border: 1px solid rgba(8,8,31,0.06); display: flex; gap: 20px; align-items: flex-start; }
+    .ben .ic { width: 52px; height: 52px; border-radius: 16px; background: var(--faded-blue); color: var(--electric-blue); display: grid; place-items: center; flex-shrink: 0; }
+    .ben h3 { margin: 0 0 6px; font-size: 20px; font-weight: 800; letter-spacing: -0.02em; }
+    .ben p { margin: 0; font-size: 15px; color: var(--rich-grey); line-height: 1.55; }
+
+    /* ── Case study strip ── */
+    .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 64px); align-items: center; }
+    .dark-stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border-radius: 28px; overflow: hidden; }
+    .dark-stat-cell { background: #0D0D2A; padding: clamp(22px, 3vw, 36px) clamp(18px, 2.4vw, 28px); display: flex; flex-direction: column; gap: 8px; }
+    .dark-stat-num { font-size: clamp(40px, 5vw, 72px); font-weight: 800; letter-spacing: -0.045em; line-height: 0.9;
+      background: linear-gradient(180deg, #fff 0%, #7B5BFF 140%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .dark-stat-label { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.9); }
+    .dark-stat-sub { font-size: 12px; color: rgba(255,255,255,0.5); }
+
+    /* ── KPI / dashboard ── */
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .kpi { background: #fff; border-radius: 22px; padding: 24px; border: 1px solid rgba(8,8,31,0.06); }
+    .kpi .k { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--electric-blue); margin-bottom: 10px; }
+    .kpi h3 { margin: 0 0 6px; font-size: 20px; font-weight: 800; letter-spacing: -0.02em; }
+    .kpi p { margin: 0; font-size: 14px; color: var(--rich-grey); line-height: 1.5; }
+
+    /* ── Implementation timeline ── */
+    .tl { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; position: relative; }
+    .tl::before { content: ''; position: absolute; left: 6%; right: 6%; top: 22px; height: 2px; background: rgba(255,255,255,0.14); }
+    .tl-step { position: relative; }
+    .tl-step .dotn { width: 44px; height: 44px; border-radius: 999px; background: var(--electric-blue); color: #fff; font-weight: 800; display: grid; place-items: center; box-shadow: 0 0 0 6px #08081F; margin-bottom: 18px; position: relative; }
+    .tl-step h3 { margin: 0 0 6px; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; }
+    .tl-step p { margin: 0; font-size: 13px; color: rgba(255,255,255,0.62); line-height: 1.5; }
+
+    /* ── Reviews ── */
+    .rev-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .rev { background: #fff; border-radius: 24px; padding: 28px; border: 1px solid rgba(8,8,31,0.06); display: flex; flex-direction: column; gap: 18px; }
+    .rev p { margin: 0; font-size: 16px; font-weight: 500; line-height: 1.5; flex: 1; }
+    .rev .who { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid rgba(8,8,31,0.06); font-size: 14px; font-weight: 600; }
+    .stars { color: #FFB800; letter-spacing: 1px; font-size: 13px; }
+
+    /* ── ROI calculator ── */
+    .roi-wrap { background: #fff; border-radius: 32px; padding: clamp(24px, 3.5vw, 44px); border: 1px solid rgba(8,8,31,0.06); box-shadow: 0 30px 70px -40px rgba(0,0,80,0.3); display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(24px, 3.5vw, 48px); }
+    .roi-input-label { display: flex; justify-content: space-between; align-items: baseline; font-weight: 700; font-size: 15px; margin-bottom: 12px; }
+    .roi-input-label small { font-weight: 500; color: var(--rich-grey); font-size: 12px; }
+    .roi-big { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+    .roi-big input[type=number] { width: 150px; font: inherit; font-weight: 800; font-size: 32px; letter-spacing: -0.03em; padding: 10px 16px; border-radius: 16px; border: 2px solid rgba(8,8,31,0.1); color: var(--ink); outline: none; }
+    .roi-big input[type=number]:focus { border-color: var(--electric-blue); }
+    .roi-big span { font-weight: 600; color: var(--rich-grey); }
+    input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 10px; border-radius: 999px; background: linear-gradient(90deg, var(--electric-blue) var(--pct, 10%), #E4E4EC var(--pct, 10%)); outline: none; }
+    input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 30px; height: 30px; border-radius: 999px; background: #fff; border: 3px solid var(--electric-blue); box-shadow: 0 6px 18px -6px rgba(0,0,255,0.6); cursor: grab; }
+    input[type=range]::-moz-range-thumb { width: 30px; height: 30px; border-radius: 999px; background: #fff; border: 3px solid var(--electric-blue); box-shadow: 0 6px 18px -6px rgba(0,0,255,0.6); cursor: grab; }
+    input[type=range]:active::-webkit-slider-thumb { cursor: grabbing; }
+    .range-ticks { display: flex; justify-content: space-between; font-size: 11px; color: var(--rich-grey); margin-top: 8px; }
+    .assump { margin-top: 26px; border-top: 1px solid rgba(8,8,31,0.08); padding-top: 18px; }
+    .assump summary { cursor: pointer; font-weight: 700; font-size: 14px; color: var(--electric-blue); list-style: none; display: flex; align-items: center; gap: 8px; }
+    .assump summary::-webkit-details-marker { display: none; }
+    .assump summary::after { content: '+'; font-size: 18px; margin-left: auto; }
+    .assump[open] summary::after { content: '–'; }
+    .assump-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 24px; margin-top: 18px; }
+    .assump-row label { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+    .assump-row label output { color: var(--electric-blue); font-weight: 800; }
+    .assump-row input[type=range] { height: 6px; }
+    .assump-row input[type=range]::-webkit-slider-thumb { width: 20px; height: 20px; }
+    .assump-row input[type=range]::-moz-range-thumb { width: 20px; height: 20px; }
+    .roi-out { background: linear-gradient(160deg, #0A0AB8 0%, #1414DD 55%, #0606A0 100%); border-radius: 26px; padding: clamp(22px, 3vw, 34px); color: #fff; display: flex; flex-direction: column; gap: 14px; position: relative; overflow: hidden; }
+    .roi-out::before { content: ''; position: absolute; inset: -20%; background: radial-gradient(ellipse at 80% 10%, rgba(123,91,255,0.55), transparent 50%), radial-gradient(ellipse at 10% 90%, rgba(0,180,255,0.4), transparent 50%); filter: blur(30px); pointer-events: none; }
+    .roi-out > * { position: relative; }
+    .roi-hero { padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.16); }
+    .roi-hero .k { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
+    .roi-hero .v { font-size: clamp(56px, 7vw, 92px); font-weight: 800; letter-spacing: -0.05em; line-height: 0.95; margin-top: 6px; }
+    .roi-hero .s { font-size: 14px; color: rgba(255,255,255,0.75); margin-top: 8px; }
+    .roi-line { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .roi-line .k { font-size: 14px; color: rgba(255,255,255,0.78); }
+    .roi-line .v { font-size: clamp(20px, 2vw, 26px); font-weight: 800; letter-spacing: -0.02em; white-space: nowrap; }
+    .roi-line.net .v { color: var(--mint); }
+    .roi-note { font-size: 11.5px; color: rgba(255,255,255,0.55); line-height: 1.5; margin-top: 4px; }
+
+    /* ── FAQ ── */
+    .faq { max-width: 820px; margin: 0 auto; }
+    .faq details { border-top: 1px solid rgba(8,8,31,0.08); padding: 20px 0; }
+    .faq details:last-child { border-bottom: 1px solid rgba(8,8,31,0.08); }
+    .faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 20px; font-weight: 700; font-size: 17px; letter-spacing: -0.01em; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; font-size: 24px; font-weight: 400; color: var(--electric-blue); flex-shrink: 0; transition: transform .2s ease; }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p { margin: 14px 0 0; font-size: 15px; color: var(--rich-grey); line-height: 1.6; max-width: 700px; }
+
+    /* ── Final CTA ── */
+    .final { position: relative; overflow: hidden; isolation: isolate; color: #fff; text-align: center; padding: clamp(80px, 12vw, 140px) 0; }
+    .final .shell { display: flex; flex-direction: column; align-items: center; gap: 22px; }
+
+    /* ── Reveal on scroll ── */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .stat-grid, .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .tl { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+      .tl::before { display: none; }
+      .brain-grid, .evi-grid, .rev-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 900px) {
+      .emp-hero-grid { grid-template-columns: 1fr; }
+      .roi-wrap { grid-template-columns: 1fr; }
+      .case-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .stat-grid, .kpi-grid, .steps, .brain-grid, .evi-grid, .rev-grid, .ben-grid, .tl, .assump-grid { grid-template-columns: 1fr; }
+      .fix-row { grid-template-columns: 1fr; gap: 10px; }
+      .fix-row.head .s { display: none; }
+      .dash-kpis { grid-template-columns: 1fr 1fr; }
+      .roi-big input[type=number] { width: 130px; font-size: 26px; }
+      .hero-proof { gap: 18px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .dash { animation: none; }
+      .bars i { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <header class="nav">
+    <div class="nav-inner glass-dark" style="background: rgba(10,10,40,0.32);">
+      <a href="/" class="brand-mark">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:8px; background:#fff; flex-shrink:0; box-shadow: 0 4px 12px -4px rgba(0,0,80,0.25);">
+          <img src="assets/social-limits-logo.png" alt="Social Limits" style="max-width:85%; max-height:85%; width:auto; height:auto; object-fit:contain; display:block;"/>
+        </span>
+        <span style="font-size:16px; font-weight:800; letter-spacing:-0.01em;">Social Limits</span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link" href="/#how">How it works</a>
+        <a class="nav-link" href="/#science">Why it works</a>
+        <a class="nav-link" href="/our-story">Our story</a>
+        <a class="nav-link" href="/#reviews">Reviews</a>
+        <a class="nav-link" href="/employers" style="background: rgba(255,255,255,0.12); color: #fff;">Employers</a>
+      </div>
+      <a class="nav-cta" href="mailto:lino@social-limits.com?subject=Social%20Limits%20for%20our%20team" data-track="employers_demo_click" data-loc="nav">Book a demo</a>
+      <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer" data-nav-toggle>
+        <span class="nav-toggle-icon"><span></span></span>
+      </button>
+    </div>
+
+    <div id="nav-drawer" class="nav-drawer" data-open="false" role="dialog" aria-modal="true" aria-label="Site navigation">
+      <div class="nav-drawer-links">
+        <a class="nav-link" href="/#how" data-nav-close>How it works</a>
+        <a class="nav-link" href="/#science" data-nav-close>Why it works</a>
+        <a class="nav-link" href="/our-story" data-nav-close>Our story</a>
+        <a class="nav-link" href="/#reviews" data-nav-close>Reviews</a>
+        <a class="nav-link" href="/employers" data-nav-close>Employers</a>
+      </div>
+      <a class="nav-cta" href="mailto:lino@social-limits.com?subject=Social%20Limits%20for%20our%20team" data-nav-close data-track="employers_demo_click" data-loc="drawer">Book a demo</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="emp-hero">
+    <div class="hero-bg"></div>
+    <div class="shell">
+      <div class="emp-hero-grid">
+        <div>
+          <span class="chip chip-dark" style="margin-bottom:24px;"><span class="dot" style="background:#7DFFA8;"></span>For employers · Corporate well-being</span>
+          <h1>The well&#8209;being benefit your people will <span class="gradient-text">actually use.</span></h1>
+          <p class="lead">Social Limits locks social media every morning until your employees hit their step goal. One simple habit, two outcomes: less screen time, more movement. Sharper focus by the time they reach their desk.</p>
+          <div class="hero-ctas">
+            <a href="mailto:lino@social-limits.com?subject=Social%20Limits%20for%20our%20team" class="btn btn-solid" style="padding:18px 32px;" data-track="employers_demo_click" data-loc="hero">Book a demo</a>
+            <a href="#roi" class="btn btn-glass" style="padding:18px 28px;" data-track="employers_roi_jump">Calculate your ROI ↓</a>
+          </div>
+          <div class="hero-proof">
+            <div><div class="v num"><span class="cu" data-to="20" data-suffix="k+">0k+</span></div><div class="l">Users worldwide</div></div>
+            <div><div class="v num"><span class="cu" data-to="80" data-suffix="+">0+</span></div><div class="l">Countries</div></div>
+            <div><div class="v num"><span class="cu" data-to="2.4" data-decimals="1" data-suffix="B+">0.0B+</span></div><div class="l">Steps tracked</div></div>
+            <div><div class="v num"><span class="cu" data-to="4.6" data-decimals="1">0.0</span><span style="opacity:.55; font-size:.6em;">/5</span></div><div class="l">App Store rating</div></div>
+          </div>
+        </div>
+
+        <div class="dash" aria-label="Example employer adoption dashboard">
+          <div class="dash-head">
+            <div class="dash-title">Your well-being dashboard</div>
+            <div class="dash-live"><i></i> Live · example data</div>
+          </div>
+          <div class="dash-kpis">
+            <div class="dash-kpi"><div class="k">Adoption</div><div class="v num"><span class="cu" data-to="38" data-suffix="%">0%</span></div><div class="d">↑ 6% this month</div></div>
+            <div class="dash-kpi"><div class="k">Total steps</div><div class="v num"><span class="cu" data-to="12.4" data-decimals="1" data-suffix="M">0.0M</span></div><div class="d">↑ 1.9M this week</div></div>
+            <div class="dash-kpi"><div class="k">Hours saved</div><div class="v num"><span class="cu" data-to="3120">0</span></div><div class="d">Screen time won back</div></div>
+          </div>
+          <div class="dash-chart">
+            <div class="k"><span>Daily steps · last 12 weeks</span><span>avg 8,500</span></div>
+            <div class="bars">
+              <i style="height:32%; animation-delay:.05s"></i><i style="height:41%; animation-delay:.1s"></i><i style="height:38%; animation-delay:.15s"></i><i style="height:52%; animation-delay:.2s"></i>
+              <i style="height:58%; animation-delay:.25s"></i><i style="height:55%; animation-delay:.3s"></i><i style="height:66%; animation-delay:.35s"></i><i style="height:72%; animation-delay:.4s"></i>
+              <i style="height:69%; animation-delay:.45s"></i><i style="height:81%; animation-delay:.5s"></i><i style="height:88%; animation-delay:.55s"></i><i style="height:100%; animation-delay:.6s"></i>
+            </div>
+          </div>
+          <div class="dash-lb">
+            <div class="lb-row"><b>1</b><span>Finance team</span><em>1.42M steps</em></div>
+            <div class="lb-row"><b>2</b><span>Engineering</span><em>1.31M steps</em></div>
+            <div class="lb-row"><b>3</b><span>Sales</span><em>1.18M steps</em></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust strip -->
+  <div class="trust">
+    <div class="shell trust-inner">
+      <span class="trust-label">Trusted by teams and brands including</span>
+      <span class="wordmark">Adobe</span>
+      <span class="wordmark" style="font-style:italic;">HOKA<i style="display:inline-block;width:5px;height:5px;border-radius:999px;background:currentColor;margin-left:-4px;transform:translateY(-6px);"></i></span>
+      <span class="wordmark garmin"><svg viewBox="0 0 64 56" width="18" height="16" aria-hidden="true"><path d="M32 4 L60 52 L4 52 Z" fill="currentColor"/><path d="M32 22 L46 46 L18 46 Z" fill="#fff"/></svg>GARMIN</span>
+    </div>
+  </div>
+
+  <!-- Problem -->
+  <section style="background:#fff;">
+    <div class="shell">
+      <div class="section-head reveal">
+        <span class="chip">The problem</span>
+        <h2 class="h-1">Phones are quietly draining your team's focus.</h2>
+        <p class="body-l muted" style="max-width:640px;">The same habits that strain the brain at home follow employees to their desks. It shows up as lost hours and broken focus, and most well-being perks never touch it.</p>
+      </div>
+
+      <div class="stat-grid reveal">
+        <div class="stat-cell">
+          <div class="stat-num num"><span class="cu" data-to="55" data-suffix="%">0%</span></div>
+          <div class="stat-label">of employers call phones the single biggest productivity killer</div>
+          <div class="stat-sub">Ahead of the internet, gossip and email.</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num num"><span class="cu" data-to="2" data-suffix="+ hrs">0+ hrs</span></div>
+          <div class="stat-label">of productivity lost every day to distractions</div>
+          <div class="stat-sub">43% of employers say it's three hours or more.</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num num"><span class="cu" data-to="2" data-prefix="" data-suffix=" in 3">0 in 3</span></div>
+          <div class="stat-label">workers use their phone several times a day at work</div>
+          <div class="stat-sub">Checking social feeds is the most common reason.</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num num"><span class="cu" data-to="47" data-suffix=" sec">0 sec</span></div>
+          <div class="stat-label">is how long the average person stays on one screen before switching</div>
+          <div class="stat-sub">Down from 2.5 minutes in 2004.</div>
+        </div>
+      </div>
+      <p class="sources">Sources: CareerBuilder / Harris Poll survey of 2,186 HR managers and 3,031 workers · Gloria Mark, UC Irvine, <em>Attention Span</em> (2023).</p>
+    </div>
+  </section>
+
+  <!-- Brain -->
+  <section style="background:#08081F; color:#fff;">
+    <div class="shell">
+      <div class="section-head reveal">
+        <span class="chip chip-dark"><span class="dot" style="background:#7B5BFF;"></span>Stanford Lifestyle Medicine</span>
+        <h2 class="h-1">Excessive screen time is reshaping the adult brain.</h2>
+        <p class="body-l" style="color:rgba(255,255,255,0.72); max-width:640px;">Stanford Medicine defines excessive use in adults as <strong style="color:#fff;">2+ hours</strong> of screen time a day outside work hours. The average adult is at six.</p>
+      </div>
+      <div class="brain-grid reveal">
+        <div class="brain-card">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-4 4v1a4 4 0 0 0-3 7 4 4 0 0 0 4 6h6a4 4 0 0 0 4-6 4 4 0 0 0-3-7V7a4 4 0 0 0-4-4z"/></svg></div>
+          <h3>Thinner cortex</h3>
+          <p>The region that drives memory, decision-making and problem-solving. Exactly the skills your team is paid for.</p>
+        </div>
+        <div class="brain-card">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+          <h3>Less gray matter</h3>
+          <p>The tissue behind memory, movement and emotional regulation shrinks with heavy, passive use.</p>
+        </div>
+        <div class="brain-card">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></div>
+          <h3>Anxious, sleepless days</h3>
+          <p>Phones in bed trigger the fight-or-flight response, delay melatonin and disrupt sleep. Tired people make slow decisions.</p>
+        </div>
+      </div>
+      <p class="sources" style="color:rgba(255,255,255,0.5);">Source: Stanford Lifestyle Medicine, "What Excessive Screen Time Does to the Adult Brain" (2024), and the studies it cites.</p>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" style="background:var(--pale-grey);">
+    <div class="shell">
+      <div class="section-head reveal" style="align-items:center; text-align:center; margin-left:auto; margin-right:auto;">
+        <span class="chip">What we do</span>
+        <h2 class="h-1">Social media stays locked until they've moved.</h2>
+        <p class="body-l muted" style="max-width:600px;">One behaviour change that rewires the morning routine, replacing doom-scrolling with movement. No wearable, no logging, no willpower required.</p>
+      </div>
+      <div class="steps reveal">
+        <div class="step"><div class="n">1</div><h3>Wake up</h3><p>Instagram, TikTok, Facebook and the rest are blocked every morning by default. Matching Stanford's advice of no screens in the first hour.</p></div>
+        <div class="step"><div class="n">2</div><h3>Move</h3><p>Employees set their own daily step goal, anywhere from 200 to 10,000. Steps sync automatically from their phone.</p></div>
+        <div class="step"><div class="n">3</div><h3>Unlock</h3><p>Hit the goal and social media is released for the day. Every unlock is earned with movement.</p></div>
+        <div class="step"><div class="n">4</div><h3>Nudge</h3><p>One gentle, non-punitive reminder mid-morning if someone has gone quiet. Then the habit takes over.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem → fix -->
+  <section style="background:#fff;">
+    <div class="shell">
+      <div class="section-head reveal">
+        <span class="chip">Why it's non-negotiable</span>
+        <h2 class="h-1">Social Limits answers each problem directly.</h2>
+      </div>
+      <div class="fix-table reveal">
+        <div class="fix-row head"><div>The problem</div><div class="s" style="font-size:12px;">How Social Limits fixes it</div></div>
+        <div class="fix-row"><div class="p">Morning phone use triggers fight-or-flight</div><div class="s">Social media stays locked from wake-up, matching Stanford's advice of no screens in the first hour.</div></div>
+        <div class="fix-row"><div class="p">Passive scrolling erodes focus</div><div class="s">Apps unlock only after a step goal, cutting mindless scrolling and giving attention back to work.</div></div>
+        <div class="fix-row"><div class="p">Sedentary, screen-heavy days</div><div class="s">Every unlock is earned with movement, which Stanford calls nutrition for the brain.</div></div>
+        <div class="fix-row"><div class="p">Well-being perks people never open</div><div class="s">A daily habit with leaderboards and challenges, already live at Adobe and used in 80+ countries.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Evidence -->
+  <section style="background:var(--pale-grey);">
+    <div class="shell">
+      <div class="section-head reveal">
+        <span class="chip">Evidence</span>
+        <h2 class="h-1">The research supports the approach.</h2>
+        <p class="body-l muted" style="max-width:600px;">Peer-reviewed evidence underpins each of Social Limits' core behavioural mechanisms.</p>
+      </div>
+      <div class="evi-grid reveal">
+        <div class="evi">
+          <span class="idx">01</span>
+          <h3>Limiting social media reduces loneliness and depression</h3>
+          <p>A randomised controlled trial found that restricting social media to 30 minutes a day significantly reduced loneliness and depressive symptoms after just three weeks.</p>
+          <cite>Hunt et al., Journal of Social and Clinical Psychology, 2018</cite>
+        </div>
+        <div class="evi">
+          <span class="idx">02</span>
+          <h3>Physical activity significantly lowers depression risk</h3>
+          <p>A systematic review found that people who are regularly active are significantly less likely to develop depression, with benefits even below the recommended 150 minutes a week.</p>
+          <cite>Mammen &amp; Faulkner, American Journal of Preventive Medicine, 2013</cite>
+        </div>
+        <div class="evi">
+          <span class="idx">03</span>
+          <h3>Social media scrolling increases anxiety</h3>
+          <p>Higher social media scrolling and posting is associated with increased anxiety and behavioural problems, reinforcing the case for behavioural intervention.</p>
+          <cite>Choi, Christiaans &amp; Duerden, 2025</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section style="background:#fff;">
+    <div class="shell">
+      <div class="section-head reveal">
+        <span class="chip">The results</span>
+        <h2 class="h-1">Direct impact for employees and leadership.</h2>
+      </div>
+      <div class="ben-grid reveal">
+        <div class="ben">
+          <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4zM7 6H4a2 2 0 0 0 0 4h3M17 6h3a2 2 0 0 1 0 4h-3"/></svg></div>
+          <div><h3>A significant boost to wellness initiatives</h3><p>A custom leaderboard in the app for your employees to compete on step count, run challenges and drive engagement that outlasts launch week.</p></div>
+        </div>
+        <div class="ben">
+          <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
+          <div><h3>Improved employee well-being</h3><p>Increased step count and reduced screen time are proven habits for better mental health. Employees feel the difference within the first few weeks.</p></div>
+        </div>
+        <div class="ben">
+          <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg></div>
+          <div><h3>Enhanced workplace productivity</h3><p>Less morning scrolling supports sustained focus, winning back time currently lost to phone distraction before the workday even starts.</p></div>
+        </div>
+        <div class="ben">
+          <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18M7 14l4-4 4 4 5-6"/></svg></div>
+          <div><h3>Real-time data and insights</h3><p>Track and report total employee step count, movement time and hours saved on your adoption dashboard. Aggregated and anonymised, never individual.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case study + reviews -->
+  <section style="background:#08081F; color:#fff;">
+    <div class="shell">
+      <div class="case-grid reveal">
+        <div>
+          <span class="chip chip-dark" style="margin-bottom:20px;"><span class="dot" style="background:#7DFFA8;"></span>Proof · HOKA January Challenge</span>
+          <h2 class="h-1" style="margin-bottom:18px;">8,500 steps a day, on average, for a whole month.</h2>
+          <p class="body-l" style="color:rgba(255,255,255,0.72); max-width:520px; margin:0 0 28px;">That's not a one-off spike. A month-long Social Limits challenge with HOKA produced sustained daily movement, the kind that creates lasting habit change. Imagine that across your workforce.</p>
+          <a href="/hoka" class="btn btn-glass" style="padding:16px 26px;" data-track="employers_case_study_click">Read the case study ↗</a>
+        </div>
+        <div class="dark-stat-grid">
+          <div class="dark-stat-cell"><div class="dark-stat-num num"><span class="cu" data-to="220">0</span></div><div class="dark-stat-label">Participants</div><div class="dark-stat-sub">Across three cities</div></div>
+          <div class="dark-stat-cell"><div class="dark-stat-num num"><span class="cu" data-to="49" data-suffix="M">0M</span></div><div class="dark-stat-label">Steps in 31 days</div><div class="dark-stat-sub">Roughly 35,000 km on foot</div></div>
+          <div class="dark-stat-cell"><div class="dark-stat-num num"><span class="cu" data-to="8.5" data-decimals="1" data-suffix="k">0.0k</span></div><div class="dark-stat-label">Steps per day, per user</div><div class="dark-stat-sub">Nearly double the global average</div></div>
+          <div class="dark-stat-cell"><div class="dark-stat-num num"><span class="cu" data-to="8" data-suffix="k hrs">0k hrs</span></div><div class="dark-stat-label">Hours of active movement</div><div class="dark-stat-sub">Logged by participants in one month</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--pale-grey);">
+    <div class="shell">
+      <div class="section-head reveal" style="flex-direction:row; justify-content:space-between; align-items:flex-end; max-width:none; flex-wrap:wrap; gap:20px;">
+        <div style="display:flex; flex-direction:column; gap:20px; align-items:flex-start; max-width:620px;">
+          <span class="chip">What employees say</span>
+          <h2 class="h-1">Real people. Real mornings.</h2>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px;">
+          <div class="stars" style="font-size:20px;">★★★★★</div>
+          <div><div style="font-weight:700; font-size:18px;">4.6 / 5</div><div class="body-s muted">App Store rating</div></div>
+        </div>
+      </div>
+      <div class="rev-grid reveal">
+        <div class="rev"><p>"I no longer start my day scrolling through social media. The shift in my mornings is real."</p><div class="who"><span>Mari Mahima</span><span class="stars">★★★★★</span></div></div>
+        <div class="rev"><p>"It's become part of my daily routine. Hitting the step goal genuinely feels like the better start."</p><div class="who"><span>Miarad97</span><span class="stars">★★★★★</span></div></div>
+        <div class="rev"><p>"It helps break patterns and habits that aren't serving you. Simple idea, well executed."</p><div class="who"><span>Tczbbrcb</span><span class="stars">★★★★</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KPIs -->
+  <section style="background:#fff;">
+    <div class="shell">
+      <div class="section-head reveal">
+        <span class="chip">Measuring success</span>
+        <h2 class="h-1">The KPIs you can report on.</h2>
+        <p class="body-l muted" style="max-width:620px;">Every metric lives on your Social Limits adoption dashboard, ready for weekly or monthly well-being reporting to leadership.</p>
+      </div>
+      <div class="kpi-grid reveal">
+        <div class="kpi"><div class="k">Adoption</div><h3>Active ÷ licensed</h3><p>How many employees have actually used Social Limits, as a headcount and a percentage of licensed staff.</p></div>
+        <div class="kpi"><div class="k">Total steps</div><h3>Week on week</h3><p>Combined steps taken by your employees, with the percentage change in movement over time.</p></div>
+        <div class="kpi"><div class="k">Movement time</div><h3>Hours moving</h3><p>Total time employees spent moving, a clean proxy for physical well-being across the organisation.</p></div>
+        <div class="kpi"><div class="k">Hours saved</div><h3>Screen time won back</h3><p>Hours reclaimed from scrolling. The number your CFO will want on the slide.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Implementation -->
+  <section style="background:#08081F; color:#fff;">
+    <div class="shell">
+      <div class="section-head reveal">
+        <span class="chip chip-dark"><span class="dot" style="background:#7B5BFF;"></span>Implementation</span>
+        <h2 class="h-1">From signed contract to live in five simple steps.</h2>
+        <p class="body-l" style="color:rgba(255,255,255,0.72); max-width:600px;">No heavy IT project. We connect to your user management and employees are set up in minutes.</p>
+      </div>
+      <div class="tl reveal">
+        <div class="tl-step"><div class="dotn">1</div><h3>Contract signed</h3><p>Licences agreed and a launch date set with your well-being team.</p></div>
+        <div class="tl-step"><div class="dotn">2</div><h3>Connect user management</h3><p>We link Social Limits to your existing user management system.</p></div>
+        <div class="tl-step"><div class="dotn">3</div><h3>Download the app</h3><p>Employees download it straight to their phone, available in 175 countries.</p></div>
+        <div class="tl-step"><div class="dotn">4</div><h3>Log in with SSO</h3><p>Set up in minutes. SSO also powers adoption tracking on your dashboard.</p></div>
+        <div class="tl-step"><div class="dotn">5</div><h3>Run challenges</h3><p>Custom step-count leaderboards and prizes drive ongoing adoption.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI calculator -->
+  <section id="roi" style="background:var(--pale-grey);">
+    <div class="shell">
+      <div class="section-head reveal" style="align-items:center; text-align:center; margin-left:auto; margin-right:auto;">
+        <span class="chip">ROI calculator</span>
+        <h2 class="h-1">What would it be worth to your business?</h2>
+        <p class="body-l muted" style="max-width:600px;">Drag the slider to the size of your team. The numbers update instantly.</p>
+      </div>
+
+      <div class="roi-wrap reveal">
+        <div>
+          <div class="roi-input-label"><span>Number of employees</span><small>10 – 5,000</small></div>
+          <div class="roi-big">
+            <input type="number" id="roi-emp-num" min="10" max="100000" step="10" value="500" aria-label="Number of employees"/>
+            <span>employees</span>
+          </div>
+          <input type="range" id="roi-emp" min="10" max="5000" step="10" value="500" aria-label="Number of employees slider"/>
+          <div class="range-ticks"><span>10</span><span>1,000</span><span>2,500</span><span>5,000</span></div>
+
+          <details class="assump">
+            <summary>Adjust the assumptions</summary>
+            <div class="assump-grid">
+              <div class="assump-row">
+                <label>Employees who adopt it <output id="o-adopt">30%</output></label>
+                <input type="range" id="roi-adopt" min="5" max="100" step="5" value="30"/>
+              </div>
+              <div class="assump-row">
+                <label>Minutes won back per day <output id="o-mins">20 min</output></label>
+                <input type="range" id="roi-mins" min="5" max="120" step="5" value="20"/>
+              </div>
+              <div class="assump-row">
+                <label>Value of an employee hour <output id="o-rate">$45</output></label>
+                <input type="range" id="roi-rate" min="15" max="200" step="5" value="45"/>
+              </div>
+              <div class="assump-row">
+                <label>Your budget per employee / year <output id="o-cost">$10</output></label>
+                <input type="range" id="roi-cost" min="1" max="50" step="1" value="10"/>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="roi-out" aria-live="polite">
+          <div class="roi-hero">
+            <div class="k">Return on investment</div>
+            <div class="v num" id="r-roi">0×</div>
+            <div class="s">Every <strong>$1</strong> invested returns <strong id="r-per">$0</strong> in focused time.</div>
+          </div>
+          <div class="roi-line"><span class="k">Employees building the habit</span><span class="v num" id="r-active">0</span></div>
+          <div class="roi-line"><span class="k">Focus hours won back per year</span><span class="v num" id="r-hours">0</span></div>
+          <div class="roi-line"><span class="k">Productivity value recovered</span><span class="v num" id="r-value">$0</span></div>
+          <div class="roi-line"><span class="k">Your annual investment</span><span class="v num" id="r-invest">$0</span></div>
+          <div class="roi-line net"><span class="k">Net gain per year</span><span class="v num" id="r-net">$0</span></div>
+          <p class="roi-note">Indicative only. Based on 230 working days a year and the assumptions above, which you can change. Actual pricing is tailored to your organisation. <a href="mailto:lino@social-limits.com?subject=Social%20Limits%20pricing" style="color:#fff; text-decoration:underline;" data-track="employers_demo_click" data-loc="roi">Get a quote.</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="background:#fff;">
+    <div class="shell">
+      <div class="section-head reveal" style="align-items:center; text-align:center; margin-left:auto; margin-right:auto;">
+        <span class="chip">FAQ</span>
+        <h2 class="h-1">Frequently asked questions.</h2>
+      </div>
+      <div class="faq reveal">
+        <details open>
+          <summary>What data do we see as an employer?</summary>
+          <p>Only aggregated, de-identified programme statistics: adoption, total steps, movement time and hours saved. We never share an individual's step count, health data, blocked-app selections or usage activity with their employer.</p>
+        </details>
+        <details>
+          <summary>Does it need an IT integration or hardware?</summary>
+          <p>No hardware. Steps sync from the phone's built-in health data, so there's nothing to log and no wearable to buy. For larger rollouts we connect to your existing user management so employees can log in with SSO, which also powers your adoption dashboard. Smaller teams can start with redemption codes and no integration at all.</p>
+        </details>
+        <details>
+          <summary>Is it available on iPhone and Android?</summary>
+          <p>Yes. Social Limits is on the App Store and Google Play and available in 175 countries, so distributed and global teams are covered.</p>
+        </details>
+        <details>
+          <summary>Is it opt-in? What if employees don't want it?</summary>
+          <p>Completely opt-in. Employees choose which apps to block and set their own step goal, anywhere from 200 to 10,000 steps, so it adapts to any age, mobility level or lifestyle. Leaderboards and challenges make it something people want to join rather than something they're told to use.</p>
+        </details>
+        <details>
+          <summary>How is it priced?</summary>
+          <p>A simple annual licence per employee, with no setup fee. Pricing scales with team size and is tailored to your organisation. Use the calculator above to see what it's worth, then get in touch for a quote.</p>
+        </details>
+        <details>
+          <summary>How quickly can we launch?</summary>
+          <p>Most organisations go from signed agreement to live in a couple of weeks. Employees are set up in minutes, and we run a launch challenge with you to drive early adoption.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final">
+    <div class="hero-bg"></div>
+    <div class="shell">
+      <span class="chip chip-dark"><span class="dot" style="background:#7DFFA8;"></span>Let's talk</span>
+      <h2 class="h-display" style="margin:0; max-width:14ch;">Bring Social Limits to your <span class="gradient-text">organisation.</span></h2>
+      <p class="body-l" style="color:rgba(255,255,255,0.82); max-width:540px; margin:0;">Book a 20-minute demo with our founder. We'll walk through the app, the dashboard and a rollout plan for your team.</p>
+      <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:8px;">
+        <a href="mailto:lino@social-limits.com?subject=Social%20Limits%20for%20our%20team" class="btn btn-solid" style="padding:18px 32px; background:#fff; color:var(--electric-blue); box-shadow:0 18px 40px -14px rgba(0,0,0,0.4);" data-track="employers_demo_click" data-loc="final">Book a demo</a>
+        <a href="https://apps.apple.com/au/app/social-limits-screen-time-app/id6471964510" class="btn btn-glass" style="padding:18px 28px;" data-track="employers_try_app_click">Try the app free ↗</a>
+      </div>
+      <div style="font-size:13px; color:rgba(255,255,255,0.6);">Or email <a href="mailto:lino@social-limits.com" style="color:#fff; text-decoration:underline;">lino@social-limits.com</a></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background:#08081F; color:#fff; padding:48px 0 32px;">
+    <div class="shell" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+      <div style="font-size:13px; color:rgba(255,255,255,0.45);">© 2026 Social Limits Pty Ltd · <a href="/privacy-policy" style="color:rgba(255,255,255,0.45);">Privacy Policy</a> · <a href="/terms" style="color:rgba(255,255,255,0.45);">Terms</a></div>
+      <a href="/" style="color:rgba(255,255,255,0.55); font-size:13px; font-weight:500;">← Back to social-limits.com</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // ── Nav drawer ──
+      var toggle = document.querySelector('[data-nav-toggle]');
+      var drawer = document.getElementById('nav-drawer');
+      if (toggle && drawer) {
+        var closers = drawer.querySelectorAll('[data-nav-close]');
+        var setOpen = function (open) {
+          drawer.setAttribute('data-open', open ? 'true' : 'false');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+          document.body.setAttribute('data-nav-open', open ? 'true' : 'false');
+          if (open) { var first = drawer.querySelector('a, button'); if (first) setTimeout(function () { first.focus(); }, 50); }
+          else { toggle.focus(); }
+        };
+        toggle.addEventListener('click', function () { setOpen(drawer.getAttribute('data-open') !== 'true'); });
+        closers.forEach(function (el) { el.addEventListener('click', function () { setOpen(false); }); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && drawer.getAttribute('data-open') === 'true') setOpen(false); });
+      }
+
+      var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var hasIO = 'IntersectionObserver' in window;
+
+      // ── Count-up numbers ──
+      function fmt(n, decimals) {
+        return n.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+      }
+      function renderCU(el, n) {
+        var d = parseInt(el.getAttribute('data-decimals') || '0', 10);
+        el.textContent = (el.getAttribute('data-prefix') || '') + fmt(n, d) + (el.getAttribute('data-suffix') || '');
+      }
+      var cus = Array.prototype.slice.call(document.querySelectorAll('.cu'));
+      if (reduced || !hasIO) {
+        cus.forEach(function (el) { renderCU(el, parseFloat(el.getAttribute('data-to'))); });
+      } else {
+        var cuIO = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var el = entry.target; cuIO.unobserve(el);
+            var target = parseFloat(el.getAttribute('data-to'));
+            var dur = 1500, t0 = performance.now();
+            (function tick(t) {
+              var p = Math.min(1, (t - t0) / dur);
+              var e = 1 - Math.pow(1 - p, 3);
+              renderCU(el, target * e);
+              if (p < 1) requestAnimationFrame(tick);
+            })(t0);
+          });
+        }, { threshold: 0.4 });
+        cus.forEach(function (el) { cuIO.observe(el); });
+      }
+
+      // ── Reveal on scroll ──
+      var reveals = document.querySelectorAll('.reveal');
+      if (reduced || !hasIO) { reveals.forEach(function (el) { el.classList.add('in'); }); }
+      else {
+        var rIO = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); rIO.unobserve(en.target); } });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach(function (el) { rIO.observe(el); });
+      }
+
+      // ── ROI calculator ──
+      var WORKING_DAYS = 230;
+      var empRange = document.getElementById('roi-emp');
+      var empNum = document.getElementById('roi-emp-num');
+      var adopt = document.getElementById('roi-adopt');
+      var mins = document.getElementById('roi-mins');
+      var rate = document.getElementById('roi-rate');
+      var cost = document.getElementById('roi-cost');
+      var outs = {
+        roi: document.getElementById('r-roi'), per: document.getElementById('r-per'),
+        active: document.getElementById('r-active'), hours: document.getElementById('r-hours'),
+        value: document.getElementById('r-value'), invest: document.getElementById('r-invest'), net: document.getElementById('r-net')
+      };
+      var shown = { roi: 0, per: 0, active: 0, hours: 0, value: 0, invest: 0, net: 0 };
+      var targets = {}, animRaf = null;
+
+      function money(n) { return '$' + fmt(Math.round(n), 0); }
+      function paintRange(r) { r.style.setProperty('--pct', ((r.value - r.min) / (r.max - r.min) * 100) + '%'); }
+      function paint() {
+        outs.roi.textContent = fmt(Math.round(shown.roi), 0) + '×';
+        outs.per.textContent = money(shown.per);
+        outs.active.textContent = fmt(Math.round(shown.active), 0);
+        outs.hours.textContent = fmt(Math.round(shown.hours), 0);
+        outs.value.textContent = money(shown.value);
+        outs.invest.textContent = money(shown.invest);
+        outs.net.textContent = money(shown.net);
+      }
+      function animateTo(next) {
+        targets = next;
+        if (reduced) { shown = Object.assign({}, next); paint(); return; }
+        var from = Object.assign({}, shown), t0 = performance.now(), dur = 450;
+        if (animRaf) cancelAnimationFrame(animRaf);
+        (function tick(t) {
+          var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+          for (var k in targets) shown[k] = from[k] + (targets[k] - from[k]) * e;
+          paint();
+          if (p < 1) animRaf = requestAnimationFrame(tick);
+        })(t0);
+      }
+      function compute() {
+        var employees = Math.max(1, parseInt(empNum.value, 10) || 0);
+        var a = parseInt(adopt.value, 10) / 100;
+        var m = parseInt(mins.value, 10);
+        var r = parseInt(rate.value, 10);
+        var c = parseInt(cost.value, 10);
+        var active = employees * a;
+        var hours = active * (m / 60) * WORKING_DAYS;
+        var value = hours * r;
+        var invest = employees * c;
+        var roi = invest > 0 ? value / invest : 0;
+        document.getElementById('o-adopt').textContent = Math.round(a * 100) + '%';
+        document.getElementById('o-mins').textContent = m + ' min';
+        document.getElementById('o-rate').textContent = '$' + r;
+        document.getElementById('o-cost').textContent = '$' + c;
+        animateTo({ roi: roi, per: roi, active: active, hours: hours, value: value, invest: invest, net: value - invest });
+      }
+      [empRange, adopt, mins, rate, cost].forEach(paintRange);
+      empRange.addEventListener('input', function () { empNum.value = empRange.value; paintRange(empRange); compute(); trackRoi(); });
+      empNum.addEventListener('input', function () {
+        var v = parseInt(empNum.value, 10);
+        if (!isNaN(v)) { empRange.value = Math.min(Math.max(v, empRange.min), empRange.max); paintRange(empRange); compute(); trackRoi(); }
+      });
+      [adopt, mins, rate, cost].forEach(function (el) { el.addEventListener('input', function () { paintRange(el); compute(); trackRoi(); }); });
+      compute();
+      // Animate from zero when the calculator scrolls into view
+      if (!reduced && hasIO) {
+        var roiEl = document.querySelector('.roi-out');
+        var snapshot = Object.assign({}, targets);
+        shown = { roi: 0, per: 0, active: 0, hours: 0, value: 0, invest: 0, net: 0 }; paint();
+        var roiIO = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) { roiIO.disconnect(); animateTo(snapshot.roi ? snapshot : targets); }
+        }, { threshold: 0.3 });
+        roiIO.observe(roiEl);
+      }
+
+      // ── Analytics ──
+      function track(name, props) {
+        try {
+          if (!window.posthog || !window.posthog.capture) return;
+          var p = { page: 'employers' }; for (var k in (props || {})) p[k] = props[k];
+          window.posthog.capture(name, p, { send_instantly: true, transport: 'sendBeacon' });
+        } catch (_) {}
+      }
+      track('$pageview', { $current_url: location.href });
+      var roiTimer = null;
+      function trackRoi() {
+        clearTimeout(roiTimer);
+        roiTimer = setTimeout(function () { track('employers_roi_interact', { employees: parseInt(empNum.value, 10), roi: Math.round(targets.roi || 0) }); }, 1200);
+      }
+      document.querySelectorAll('[data-track]').forEach(function (el) {
+        el.addEventListener('click', function () { track(el.getAttribute('data-track'), { location: el.getAttribute('data-loc') || undefined }); });
+      });
+    })();
+  </script>
+</body>
+</html>
