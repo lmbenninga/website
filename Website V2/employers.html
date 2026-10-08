@@ -145,6 +145,25 @@
     .roi-line.net .v { color: var(--mint); }
     .roi-note { font-size: 11.5px; color: rgba(255,255,255,0.55); line-height: 1.5; margin-top: 4px; }
 
+    /* How it's calculated */
+    .how { margin-top: clamp(32px, 5vw, 56px); }
+    .how-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .how-head h3 { margin: 0; font-size: clamp(24px, 3vw, 36px); font-weight: 800; letter-spacing: -0.03em; }
+    .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .how-card { background: #fff; border-radius: 24px; padding: 26px; border: 1px solid rgba(8,8,31,0.06); }
+    .how-k { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--electric-blue); margin-bottom: 12px; }
+    .how-card p { margin: 0 0 10px; font-size: 14px; color: var(--rich-grey); line-height: 1.55; }
+    .how-card p:last-child { margin-bottom: 0; }
+    .how-card strong { color: var(--ink); font-weight: 700; }
+    .how-formula { margin-top: 16px; background: #08081F; color: #fff; border-radius: 24px; padding: clamp(18px, 2.5vw, 28px) clamp(20px, 3vw, 32px); display: flex; flex-direction: column; gap: 12px; }
+    .how-row { display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: baseline; font-size: 14px; }
+    .how-lbl { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+    .how-eq { color: rgba(255,255,255,0.8); line-height: 1.6; }
+    .how-eq b { color: #fff; font-weight: 700; }
+    .how-eq b.res { color: var(--mint); font-weight: 800; }
+    @media (max-width: 900px) { .how-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .how-row { grid-template-columns: 1fr; gap: 4px; } }
+
     /* ── Book a call modal ── */
     .modal { border: none; padding: 0; background: transparent; max-width: none; width: 100%; max-height: 100vh; margin: 0; }
     .modal::backdrop { background: rgba(8,8,31,0.55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
@@ -419,7 +438,7 @@
             <summary>Adjust the assumptions</summary>
             <div class="assump-grid">
               <div class="assump-row">
-                <label>Employees who adopt it <output id="o-adopt">5%</output></label>
+                <label>Employees who actually use it <output id="o-adopt">5%</output></label>
                 <input type="range" id="roi-adopt" min="1" max="100" step="1" value="5"/>
               </div>
               <div class="assump-row">
@@ -445,6 +464,37 @@
           <div class="roi-line net"><span class="k">Productivity value recovered per year</span><span class="v num" id="r-value">$0</span></div>
           <p class="roi-note">Indicative only. Based on 230 working days a year and the assumptions above, which you can change. <button type="button" style="color:#fff; text-decoration:underline; font:inherit;" data-open-form data-track="employers_form_open" data-loc="roi">Talk to us about your team.</button></p>
         </div>
+      </div>
+
+      <!-- How it's calculated -->
+      <div class="how reveal">
+        <div class="how-head">
+          <span class="emp-eyebrow">How we calculate this</span>
+          <h3>Three inputs, one simple sum.</h3>
+        </div>
+        <div class="how-grid">
+          <div class="how-card">
+            <div class="how-k">1 · Adoption</div>
+            <p><strong>Adoption is the share of your employees who actually use Social Limits</strong>, not the number who are offered it. Most well-being benefits struggle here: Gartner found that while 87% of employees have access to well-being programmes, only 23% use them.</p>
+            <p>We default to a <strong>conservative 5%</strong>, well below that benchmark, so the result is a floor rather than a best case. Slide it up to see what a well-run launch with leaderboards and challenges could deliver.</p>
+          </div>
+          <div class="how-card">
+            <div class="how-k">2 · Minutes won back</div>
+            <p>Employers report <strong>two or more hours lost every day</strong> to distractions, with phones the single biggest culprit (CareerBuilder / Harris Poll). Social Limits removes the morning scroll before the workday even starts.</p>
+            <p>We default to just <strong>20 minutes a day</strong> per active employee, a small fraction of the time reported lost, over 230 working days a year.</p>
+          </div>
+          <div class="how-card">
+            <div class="how-k">3 · Value of an hour</div>
+            <p>The hours won back are valued at what an employee hour costs your business. <strong>$45</strong> is the default; adjust it to your own average loaded hourly cost (salary plus on-costs, divided by hours worked).</p>
+            <p>This is a productivity estimate, not a cash saving. It is the focused time your team gets back, expressed in dollars.</p>
+          </div>
+        </div>
+        <div class="how-formula num" aria-live="polite">
+          <div class="how-row"><span class="how-lbl">Active employees</span><span class="how-eq"><b id="b-emp">1,000</b> employees × <b id="b-adopt">5%</b> adoption = <b class="res" id="b-active">50</b></span></div>
+          <div class="how-row"><span class="how-lbl">Hours won back</span><span class="how-eq"><b id="b-active2">50</b> × <b id="b-mins">20</b> min ÷ 60 × 230 working days = <b class="res" id="b-hours">3,833 hrs</b></span></div>
+          <div class="how-row"><span class="how-lbl">Productivity value</span><span class="how-eq"><b id="b-hours2">3,833 hrs</b> × <b id="b-rate">$45</b> per hour = <b class="res" id="b-value">$172,500</b></span></div>
+        </div>
+        <p class="sources" style="margin-top:16px;">Sources: Gartner, "Gartner HR Survey Finds 87% of Employees Have Access to Well-being Programs, but Only 23% Use Them" · CareerBuilder / Harris Poll survey of 2,186 HR managers and 3,031 workers · Gloria Mark, UC Irvine, <em>Attention Span</em> (2023).</p>
       </div>
     </div>
   </section>
@@ -648,6 +698,12 @@
         document.getElementById('o-adopt').textContent = Math.round(a * 100) + '%';
         document.getElementById('o-mins').textContent = m + ' min';
         document.getElementById('o-rate').textContent = '$' + r;
+        // Live breakdown
+        var set = function (id, v) { var el = document.getElementById(id); if (el) el.textContent = v; };
+        set('b-emp', fmt(employees, 0)); set('b-adopt', Math.round(a * 100) + '%');
+        set('b-active', fmt(Math.round(active), 0)); set('b-active2', fmt(Math.round(active), 0));
+        set('b-mins', m); set('b-hours', fmt(Math.round(hours), 0) + ' hrs'); set('b-hours2', fmt(Math.round(hours), 0) + ' hrs');
+        set('b-rate', '$' + r); set('b-value', money(value));
         animateTo({ hours: hours, days: hours / 8, active: active, week: hours / 46, value: value });
       }
       [empRange, adopt, mins, rate].forEach(paintRange);
