@@ -1,5 +1,9 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    { "source": "/calculator", "destination": "/employers#roi", "permanent": false },
+    { "source": "/roi", "destination": "/employers#roi", "permanent": false }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
