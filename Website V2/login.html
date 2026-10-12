@@ -108,6 +108,55 @@
     .privacy .ic { width: 44px; height: 44px; flex: none; border-radius: 14px; background: #EEF0FF; color: var(--blue); display: grid; place-items: center; }
     .privacy ul { margin: 8px 0 0; padding-left: 18px; font-size: 13px; color: var(--grey); line-height: 1.7; }
 
+
+    /* Step challenge */
+    .ch { padding: 0; overflow: hidden; }
+    .ch-top { background: linear-gradient(150deg, #08081F 0%, #16164A 100%); color: #fff; padding: 28px 24px; position: relative; overflow: hidden; }
+    .ch-top::before { content: ''; position: absolute; inset: -40%; background: radial-gradient(ellipse at 90% 0%, rgba(123,91,255,0.55), transparent 45%), radial-gradient(ellipse at 0% 100%, rgba(0,0,255,0.5), transparent 45%); filter: blur(30px); pointer-events: none; }
+    .ch-top > * { position: relative; }
+    .ch-title { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+    .ch-title h2 { color: #fff; font-size: clamp(22px, 2.6vw, 30px); font-weight: 800; letter-spacing: -0.03em; }
+    .ch-title .sub { color: rgba(255,255,255,0.7); }
+    .ch-badge { font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: rgba(125,255,168,0.16); color: var(--mint); white-space: nowrap; }
+    .ch-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 22px; }
+    .ch-stat { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 14px 16px; }
+    .ch-stat .v { font-size: clamp(20px, 2.2vw, 26px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+    .ch-stat .l { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 3px; }
+    @media (max-width: 720px) { .ch-stats { grid-template-columns: 1fr 1fr; } }
+    .goal { margin-top: 18px; }
+    .goal-row { display: flex; justify-content: space-between; font-size: 13px; color: rgba(255,255,255,0.8); margin-bottom: 8px; gap: 12px; }
+    .goal-row b { color: #fff; }
+    .goal-bar { height: 12px; border-radius: 999px; background: rgba(255,255,255,0.12); overflow: hidden; }
+    .goal-bar i { display: block; height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, #7B5BFF, var(--mint)); transition: width 1.4s cubic-bezier(.2,.8,.2,1); }
+    .ch-body { display: grid; grid-template-columns: 1.6fr 1fr; gap: 0; }
+    .ch-body > div { padding: 24px; min-width: 0; }
+    .ch-body > div + div { border-left: 1px solid var(--line); }
+    @media (max-width: 960px) { .ch-body { grid-template-columns: 1fr; } .ch-body > div + div { border-left: 0; border-top: 1px solid var(--line); } }
+    .ch-body h3 { font-size: 15px; font-weight: 700; margin: 0 0 4px; }
+    .ch-body .sub { margin: 0 0 16px; }
+    .lb { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .lb th { text-align: left; font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; padding: 0 8px 10px; }
+    .lb th.r, .lb td.r { text-align: right; }
+    .lb td { padding: 10px 8px; border-top: 1px solid var(--line); vertical-align: middle; }
+    .lb tr.top td { background: #F7F7FF; }
+    .rank { width: 30px; height: 30px; border-radius: 999px; display: grid; place-items: center; font-weight: 700; font-size: 13px; background: var(--bg); color: var(--grey); }
+    .rank.g1 { background: #FFD84D; color: #5A4300; } .rank.g2 { background: #DADDE6; color: #3B3E47; } .rank.g3 { background: #F0B98A; color: #5C3313; }
+    .who { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .who .av { width: 32px; height: 32px; flex: none; border-radius: 999px; display: grid; place-items: center; font-size: 12px; font-weight: 700; color: #fff; background: var(--blue); }
+    .who .nm { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .who .dp { font-size: 12px; color: var(--muted); }
+    .lb .steps { font-weight: 700; }
+    .lb .avg { color: var(--grey); font-size: 13px; }
+    .mini { height: 6px; border-radius: 999px; background: var(--bg); margin-top: 6px; overflow: hidden; min-width: 60px; }
+    .mini i { display: block; height: 100%; border-radius: 999px; background: var(--blue); }
+    @media (max-width: 560px) { .lb .hide-s { display: none; } .lb td, .lb th { padding-left: 4px; padding-right: 4px; } }
+    .team { margin-bottom: 14px; }
+    .team-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px; gap: 8px; }
+    .team-row b { font-weight: 600; }
+    .team-row span { color: var(--grey); white-space: nowrap; }
+    .team-bar { height: 10px; border-radius: 999px; background: var(--bg); overflow: hidden; }
+    .team-bar i { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, #0000FF, #7B5BFF); width: 0; transition: width 1.2s cubic-bezier(.2,.8,.2,1); }
+    .optin { margin-top: 18px; background: #EEF0FF; border-radius: 14px; padding: 12px 14px; font-size: 12px; color: #2A2A7A; line-height: 1.5; }
     footer { text-align: center; font-size: 12px; color: var(--muted); padding: 32px 0 48px; }
   </style>
 </head>
@@ -210,6 +259,42 @@
             <li>Figures are hidden for any group with fewer than 10 active employees, so no one can be identified.</li>
             <li>Employees never share screen-time or app-usage details with their employer.</li>
           </ul>
+        </div>
+      </section>
+
+      <!-- Step challenge -->
+      <section class="card ch span-12" id="challenge">
+        <div class="ch-top">
+          <div class="ch-title">
+            <div><h2>December Step Challenge</h2><p class="sub">1–31 December · Final results</p></div>
+            <span class="ch-badge">🏆 Company goal reached</span>
+          </div>
+          <div class="ch-stats">
+            <div class="ch-stat"><div class="v num" id="chTotal"></div><div class="l">total steps in December</div></div>
+            <div class="ch-stat"><div class="v num" id="chPart"></div><div class="l">employees took part</div></div>
+            <div class="ch-stat"><div class="v num" id="chAvg"></div><div class="l">avg daily steps per participant</div></div>
+            <div class="ch-stat"><div class="v num" id="chKm"></div><div class="l">km walked together</div></div>
+          </div>
+          <div class="goal">
+            <div class="goal-row"><span>Company goal: <b id="chGoal"></b> steps</span><b id="chGoalPct"></b></div>
+            <div class="goal-bar"><i id="chGoalBar"></i></div>
+          </div>
+        </div>
+        <div class="ch-body">
+          <div>
+            <h3>Top 10</h3>
+            <p class="sub">Total steps across the month</p>
+            <table class="lb">
+              <thead><tr><th>#</th><th>Participant</th><th class="r hide-s">Daily avg</th><th class="r">Steps</th></tr></thead>
+              <tbody id="lbRows"></tbody>
+            </table>
+          </div>
+          <div>
+            <h3>Team leaderboard</h3>
+            <p class="sub">Avg daily steps per participant, by department</p>
+            <div id="teamRows"></div>
+            <div class="optin"><b>Opt-in only.</b> Only employees who join the challenge appear here, under the display name they choose. Everyone else stays anonymous, and teams with fewer than 10 participants are not shown.</div>
+          </div>
         </div>
       </section>
     </div>
@@ -369,6 +454,43 @@
       tip: `<b>${fmt(totals[i])} steps</b><span>${m[4] ? '1–12 Oct · ' : ''}≈ ${fmt(totals[i] / DATA.stepsPerMinute / 60)} hours walking</span>`
     })));
   }
+
+  // ── December Step Challenge (sample, opt-in participants only) ──
+  const CHALLENGE = {
+    days: 31, goal: 15000000, participants: 112, avgDaily: 5200, kmPerStep: 0.00075,
+    top: [
+      ['Priya S.', 'Marketing', 492310], ['Tom H.', 'Engineering', 468920], ['Aisha M.', 'Sales', 451775],
+      ['Daniel R.', 'Finance', 433140], ['Chloe W.', 'Operations', 417560], ['Marcus L.', 'Engineering', 389905],
+      ['Hannah B.', 'Operations', 372480], ['Jordan K.', 'Sales', 355215], ['Emily T.', 'Marketing', 338690],
+      ['Sam P.', 'Finance', 321400]
+    ],
+    teams: [['Marketing', 6140, 18], ['Sales', 5820, 24], ['Engineering', 5310, 31], ['Operations', 4960, 21], ['Finance', 4720, 18]]
+  };
+  (function () {
+    const C = CHALLENGE, total = C.participants * C.avgDaily * C.days, pctGoal = total / C.goal * 100;
+    $('chTotal').textContent = short(total);
+    $('chPart').textContent = C.participants;
+    $('chAvg').textContent = fmt(C.avgDaily);
+    $('chKm').textContent = fmt(total * C.kmPerStep);
+    $('chGoal').textContent = fmt(C.goal);
+    $('chGoalPct').textContent = Math.round(pctGoal) + '%';
+    const avColors = ['#0000FF', '#7B5BFF', '#1A1AB8', '#4B4BFF', '#5B3FD9'];
+    const max = C.top[0][2];
+    $('lbRows').innerHTML = C.top.map(([n, d, st], i) => {
+      const ini = n.split(' ').map(w => w[0]).join('');
+      return `<tr class="${i < 3 ? 'top' : ''}"><td><div class="rank ${i < 3 ? 'g' + (i + 1) : ''}">${i + 1}</div></td>
+        <td><div class="who"><div class="av" style="background:${avColors[i % avColors.length]}">${ini}</div><div style="min-width:0"><div class="nm">${n}</div><div class="dp">${d}</div></div></div></td>
+        <td class="r hide-s avg num">${fmt(st / C.days)}</td>
+        <td class="r"><div class="steps num">${fmt(st)}</div><div class="mini"><i style="width:${st / max * 100}%"></i></div></td></tr>`;
+    }).join('');
+    const tmax = Math.max(...C.teams.map(t => t[1]));
+    $('teamRows').innerHTML = C.teams.map(([n, a, p], i) =>
+      `<div class="team"><div class="team-row"><b>${i + 1}. ${n}</b><span class="num">${fmt(a)} / day · ${p} people</span></div><div class="team-bar"><i data-w="${a / tmax * 100}"></i></div></div>`).join('');
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      $('chGoalBar').style.width = Math.min(100, pctGoal) + '%';
+      document.querySelectorAll('.team-bar i').forEach(b => b.style.width = b.dataset.w + '%');
+    }));
+  })();
   render();
   let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(render, 150); });
   </script>
