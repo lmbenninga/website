@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Member Case Study — Social Limits for Employers</title>
-  <meta name="description" content="An anonymised data study of one long-term Social Limits member at Adobe: daily steps nearly doubled over 619 tracked days."/>
+  <meta name="description" content="An anonymised data study of one Social Limits member at Adobe: average daily steps up 55% over the last 12 months."/>
   <meta name="robots" content="noindex"/>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png"/>
   <link rel="icon" type="image/png" href="assets/favicon.png"/>
@@ -25,97 +25,52 @@
   <style>
     .cs-eyebrow { font-weight: 600; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--electric-blue); }
     .num { font-variant-numeric: tabular-nums; }
-    .cs-col { max-width: 920px; margin: 0 auto; }
-    .cs-sec { padding: clamp(56px, 8vw, 96px) 0; }
-    .cs-sec h2 { font-weight: 800; font-size: clamp(28px, 3.4vw, 44px); line-height: 1.05; letter-spacing: -0.03em; margin: 12px 0 16px; text-wrap: balance; }
-    .cs-sec p { margin: 0; font-size: 16px; line-height: 1.65; color: var(--rich-grey); max-width: 680px; }
-    .cs-sec p + p { margin-top: 12px; }
-    .cs-sec p strong { color: var(--ink); font-weight: 600; }
+    .cs-col { max-width: 880px; margin: 0 auto; }
+    .cs-sec { padding: clamp(56px, 8vw, 88px) 0; }
+    .cs-sec h2 { font-weight: 800; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.05; letter-spacing: -0.03em; margin: 12px 0 12px; text-wrap: balance; }
+    .cs-sec p { margin: 0; font-size: 16px; line-height: 1.6; color: var(--rich-grey); max-width: 620px; }
 
     /* Hero */
     .cs-hero { position: relative; color: #fff; overflow: hidden; isolation: isolate; padding: clamp(130px, 16vw, 170px) 0 clamp(56px, 8vw, 88px); }
-    .cs-hero h1 { font-weight: 800; font-size: clamp(38px, 5.6vw, 72px); line-height: 0.98; letter-spacing: -0.04em; margin: 20px 0 20px; max-width: 16ch; text-wrap: balance; }
-    .cs-hero p.lead { font-size: clamp(16px, 1.3vw, 19px); line-height: 1.6; color: rgba(255,255,255,0.84); max-width: 600px; margin: 0; }
+    .cs-hero h1 { font-weight: 800; font-size: clamp(40px, 6vw, 76px); line-height: 0.98; letter-spacing: -0.04em; margin: 20px 0 18px; max-width: 14ch; text-wrap: balance; }
+    .cs-hero p.lead { font-size: clamp(16px, 1.3vw, 19px); line-height: 1.55; color: rgba(255,255,255,0.84); max-width: 560px; margin: 0; }
     .cs-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); margin-bottom: 18px; }
     .cs-back:hover { color: #fff; }
 
-    /* Context box */
-    .cs-context { background: var(--pale-grey); border-radius: 28px; padding: clamp(24px, 4vw, 40px); display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-    .cs-context h3 { margin: 0 0 8px; font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
-    .cs-context p { font-size: 15px !important; }
-    .cs-facts { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-    .cs-facts li { display: flex; justify-content: space-between; gap: 16px; font-size: 14px; border-bottom: 1px solid rgba(8,8,31,0.08); padding-bottom: 10px; }
-    .cs-facts li:last-child { border-bottom: 0; padding-bottom: 0; }
-    .cs-facts span { color: var(--rich-grey); }
-    .cs-facts b { font-weight: 700; text-align: right; }
-
     /* Headline stats */
-    .cs-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: rgba(8,8,31,0.06); border-radius: 28px; overflow: hidden; margin-top: 32px; }
-    .cs-stat { background: #fff; padding: clamp(24px, 3vw, 36px) 20px; display: flex; flex-direction: column; gap: 10px; }
-    .cs-stat .v { font-size: clamp(38px, 4.4vw, 56px); font-weight: 800; letter-spacing: -0.045em; line-height: 0.95;
+    .cs-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(8,8,31,0.06); border-radius: 28px; overflow: hidden; }
+    .cs-stat { background: #fff; padding: clamp(26px, 3.5vw, 40px) 24px; display: flex; flex-direction: column; gap: 10px; }
+    .cs-stat .v { font-size: clamp(40px, 4.8vw, 60px); font-weight: 800; letter-spacing: -0.045em; line-height: 0.95;
       background: linear-gradient(180deg, #0000FF 0%, #7B5BFF 120%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-    .cs-stat .l { font-size: 14px; font-weight: 600; line-height: 1.35; }
-    .cs-stat .s { font-size: 12.5px; color: var(--rich-grey); line-height: 1.4; }
+    .cs-stat .l { font-size: 15px; font-weight: 600; line-height: 1.35; }
+    .cs-stat .s { font-size: 13px; color: var(--rich-grey); line-height: 1.4; }
 
     /* Before / after */
-    .ba { margin-top: 28px; display: flex; flex-direction: column; gap: 18px; }
-    .ba-row { display: grid; grid-template-columns: 170px 1fr; gap: 16px; align-items: center; }
-    .ba-k { font-size: 14px; font-weight: 600; }
-    .ba-k small { display: block; font-weight: 400; color: var(--rich-grey); font-size: 12.5px; }
-    .ba-track { display: flex; align-items: center; gap: 12px; }
-    .ba-bar { height: 44px; border-radius: 0 12px 12px 0; background: var(--faded-blue); display: flex; align-items: center; justify-content: flex-end; padding-right: 14px; font-weight: 800; font-size: 18px; letter-spacing: -0.02em; color: var(--electric-blue); min-width: 90px; }
+    .ba { margin-top: 28px; display: flex; flex-direction: column; gap: 16px; }
+    .ba-row { display: grid; grid-template-columns: 150px 1fr; gap: 16px; align-items: center; }
+    .ba-k { font-size: 15px; font-weight: 700; }
+    .ba-k small { display: block; font-weight: 400; color: var(--rich-grey); font-size: 13px; }
+    .ba-bar { height: 52px; border-radius: 0 14px 14px 0; background: var(--faded-blue); display: flex; align-items: center; justify-content: flex-end; padding-right: 16px; font-weight: 800; font-size: 20px; letter-spacing: -0.02em; color: var(--electric-blue); min-width: 96px; }
     .ba-bar.after { background: var(--electric-blue); color: #fff; box-shadow: 0 14px 28px -12px rgba(0,0,255,0.55); }
 
-    /* Monthly chart */
-    .chart-card { margin-top: 28px; background: #fff; border: 1px solid rgba(8,8,31,0.08); border-radius: 28px; padding: clamp(18px, 3vw, 30px); }
-    .chart-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px 20px; margin-bottom: 14px; }
-    .chart-head b { font-size: 15px; font-weight: 700; }
-    .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: var(--rich-grey); }
-    .legend span { display: inline-flex; align-items: center; gap: 6px; }
-    .legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
-    .legend i.goal { width: 16px; height: 0; border-top: 2px dashed #FF6B2C; border-radius: 0; }
-    #months { position: relative; width: 100%; }
-    #months svg { display: block; width: 100%; height: auto; overflow: visible; }
-    #months text { font-family: 'Poppins', system-ui, sans-serif; font-size: 11px; fill: var(--rich-grey); }
-    .tip { position: absolute; pointer-events: none; background: var(--ink); color: #fff; font-size: 12.5px; line-height: 1.4; padding: 7px 10px; border-radius: 10px; white-space: nowrap; transform: translate(-50%, calc(-100% - 10px)); opacity: 0; transition: opacity .1s; z-index: 3; }
-    .tip.on { opacity: 1; }
+    /* Quarterly bars */
+    .qs { margin-top: 48px; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(10px, 2vw, 20px); align-items: end; height: 300px; }
+    .q { display: flex; flex-direction: column; gap: 10px; height: 100%; }
+    .q-track { flex: 1; position: relative; }
+    .q-bar { position: absolute; left: 0; right: 0; bottom: 0; border-radius: 14px 14px 4px 4px; background: linear-gradient(180deg, #0000FF, #7B5BFF); }
+    .q-v { position: absolute; left: 0; right: 0; bottom: calc(100% + 8px); text-align: center; font-weight: 800; font-size: clamp(16px, 2vw, 22px); letter-spacing: -0.02em; color: var(--ink); }
+    .q-k { text-align: center; font-size: 13px; font-weight: 600; color: var(--rich-grey); }
 
-    /* Half-year table */
-    .ht { width: 100%; border-collapse: collapse; margin-top: 24px; font-size: 15px; }
-    .ht th, .ht td { padding: 14px 10px; text-align: left; border-bottom: 1px solid rgba(8,8,31,0.08); }
-    .ht th { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rich-grey); }
-    .ht td.n, .ht th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
-    .ht tr.hi td { font-weight: 700; }
-    .ht-scroll { overflow-x: auto; }
-
-    /* Commitment cards */
-    .commit { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
-    .commit div { background: #0D0D2A; color: #fff; border-radius: 24px; padding: 26px; }
-    .commit .v { font-size: clamp(32px, 3.4vw, 44px); font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
-    .commit .l { font-size: 14px; color: rgba(255,255,255,0.7); margin-top: 10px; line-height: 1.45; }
-
-    /* Employer takeaways */
-    .take { list-style: none; margin: 24px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .take li { background: var(--pale-grey); border-radius: 22px; padding: 24px; font-size: 15px; line-height: 1.55; color: var(--rich-grey); }
-    .take li strong { display: block; color: var(--ink); font-size: 17px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em; }
-
-    /* Method */
-    .method { list-style: none; margin: 20px 0 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
-    .method li { font-size: 14px; line-height: 1.6; color: var(--rich-grey); padding-left: 16px; border-left: 2px solid var(--faded-blue); max-width: 760px; }
-    .method li strong { color: var(--ink); font-weight: 600; }
+    .cs-sec .cs-note { margin-top: 28px; font-size: 13px; }
 
     .final { position: relative; overflow: hidden; isolation: isolate; color: #fff; text-align: center; padding: clamp(72px, 10vw, 120px) 0; }
     .final .shell { display: flex; flex-direction: column; align-items: center; gap: 20px; }
 
-    @media (max-width: 900px) {
-      .cs-stats { grid-template-columns: 1fr 1fr; }
-      .cs-context, .take { grid-template-columns: 1fr; }
-      .commit { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 560px) {
+    @media (max-width: 760px) {
+      .cs-stats { grid-template-columns: 1fr; }
       .ba-row { grid-template-columns: 1fr; gap: 8px; }
+      .qs { height: 240px; }
     }
-    @media (prefers-reduced-motion: reduce) { .tip { transition: none; } }
   </style>
 </head>
 <body>
@@ -159,150 +114,52 @@
     <div class="hero-bg"></div>
     <div class="shell">
       <div class="cs-col">
-        <a href="/employers" class="cs-back">← Back to Social Limits for employers</a><br/>
+        <a href="/employers" class="cs-back">← Back to employers</a><br/>
         <span class="chip chip-dark"><span class="dot" style="background:#7DFFA8;"></span>Member case study · Adobe</span>
-        <h1>From 3,800 to 7,300 steps <span class="gradient-text">a day.</span></h1>
-        <p class="lead">How one Social Limits member at Adobe nearly doubled their daily walking over two years, using the app that keeps social media locked until they hit their step goal.</p>
+        <h1>55% more steps every day.</h1>
+        <p class="lead">A data research piece by Social Limits. We looked at one member at Adobe over the last 12 months to show what the app can do for an employee. No personal information is shared.</p>
       </div>
     </div>
   </section>
 
-  <!-- Context -->
-  <section class="cs-sec" style="background:#fff; padding-bottom: 0;">
-    <div class="shell">
-      <div class="cs-col">
-        <div class="cs-context">
-          <div>
-            <h3>About this study</h3>
-            <p>This is a data research piece by the Social Limits team. We took one long-term member who works at Adobe and analysed the step data the app recorded for them over 619 days.</p>
-            <p>We wanted to show, with real numbers, what Social Limits can do for one employee over time. Everything here is anonymised. We share no name, contact details, location, device or account information.</p>
-          </div>
-          <ul class="cs-facts">
-            <li><span>Member since</span><b>Early 2024</b></li>
-            <li><span>Plan</span><b>Premium, renewed every year</b></li>
-            <li><span>Data analysed</span><b>Jul 2024 – Oct 2026</b></li>
-            <li><span>Days of step data</span><b class="num">619</b></li>
-            <li><span>Daily step goal</span><b>2,000, raised to 5,000</b></li>
-          </ul>
-        </div>
-
-        <div class="cs-stats">
-          <div class="cs-stat"><div class="v num">+93%</div><div class="l">More steps per day</div><div class="s">First 90 tracked days vs the last 90</div></div>
-          <div class="cs-stat"><div class="v num">+58%</div><div class="l">Year-on-year growth</div><div class="s">Avg per day, 2026 so far vs 2025</div></div>
-          <div class="cs-stat"><div class="v num">5×</div><div class="l">More 10,000-step days</div><div class="s">4% of days in 2025, 22% in 2026</div></div>
-          <div class="cs-stat"><div class="v num">3.5M</div><div class="l">Steps recorded</div><div class="s">Across 619 days of data</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Before / after -->
+  <!-- Stats + before/after -->
   <section class="cs-sec" style="background:#fff;">
     <div class="shell">
       <div class="cs-col">
-        <span class="cs-eyebrow">The result</span>
-        <h2>Daily walking nearly doubled.</h2>
-        <p>Average steps per day at the start of the data compared with the most recent 90 days.</p>
-        <div class="ba" role="img" aria-label="Average steps per day: 3,784 in the first 90 tracked days, 7,300 in the last 90 days">
+        <div class="cs-stats">
+          <div class="cs-stat"><div class="v num">+55%</div><div class="l">Average daily steps</div><div class="s">4,590 → 7,118 steps a day</div></div>
+          <div class="cs-stat"><div class="v num">64</div><div class="l">Days over 10,000 steps</div><div class="s">Since January, up from 1 in Nov–Dec</div></div>
+          <div class="cs-stat"><div class="v num">2.35M</div><div class="l">Steps in 12 months</div><div class="s">Nov 2025 – Oct 2026</div></div>
+        </div>
+
+        <div class="ba" role="img" aria-label="Average steps per day: 4,590 in November to December 2025, 7,118 from January to October 2026">
           <div class="ba-row">
-            <div class="ba-k">First 90 days<small>Jul – Oct 2024</small></div>
-            <div class="ba-track"><div class="ba-bar num" style="width:51.8%;">3,784</div></div>
+            <div class="ba-k">Before<small>Nov – Dec 2025</small></div>
+            <div class="ba-bar num" style="width:64.5%;">4,590</div>
           </div>
           <div class="ba-row">
-            <div class="ba-k">Last 90 days<small>Jul – Oct 2026</small></div>
-            <div class="ba-track"><div class="ba-bar after num" style="width:100%;">7,300</div></div>
+            <div class="ba-k">After<small>Jan – Oct 2026</small></div>
+            <div class="ba-bar after num" style="width:100%;">7,118</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Monthly -->
+  <!-- Quarterly -->
   <section class="cs-sec" style="background:var(--pale-grey);">
     <div class="shell">
       <div class="cs-col">
-        <span class="cs-eyebrow">Month by month</span>
-        <h2>A steady base, then a step up that held.</h2>
-        <p>For about 18 months this member averaged 4,000–4,600 steps a day. In September 2025 they chose to raise their goal from 2,000 to 5,000 steps. From January 2026 their average moved above 7,000 and has mostly stayed there.</p>
-        <div class="chart-card">
-          <div class="chart-head">
-            <b>Average steps per day, by month</b>
-            <div class="legend"><span><i style="background:var(--electric-blue)"></i>Full month of data</span><span><i style="background:var(--faded-blue)"></i>Partial month</span><span><i class="goal"></i>Step goal</span></div>
-          </div>
-          <div id="months"></div>
+        <span class="cs-eyebrow">Every quarter</span>
+        <h2>Up every three months.</h2>
+        <p>Average steps per day, in three-month blocks.</p>
+        <div class="qs" role="img" aria-label="Average steps per day by quarter: 5,847, 6,612, 7,039, 7,298">
+          <div class="q"><div class="q-track"><div class="q-bar" style="height:70.4%;"><div class="q-v num">5,847</div></div></div><div class="q-k">Nov – Jan</div></div>
+          <div class="q"><div class="q-track"><div class="q-bar" style="height:79.8%;"><div class="q-v num">6,612</div></div></div><div class="q-k">Feb – Apr</div></div>
+          <div class="q"><div class="q-track"><div class="q-bar" style="height:84.9%;"><div class="q-v num">7,039</div></div></div><div class="q-k">May – Jul</div></div>
+          <div class="q"><div class="q-track"><div class="q-bar" style="height:88.0%;"><div class="q-v num">7,298</div></div></div><div class="q-k">Aug – Oct</div></div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Half-year -->
-  <section class="cs-sec" style="background:#fff;">
-    <div class="shell">
-      <div class="cs-col">
-        <span class="cs-eyebrow">Half-year view</span>
-        <h2>Long walks went from rare to routine.</h2>
-        <p>In 2025 this member hit 10,000 steps on about 1 day in 23. In 2026 it is more than 1 day in 5.</p>
-        <div class="ht-scroll">
-          <table class="ht">
-            <thead><tr><th>Period</th><th class="n">Avg steps / day</th><th class="n">10k+ days</th><th class="n">Share of days at 10k+</th></tr></thead>
-            <tbody>
-              <tr><td>Jul – Dec 2024</td><td class="n">4,083</td><td class="n">3</td><td class="n">4%</td></tr>
-              <tr><td>Jan – Jun 2025</td><td class="n">4,276</td><td class="n">4</td><td class="n">5%</td></tr>
-              <tr><td>Jul – Dec 2025</td><td class="n">4,604</td><td class="n">7</td><td class="n">4%</td></tr>
-              <tr class="hi"><td>Jan – Jun 2026</td><td class="n">7,277</td><td class="n">42</td><td class="n">23%</td></tr>
-              <tr class="hi"><td>Jul – Oct 2026</td><td class="n">6,862</td><td class="n">22</td><td class="n">20%</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Commitment -->
-  <section class="cs-sec" style="background:#08081F; color:#fff;">
-    <div class="shell">
-      <div class="cs-col">
-        <span class="cs-eyebrow" style="color:#C4B5FF;">Commitment</span>
-        <h2>They walk instead of unlocking early.</h2>
-        <p style="color:rgba(255,255,255,0.72);">Members can end the block at any time without walking. This member almost never does, and chose to make their own goal harder.</p>
-        <div class="commit">
-          <div><div class="v num">97%</div><div class="l">of days they kept the block on and walked for their unlock</div></div>
-          <div><div class="v num">2.5×</div><div class="l">harder goal, chosen by the member (2,000 → 5,000 steps)</div></div>
-          <div><div class="v num">2+ yrs</div><div class="l">as a paying member, renewing every year</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Takeaways -->
-  <section class="cs-sec" style="background:#fff;">
-    <div class="shell">
-      <div class="cs-col">
-        <span class="cs-eyebrow">What this means for your team</span>
-        <h2>One habit, repeated every day.</h2>
-        <p>Social Limits changes behaviour by tying something employees already do every morning, opening social media, to a daily walk.</p>
-        <ul class="take">
-          <li><strong>Movement that compounds</strong>An extra 3,500 steps a day adds up to over a million extra steps a year for a single employee.</li>
-          <li><strong>It lasts</strong>This member's higher level has mostly held through 2026, and they have stayed with the app for more than two years.</li>
-          <li><strong>Less scrolling, by design</strong>Social apps stay locked until the goal is met, so screen time in the morning goes to walking instead.</li>
-          <li><strong>Private by default</strong>Your dashboard shows team-level totals only, never an individual employee's data.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Method -->
-  <section class="cs-sec" style="background:var(--pale-grey); padding-block: clamp(44px, 6vw, 64px);">
-    <div class="shell">
-      <div class="cs-col">
-        <span class="cs-eyebrow">How we measured this</span>
-        <ul class="method">
-          <li><strong>Source.</strong> Daily step reports saved by the Social Limits app for one member, July 25, 2024 to October 25, 2026. Days are counted in the member's local time.</li>
-          <li><strong>Averages per tracked day.</strong> Before June 2025 the app saved reports on only some days of each month, so we compare average steps per tracked day rather than monthly totals.</li>
-          <li><strong>One member's results.</strong> This is a single member's experience and does not predict results for any other person. Results vary.</li>
-          <li><strong>Recent dip.</strong> Steps fell below the 5,000 goal from mid-October 2026, which is included in all figures above.</li>
-          <li><strong>Privacy.</strong> The data was anonymised before analysis. No name, contact details, account ID, location or device information is shown. Screen time data stays on the member's phone and is not part of this study.</li>
-        </ul>
+        <p class="cs-note">Based on daily step data from Nov 1, 2025 to Oct 25, 2026 for one member, anonymised before analysis. Results vary between people.</p>
       </div>
     </div>
   </section>
@@ -329,8 +186,6 @@
     </div>
   </footer>
 
-  <div class="tip" id="tip"></div>
-
   <script>
     (function () {
       // ── Nav drawer ──
@@ -347,51 +202,6 @@
         drawer.querySelectorAll('[data-nav-close]').forEach(function (el) { el.addEventListener('click', function () { setOpen(false); }); });
         document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && drawer.getAttribute('data-open') === 'true') setOpen(false); });
       }
-
-      // ── Monthly chart: [month, days tracked, avg steps per tracked day] ──
-      var MONTHS = [["2024-08",15,3165],["2024-09",15,5512],["2024-10",15,3605],["2024-11",13,4399],["2024-12",9,5590],["2025-01",15,6938],["2025-02",9,3193],["2025-03",6,2551],["2025-04",4,1994],["2025-05",13,2054],["2025-06",29,4902],["2025-07",31,4461],["2025-08",29,3539],["2025-09",28,5474],["2025-10",31,4983],["2025-11",30,5060],["2025-12",31,4135],["2026-01",31,8321],["2026-02",28,7338],["2026-03",31,7617],["2026-04",29,4837],["2026-05",31,6985],["2026-06",30,8450],["2026-07",30,5684],["2026-08",30,7407],["2026-09",29,8438],["2026-10",22,5647]];
-      var GOAL_FROM = '2025-09'; // goal 2,000 before, 5,000 from here
-      var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-      var NS = 'http://www.w3.org/2000/svg';
-      var tip = document.getElementById('tip');
-      function el(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; }
-      function fmt(n) { return Math.round(n).toLocaleString('en-US'); }
-
-      function draw() {
-        var host = document.getElementById('months'); host.innerHTML = '';
-        var W = Math.max(300, host.clientWidth), H = W < 560 ? 230 : 300, m = { l: 40, r: 6, t: 10, b: 26 };
-        var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'Average steps per day by month, August 2024 to October 2026. Around 4,000 to 5,000 through 2025, rising to 7,000 to 8,500 for most of 2026.' }, host);
-        var ymax = 10000, y = function (v) { return H - m.b - v / ymax * (H - m.t - m.b); };
-        var bw = (W - m.l - m.r) / MONTHS.length, gap = Math.max(2, bw * 0.2);
-        for (var v = 0; v <= ymax; v += 2500) {
-          el('line', { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), stroke: 'rgba(8,8,31,0.08)', 'stroke-width': 1 }, svg);
-          el('text', { x: m.l - 8, y: y(v) + 4, 'text-anchor': 'end' }, svg).textContent = v ? (v / 1000) + 'k' : '0';
-        }
-        // goal step line
-        var gi = MONTHS.findIndex(function (r) { return r[0] === GOAL_FROM; });
-        var gx = m.l + gi * bw;
-        el('path', { d: 'M' + m.l + ',' + y(2000) + 'H' + gx + 'V' + y(5000) + 'H' + (W - m.r), fill: 'none', stroke: '#FF6B2C', 'stroke-width': 1.5, 'stroke-dasharray': '5 4' }, svg);
-        MONTHS.forEach(function (r, i) {
-          var ym = r[0].split('-'), yy = +ym[0], mm = +ym[1];
-          var x0 = m.l + i * bw + gap / 2, w = bw - gap, top = y(r[2]), h = y(0) - top, rad = Math.min(4, w / 2, h);
-          var d = 'M' + x0 + ',' + y(0) + 'V' + (top + rad) + 'Q' + x0 + ',' + top + ' ' + (x0 + rad) + ',' + top + 'H' + (x0 + w - rad) + 'Q' + (x0 + w) + ',' + top + ' ' + (x0 + w) + ',' + (top + rad) + 'V' + y(0) + 'Z';
-          var full = r[1] >= 20;
-          var bar = el('path', { d: d, fill: full ? '#0000FF' : '#CCCCFF' }, svg);
-          if (mm === 1 || i === 0) el('text', { x: x0, y: H - 8 }, svg).textContent = MON[mm - 1] + ' ’' + String(yy).slice(2);
-          var hit = el('rect', { x: m.l + i * bw, y: m.t, width: bw, height: H - m.t - m.b, fill: 'transparent' }, svg);
-          hit.addEventListener('pointerenter', function () {
-            var rr = svg.getBoundingClientRect();
-            bar.setAttribute('fill-opacity', '0.8');
-            tip.innerHTML = '<b>' + MON[mm - 1] + ' ' + yy + '</b><br>' + fmt(r[2]) + ' steps/day' + (full ? '' : ' · ' + r[1] + ' days of data');
-            tip.style.left = (rr.left + window.scrollX + (x0 + w / 2) * rr.width / W) + 'px';
-            tip.style.top = (rr.top + window.scrollY + top * rr.height / H) + 'px';
-            tip.classList.add('on');
-          });
-          hit.addEventListener('pointerleave', function () { bar.removeAttribute('fill-opacity'); tip.classList.remove('on'); });
-        });
-      }
-      draw();
-      var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(draw, 120); });
 
       // ── Analytics ──
       function track(name, props) {
