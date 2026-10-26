@@ -71,6 +71,14 @@
     @media (max-width: 860px) { .am { grid-template-columns: 1fr 1fr; } .am-text { grid-column: 1 / -1; } }
     @media (max-width: 480px) { .am { grid-template-columns: 1fr; } }
 
+    /* Group study */
+    .grp-stats { margin-top: 28px; }
+    .split { margin-top: 28px; display: flex; height: 52px; border-radius: 14px; overflow: hidden; gap: 2px; }
+    .split div { display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; color: #fff; min-width: 0; }
+    .split-key { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 13px; color: var(--rich-grey); }
+    .split-key span { display: inline-flex; align-items: center; gap: 8px; }
+    .split-key i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+
     .cs-sec .cs-note { margin-top: 28px; font-size: 13px; }
 
     .final { position: relative; overflow: hidden; isolation: isolate; color: #fff; text-align: center; padding: clamp(72px, 10vw, 120px) 0; }
@@ -185,6 +193,36 @@
           <div class="q"><div class="q-track"><div class="q-bar" style="height:88.0%;"><div class="q-v num">7,298</div></div></div><div class="q-k">Aug – Oct</div></div>
         </div>
         <p class="cs-note">Based on daily step data from Nov 1, 2025 to Oct 25, 2026 for one member, anonymised before analysis. Unlock times are from the 152 days where the app recorded one. Results vary between people.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Group study -->
+  <section class="cs-sec" style="background:#fff;">
+    <div class="shell">
+      <div class="cs-col">
+        <span class="cs-eyebrow">Beyond one member</span>
+        <h2>Two in three long-term members walk more than a year ago.</h2>
+        <p>We ran the same check across 167 long-term members, comparing August to October 2025 with the same months in 2026.</p>
+
+        <div class="cs-stats grp-stats">
+          <div class="cs-stat"><div class="v num">66%</div><div class="l">Walk more than a year ago</div><div class="s">110 of 167 members</div></div>
+          <div class="cs-stat"><div class="v num">+18%</div><div class="l">Average daily steps</div><div class="s">6,707 → 7,881 steps a day</div></div>
+          <div class="cs-stat"><div class="v num">+24%</div><div class="l">More 10,000-step days</div><div class="s">18.7 → 23.1 per member</div></div>
+        </div>
+
+        <div class="split" role="img" aria-label="Of 167 members: 57 up 30% or more, 53 up by less than 30%, 57 flat or down">
+          <div style="flex:57; background:var(--electric-blue);">57</div>
+          <div style="flex:53; background:#7B5BFF;">53</div>
+          <div style="flex:57; background:#C9CAD3; color:var(--ink);">57</div>
+        </div>
+        <div class="split-key">
+          <span><i style="background:var(--electric-blue)"></i>Up 30% or more</span>
+          <span><i style="background:#7B5BFF"></i>Up, by less than 30%</span>
+          <span><i style="background:#C9CAD3"></i>Flat or down</span>
+        </div>
+
+        <p class="cs-note">Who is included: every member who started tracking steps before August 2025, is still active, and has at least 45 days of step data in August to October of both years. We did not pick the best results. Members who stopped using the app are not included. Comparing the same months removes seasonal effects. All data is anonymised.</p>
       </div>
     </div>
   </section>
