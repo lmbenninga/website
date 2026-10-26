@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Member Study — Social Limits for Employers</title>
-  <meta name="description" content="A 12-month study of 10 randomly selected long-term Social Limits members: 40% more steps a day from start to finish."/>
+  <meta name="description" content="A 12-month study of 10 randomly selected Social Limits members: 40% more steps a day and 4.4 hours a day with social media locked."/>
   <meta name="robots" content="noindex"/>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png"/>
   <link rel="icon" type="image/png" href="assets/favicon.png"/>
@@ -38,9 +38,9 @@
     .cs-back:hover { color: #fff; }
 
     /* Headline stats */
-    .cs-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(8,8,31,0.06); border-radius: 28px; overflow: hidden; }
+    .cs-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: rgba(8,8,31,0.06); border-radius: 28px; overflow: hidden; }
     .cs-stat { background: #fff; padding: clamp(26px, 3.5vw, 40px) 24px; display: flex; flex-direction: column; gap: 10px; }
-    .cs-stat .v { font-size: clamp(40px, 4.8vw, 60px); font-weight: 800; letter-spacing: -0.045em; line-height: 0.95;
+    .cs-stat .v { font-size: clamp(36px, 4.2vw, 50px); white-space: nowrap; font-weight: 800; letter-spacing: -0.045em; line-height: 0.95;
       background: linear-gradient(180deg, #0000FF 0%, #7B5BFF 120%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
     .cs-stat .l { font-size: 15px; font-weight: 600; line-height: 1.35; }
     .cs-stat .s { font-size: 13px; color: var(--rich-grey); line-height: 1.4; }
@@ -92,6 +92,7 @@
     .final { position: relative; overflow: hidden; isolation: isolate; color: #fff; text-align: center; padding: clamp(72px, 10vw, 120px) 0; }
     .final .shell { display: flex; flex-direction: column; align-items: center; gap: 20px; }
 
+    @media (max-width: 1000px) { .cs-stats { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 760px) {
       .cs-stats { grid-template-columns: 1fr; }
       .ba-row { grid-template-columns: 1fr; gap: 8px; }
@@ -143,7 +144,7 @@
         <a href="/employers" class="cs-back">← Back to employers</a><br/>
         <span class="chip chip-dark"><span class="dot" style="background:#7DFFA8;"></span>Member study · 10 members · 12 months</span>
         <h1>40% more steps a day, from start to finish.</h1>
-        <p class="lead">We randomly selected 10 long-term Social Limits members and followed them for a year. By the end they walked 40% more each day, hit their goals more often and reached for social media less.</p>
+        <p class="lead">We selected 10 long-term Social Limits members at random and followed them for a year. These are the benefits your employees can experience when they get access to the app.</p>
       </div>
     </div>
   </section>
@@ -156,6 +157,7 @@
           <div class="cs-stat"><div class="v num">+40%</div><div class="l">Average daily steps</div><div class="s">5,597 → 7,847 steps a day</div></div>
           <div class="cs-stat"><div class="v num">8 of 10</div><div class="l">Members walk more</div><div class="s">Than at the start of the year</div></div>
           <div class="cs-stat"><div class="v num">820k</div><div class="l">Extra steps per member a year</div><div class="s">2,250 more a day, at today's pace</div></div>
+          <div class="cs-stat"><div class="v num">4.4 hrs</div><div class="l">A day with social media locked</div><div class="s">About 30 hours a week free from social feeds</div></div>
         </div>
 
         <div class="ba" role="img" aria-label="Average steps per member per day: 5,597 at the start, August to October 2025, and 7,847 at the finish, August to October 2026">
@@ -179,7 +181,7 @@
         <div class="am-text">
           <span class="cs-eyebrow" style="color:#C4B5FF;">Walk first, scroll later</span>
           <h2>Better at keeping the habit.</h2>
-          <p>Social apps stay locked until the day's step goal is met. By the end of the year these members hit that goal more often and skipped the walk to unlock early far less.</p>
+          <p>Social apps stay locked until the day's step goal is met, which keeps feeds out of the way for hours of the working day. By the end of the year these members hit that goal more often and skipped the walk to unlock early far less.</p>
         </div>
         <div class="am-card"><div class="v num">95%</div><div class="l">of days the step goal was met, up from 77%</div></div>
         <div class="am-card"><div class="v num">−43%</div><div class="l">fewer early unlocks, from 9.9% to 5.6% of days</div></div>
@@ -244,7 +246,7 @@
           <span><i style="background:#C9CAD3"></i>Down</span>
         </div>
 
-        <p class="cs-note">About this study: 10 members were drawn at random from everyone who started using Social Limits before August 2025, is still active, and has at least 45 days of step data in August to October of both years. "Start" is August to October 2025 and "finish" is the same months in 2026, so seasons don't skew the comparison. With only 10 members, results are indicative and vary between people. All data is anonymised.</p>
+        <p class="cs-note">About this study: 10 members were drawn at random from everyone who started using Social Limits before August 2025, is still active, and has at least 45 days of step data in August to October of both years. "Start" is August to October 2025 and "finish" is the same months in 2026, so seasons don't skew the comparison. "Hours with social media locked" counts the time from 7am until the day's step goal was met, averaged over August to October 2026; days the goal was not met count as zero. It measures time apps were locked, not total screen time. With only 10 members, results are indicative and vary between people. All data is anonymised.</p>
       </div>
     </div>
   </section>
