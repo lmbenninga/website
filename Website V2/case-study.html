@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Case Study: 10 Users, 12 Months — Social Limits</title>
-  <meta name="description" content="A 12-month case study of 10 randomly selected Social Limits users: 40% more steps a day and up to 34 more productive hours a year."/>
+  <meta name="description" content="A 12-month case study of 10 randomly selected Social Limits users: 51% more steps a day, social media unlocked later in the day, and up to 34 more productive hours a year."/>
   <meta name="robots" content="noindex"/>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png"/>
   <link rel="icon" type="image/png" href="assets/favicon.png"/>
@@ -150,6 +150,33 @@
     .cs-more .cs-note { margin-top: 16px; }
     .cs-more .cs-note p + p { margin-top: 10px; }
 
+    /* Unlock timeline */
+    .tl { margin-top: 40px; display: flex; flex-direction: column; gap: 26px; }
+    .tl-row { display: grid; grid-template-columns: 200px 1fr; gap: 20px; align-items: center; }
+    .tl-k { font-size: 15px; font-weight: 700; }
+    .tl-k small { display: block; font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.6); margin-top: 2px; }
+    .tl-track { position: relative; height: 56px; border-radius: 14px; background: rgba(255,255,255,0.06); }
+    .tl-locked { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 14px 0 0 14px; background: repeating-linear-gradient(135deg, rgba(255,255,255,0.16) 0 8px, rgba(255,255,255,0.08) 8px 16px); display: flex; align-items: center; padding-left: 14px; }
+    .tl-locked span { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.75); white-space: nowrap; }
+    .tl-mark { position: absolute; top: -10px; bottom: -10px; width: 4px; margin-left: -2px; border-radius: 4px; background: #4D6BFF; box-shadow: 0 0 0 4px rgba(77,107,255,0.25), 0 0 24px rgba(77,107,255,0.8); }
+    .tl-mark b { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); background: #4D6BFF; color: #fff; font-size: 15px; font-weight: 800; padding: 6px 10px; border-radius: 10px; white-space: nowrap; }
+    .tl-axis { margin-top: -10px; }
+    .tl-ticks { position: relative; height: 18px; }
+    .tl-ticks span { position: absolute; transform: translateX(-50%); font-size: 12px; color: rgba(255,255,255,0.55); white-space: nowrap; }
+    .tl-ticks span:first-child { transform: none; }
+    .tl-ticks span:last-child { transform: translateX(-100%); }
+    .tl-key { margin-top: 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; font-size: 13px; color: rgba(255,255,255,0.7); }
+    .tl-key span { display: inline-flex; align-items: center; gap: 8px; }
+    .tl-key-locked { width: 16px; height: 12px; border-radius: 3px; background: repeating-linear-gradient(135deg, rgba(255,255,255,0.4) 0 3px, rgba(255,255,255,0.15) 3px 6px); }
+    .tl-key-mark { width: 4px; height: 14px; border-radius: 2px; background: #4D6BFF; box-shadow: 0 0 10px rgba(77,107,255,0.9); }
+    .tl-delta { margin-left: auto; background: rgba(125,255,168,0.14); color: #7DFFA8; font-weight: 800; font-size: 14px; padding: 6px 12px; border-radius: 999px; }
+    @media (max-width: 760px) {
+      .tl-row { grid-template-columns: 1fr; gap: 10px; }
+      .tl-axis .tl-k { display: none; }
+      .tl-ticks span:nth-child(even) { display: none; }
+      .tl-delta { margin-left: 0; }
+    }
+
     .cs-sec .cs-note { margin-top: 28px; font-size: 13px; }
 
     .final { position: relative; overflow: hidden; isolation: isolate; color: #fff; text-align: center; padding: clamp(72px, 10vw, 120px) 0; }
@@ -215,7 +242,7 @@
         <div class="cs-facts-strip">
           <div><b class="num">10</b><span>users, selected at random</span></div>
           <div><b class="num">12</b><span>months of data tracked</span></div>
-          <div><b class="num">+40%</b><span>more steps every day</span></div>
+          <div><b class="num">+51%</b><span>more steps every day</span></div>
         </div>
         <p class="lead">We selected 10 Social Limits users at random and tracked their data over a year. These are the benefits your employees can experience when they get access to the app.</p>
         <nav class="cs-steps" aria-label="Study sections">
@@ -234,32 +261,68 @@
         <span class="cs-eyebrow">Steps per day, month by month</span>
         <h2>More steps than a year before, every month.</h2>
         <p>Average steps per user per day, at the start of the year and after a year of Social Limits.</p>
-        <div class="qs mm" role="img" aria-label="Average steps per day. August: 5,102 at the start of the year, 8,287 after a year. September: 5,414 and 8,169. October: 6,379 and 6,782.">
+        <div class="qs mm" role="img" aria-label="Average steps per day. July: 5,092 at the start of the year, 6,783 after a year. August: 5,008 and 8,544. September: 5,218 and 7,878.">
           <div class="m">
             <div class="m-pair">
-              <div class="q-track"><div class="q-bar prev" style="height:54.2%;"><div class="q-v num">5,102</div></div></div>
-              <div class="q-track"><div class="q-bar" style="height:88%;"><div class="q-v num">8,287</div></div></div>
+              <div class="q-track"><div class="q-bar prev" style="height:52.4%;"><div class="q-v num">5,092</div></div></div>
+              <div class="q-track"><div class="q-bar" style="height:69.9%;"><div class="q-v num">6,783</div></div></div>
             </div>
-            <div class="q-k">Aug <b>+62%</b></div>
+            <div class="q-k">Jul <b>+33%</b></div>
           </div>
           <div class="m">
             <div class="m-pair">
-              <div class="q-track"><div class="q-bar prev" style="height:57.5%;"><div class="q-v num">5,414</div></div></div>
-              <div class="q-track"><div class="q-bar" style="height:86.7%;"><div class="q-v num">8,169</div></div></div>
+              <div class="q-track"><div class="q-bar prev" style="height:51.6%;"><div class="q-v num">5,008</div></div></div>
+              <div class="q-track"><div class="q-bar" style="height:88%;"><div class="q-v num">8,544</div></div></div>
+            </div>
+            <div class="q-k">Aug <b>+71%</b></div>
+          </div>
+          <div class="m">
+            <div class="m-pair">
+              <div class="q-track"><div class="q-bar prev" style="height:53.7%;"><div class="q-v num">5,218</div></div></div>
+              <div class="q-track"><div class="q-bar" style="height:81.1%;"><div class="q-v num">7,878</div></div></div>
             </div>
             <div class="q-k">Sep <b>+51%</b></div>
-          </div>
-          <div class="m">
-            <div class="m-pair">
-              <div class="q-track"><div class="q-bar prev" style="height:67.7%;"><div class="q-v num">6,379</div></div></div>
-              <div class="q-track"><div class="q-bar" style="height:72%;"><div class="q-v num">6,782</div></div></div>
-            </div>
-            <div class="q-k">Oct <b>+6%</b></div>
           </div>
         </div>
         <div class="split-key" style="margin-top:20px;">
           <span><i style="background:#C9CAD3"></i>Start of the year (2025)</span>
           <span><i style="background:var(--electric-blue)"></i>After a year of Social Limits (2026)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Unlock times -->
+  <section class="cs-sec" id="unlock" style="background:#08081F; color:#fff;">
+    <div class="shell">
+      <div class="cs-col">
+        <span class="cs-eyebrow" style="color:#C4B5FF;">When social media unlocked</span>
+        <h2 style="color:#fff;">Mornings stayed free of social feeds for longer.</h2>
+        <p style="color:rgba(255,255,255,0.72);">Social apps stay locked until the day's step goal is met. After a year, the typical unlock moved more than an hour later.</p>
+        <div class="tl" role="img" aria-label="Typical time social media unlocked: 10:09am at the start of the year, 11:28am after a year of Social Limits">
+          <div class="tl-row">
+            <div class="tl-k">Start of the year<small>Jul – Sep 2025</small></div>
+            <div class="tl-track">
+              <div class="tl-locked" style="width:30.3%;"><span>Locked</span></div>
+              <div class="tl-mark" style="left:30.3%;"><b>10:09am</b></div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-k">After a year of Social Limits<small>Jul – Sep 2026</small></div>
+            <div class="tl-track">
+              <div class="tl-locked" style="width:38.0%;"><span>Locked</span></div>
+              <div class="tl-mark" style="left:38.0%;"><b>11:28am</b></div>
+            </div>
+          </div>
+          <div class="tl-row tl-axis">
+            <div class="tl-k"></div>
+            <div class="tl-ticks"><span style="left:0%">5am</span><span style="left:17.6%">8am</span><span style="left:35.3%">11am</span><span style="left:52.9%">2pm</span><span style="left:70.6%">5pm</span><span style="left:88.2%">8pm</span><span style="left:100%">10pm</span></div>
+          </div>
+        </div>
+        <div class="tl-key">
+          <span><i class="tl-key-locked"></i>Social media locked</span>
+          <span><i class="tl-key-mark"></i>Typical unlock time</span>
+          <span class="tl-delta">+1 h 19 min later</span>
         </div>
       </div>
     </div>
@@ -283,14 +346,15 @@
         <span class="cs-eyebrow">02 · The outcomes</span>
         <h2>More steps. More productive hours.</h2>
         <div class="cs-stats two-up">
-          <div class="cs-stat"><div class="v num">+40%</div><div class="l">More steps every day</div></div>
+          <div class="cs-stat"><div class="v num">+51%</div><div class="l">More steps every day</div></div>
           <div class="cs-stat"><div class="v num">Up to 34 hrs</div><div class="l">More productive time a year, per employee<sup class="ref"><a href="#ref-1">1</a></sup></div></div>
         </div>
         <details class="cs-more">
           <summary>About this case study and sources</summary>
           <div class="cs-note">
-          <p><strong style="color:var(--ink);">About this case study.</strong> 10 users were drawn at random from everyone who started using Social Limits before August 2025, is still active, and has at least 45 days of step data in August to October of both years. "Start of the year" is August to October 2025 and "after a year" is the same months in 2026, so seasons don't skew the comparison. With only 10 users, results are indicative and vary between people. All data is anonymised.</p>
-          <p style="margin-top:10px;"><strong style="color:var(--ink);">How we estimate productive hours.</strong> The 2,250 extra steps a day equal about 22 minutes of brisk walking at roughly 100 steps a minute,<sup class="ref"><a href="#ref-2">2</a></sup> or 157 minutes a week, above the 150 minutes the WHO recommends.<sup class="ref"><a href="#ref-3">3</a></sup> RAND found that physically active workers lose 3.0 to 4.6 fewer working days a year to sick leave and reduced performance than inactive workers.<sup class="ref"><a href="#ref-1">1</a></sup> At 7.5 hours a day that is 23 to 34 hours. It applies in full to an employee who moves from inactive to active, and it is an estimate from published research, not a measurement of these users' work.</p>
+          <p><strong style="color:var(--ink);">About this case study.</strong> 10 users were drawn at random from everyone who started using Social Limits before August 2025, is still active, and has at least 45 days of step data in late summer of both years. We compare July to September 2025 with July to September 2026, the most recent three complete months, so seasons don't skew the comparison. One user has no step data for August 2026, so that month averages 9 users. With only 10 users, results are indicative and vary between people. All data is anonymised.</p>
+          <p><strong style="color:var(--ink);">Unlock times.</strong> The time social media unlocked is when the day's step goal was met, in each user's local time, on days the goal was met (523 days in 2025, 680 in 2026). "Typical" is the median. Days the goal wasn't met, when social media stayed locked, aren't included.</p>
+          <p style="margin-top:10px;"><strong style="color:var(--ink);">How we estimate productive hours.</strong> The 2,607 extra steps a day equal about 26 minutes of brisk walking at roughly 100 steps a minute,<sup class="ref"><a href="#ref-2">2</a></sup> or 182 minutes a week, above the 150 minutes the WHO recommends.<sup class="ref"><a href="#ref-3">3</a></sup> RAND found that physically active workers lose 3.0 to 4.6 fewer working days a year to sick leave and reduced performance than inactive workers.<sup class="ref"><a href="#ref-1">1</a></sup> At 7.5 hours a day that is 23 to 34 hours. It applies in full to an employee who moves from inactive to active, and it is an estimate from published research, not a measurement of these users' work.</p>
         </div>
         <ol class="refs">
           <li id="ref-1">Hafner M. et al., <em>The economic benefits of a more physically active population: An international analysis</em>, RAND Corporation RR-4291, 2019. <a href="https://www.rand.org/t/RR4291">rand.org/t/RR4291</a></li>
