@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>User Study — Social Limits for Employers</title>
-  <meta name="description" content="A 12-month study of 10 randomly selected Social Limits users: the challenge, the solution, and the outcomes, including 40% more steps a day."/>
+  <title>Case Study — Social Limits for Employers</title>
+  <meta name="description" content="A 12-month case study of 10 randomly selected Social Limits users: the challenge and the outcomes, including 40% more steps a day."/>
   <meta name="robots" content="noindex"/>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png"/>
   <link rel="icon" type="image/png" href="assets/favicon.png"/>
@@ -47,10 +47,11 @@
 
     /* Before / after */
     .ba { margin-top: 28px; display: flex; flex-direction: column; gap: 16px; }
-    .ba-row { display: grid; grid-template-columns: 150px 1fr; gap: 16px; align-items: center; }
+    .ba-row { display: grid; grid-template-columns: 190px 1fr; gap: 16px; align-items: center; }
     .ba-k { font-size: 15px; font-weight: 700; }
     .ba-k small { display: block; font-weight: 400; color: var(--rich-grey); font-size: 13px; }
     .ba-bar { height: 52px; border-radius: 0 14px 14px 0; background: var(--faded-blue); display: flex; align-items: center; justify-content: flex-end; padding-right: 16px; font-weight: 800; font-size: 20px; letter-spacing: -0.02em; color: var(--electric-blue); min-width: 96px; }
+    .ba-u { font-size: 14px; font-weight: 600; letter-spacing: 0; margin-left: 8px; opacity: .8; }
     .ba-bar.after { background: var(--electric-blue); color: #fff; box-shadow: 0 14px 28px -12px rgba(0,0,255,0.55); }
 
     /* Quarterly bars */
@@ -177,13 +178,12 @@
     <div class="shell">
       <div class="cs-col">
         <a href="/employers" class="cs-back">← Back to employers</a><br/>
-        <span class="chip chip-dark"><span class="dot" style="background:#7DFFA8;"></span>User study · 10 users · 12 months</span>
+        <span class="chip chip-dark"><span class="dot" style="background:#7DFFA8;"></span>Case study · 10 users · 12 months</span>
         <h1>40% more steps a day, from start to finish.</h1>
-        <p class="lead">We selected 10 long-term Social Limits users at random and followed them for a year. These are the benefits your employees can experience when they get access to the app.</p>
+        <p class="lead">We selected 10 Social Limits users at random and tracked their data over a year. These are the benefits your employees can experience when they get access to the app.</p>
         <nav class="cs-steps" aria-label="Study sections">
           <a href="#challenge"><b>01</b> The challenge</a>
-          <a href="#solution"><b>02</b> The solution</a>
-          <a href="#outcomes"><b>03</b> The outcomes</a>
+          <a href="#outcomes"><b>02</b> The outcomes</a>
         </nav>
       </div>
     </div>
@@ -213,31 +213,11 @@
     </div>
   </section>
 
-  <!-- 02 Solution -->
-  <section class="cs-sec" id="solution" style="background:#08081F; color:#fff;">
-    <div class="shell">
-      <div class="cs-col">
-        <div class="am-text">
-          <span class="cs-eyebrow" style="color:#C4B5FF;">02 · The solution</span>
-          <h2>Walk first, scroll later.</h2>
-          <p>Each user downloaded Social Limits and built it into their morning routine. Their social apps start every day locked and only open once they've walked.</p>
-        </div>
-        <div class="sol">
-          <div class="am-card"><div class="k">1 · Wake up</div><div class="l">Social apps are locked from the start of the day by default.</div></div>
-          <div class="am-card"><div class="k">2 · Move</div><div class="l">Each user sets their own daily step goal. Steps sync from the phone, nothing to log.</div></div>
-          <div class="am-card"><div class="k">3 · Unlock</div><div class="l">Hit the goal and social media opens again for the rest of the day.</div></div>
-          <div class="am-card"><div class="k">4 · Repeat</div><div class="l">Reminders help keep the habit going every day.</div></div>
-        </div>
-        <p class="sol-evidence">Why it works: in a randomised trial, limiting social media to 30 minutes a day significantly reduced loneliness and depression within three weeks.<sup class="ref"><a href="#ref-3">3</a></sup></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 03 Outcomes -->
+  <!-- 02 Outcomes -->
   <section class="cs-sec" id="outcomes" style="background:#fff;">
     <div class="shell">
       <div class="cs-col">
-        <span class="cs-eyebrow">03 · The outcomes</span>
+        <span class="cs-eyebrow">02 · The outcomes</span>
         <h2>More steps, more focus, less scrolling.</h2>
         <p>After a year, here's how these 10 users compared with where they started.</p>
         <div class="cs-stats grp-stats">
@@ -247,14 +227,14 @@
           <div class="cs-stat"><div class="v num">8 of 10</div><div class="l">Users walk more</div><div class="s">Than at the start of the year</div></div>
         </div>
 
-        <div class="ba" role="img" aria-label="Average steps per user per day: 5,597 at the start, August to October 2025, and 7,847 at the finish, August to October 2026">
+        <div class="ba" role="img" aria-label="Average steps per user per day: 5,597 at the start of the year, August to October 2025, and 7,847 after a year of Social Limits, August to October 2026">
           <div class="ba-row">
-            <div class="ba-k">Start<small>Aug – Oct 2025</small></div>
-            <div class="ba-bar num" style="width:71.3%;">5,597</div>
+            <div class="ba-k">Start of the year<small>Aug – Oct 2025</small></div>
+            <div class="ba-bar num" style="width:71.3%;">5,597<span class="ba-u">steps per day</span></div>
           </div>
           <div class="ba-row">
-            <div class="ba-k">Finish<small>Aug – Oct 2026</small></div>
-            <div class="ba-bar after num" style="width:100%;">7,847</div>
+            <div class="ba-k">After a year of Social Limits<small>Aug – Oct 2026</small></div>
+            <div class="ba-bar after num" style="width:100%;">7,847<span class="ba-u">steps per day</span></div>
           </div>
         </div>
       </div>
@@ -267,8 +247,8 @@
       <div class="cs-col">
         <span class="cs-eyebrow">Outcomes · Month by month</span>
         <h2>Higher than a year ago, every month.</h2>
-        <p>Average steps per user per day, same month at the start and at the finish.</p>
-        <div class="qs mm" role="img" aria-label="Average steps per day. August: 5,102 at the start, 8,287 at the finish. September: 5,414 and 8,169. October: 6,379 and 6,782.">
+        <p>Average steps per user per day, same month at the start of the year and after a year of Social Limits.</p>
+        <div class="qs mm" role="img" aria-label="Average steps per day. August: 5,102 at the start of the year, 8,287 after a year. September: 5,414 and 8,169. October: 6,379 and 6,782.">
           <div class="m">
             <div class="m-pair">
               <div class="q-track"><div class="q-bar prev" style="height:54.2%;"><div class="q-v num">5,102</div></div></div>
@@ -292,8 +272,8 @@
           </div>
         </div>
         <div class="split-key" style="margin-top:20px;">
-          <span><i style="background:#C9CAD3"></i>Start (2025)</span>
-          <span><i style="background:var(--electric-blue)"></i>Finish (2026)</span>
+          <span><i style="background:#C9CAD3"></i>Start of the year (2025)</span>
+          <span><i style="background:var(--electric-blue)"></i>After a year of Social Limits (2026)</span>
         </div>
       </div>
     </div>
@@ -310,17 +290,17 @@
           <div class="calc-step">
             <div class="k">1 · Extra walking</div>
             <div class="v num">22 min</div>
-            <p>a day. 2,250 extra steps at about 100 steps a minute, the pace of moderate-intensity walking.<sup class="ref"><a href="#ref-4">4</a></sup></p>
+            <p>a day. 2,250 extra steps at about 100 steps a minute, the pace of moderate-intensity walking.<sup class="ref"><a href="#ref-3">3</a></sup></p>
           </div>
           <div class="calc-step">
             <div class="k">2 · Weekly activity</div>
             <div class="v num">157 min</div>
-            <p>a week, above the 150 minutes of moderate activity the WHO recommends for adults.<sup class="ref"><a href="#ref-5">5</a></sup></p>
+            <p>a week, above the 150 minutes of moderate activity the WHO recommends for adults.<sup class="ref"><a href="#ref-4">4</a></sup></p>
           </div>
           <div class="calc-step res">
             <div class="k">3 · Productive time</div>
             <div class="v num">3–4.5 days</div>
-            <p>more productive time a year. RAND found active workers lose 3.0–4.6 fewer working days a year to sick leave and reduced performance than inactive workers.<sup class="ref"><a href="#ref-6">6</a></sup></p>
+            <p>more productive time a year. RAND found active workers lose 3.0–4.6 fewer working days a year to sick leave and reduced performance than inactive workers.<sup class="ref"><a href="#ref-5">5</a></sup></p>
           </div>
         </div>
         <div class="calc two">
@@ -345,7 +325,7 @@
       <div class="cs-col">
         <span class="cs-eyebrow">Outcomes · User by user</span>
         <h2>Half of them walk at least 30% more.</h2>
-        <p>Change in each user's average daily steps from start to finish. 10,000-step days also nearly doubled, from 15% to 28% of days.</p>
+        <p>Change in each user's average daily steps over the year. 10,000-step days also nearly doubled, from 15% to 28% of days.</p>
         <div class="split" role="img" aria-label="Of 10 users: 5 up 30% or more, 3 up by less than 30%, 2 down">
           <div style="flex:5; background:var(--electric-blue);">5</div>
           <div style="flex:3; background:#7B5BFF;">3</div>
@@ -357,15 +337,14 @@
           <span><i style="background:#C9CAD3"></i>Down</span>
         </div>
 
-        <p class="cs-note">About this study: 10 users were drawn at random from everyone who started using Social Limits before August 2025, is still active, and has at least 45 days of step data in August to October of both years. "Start" is August to October 2025 and "finish" is the same months in 2026, so seasons don't skew the comparison. "Hours with social media locked" counts the time from 7am until the day's step goal was met, averaged over August to October 2026; days the goal was not met count as zero. It measures time apps were locked, not total screen time. With only 10 users, results are indicative and vary between people. All data is anonymised. The 95% figure comes from the goal chosen at sign-up by the 520 currently active users who answered it ("Reduce my screen time" or "Both"); these 10 users joined before that question was added.</p>
+        <p class="cs-note">About this study: 10 users were drawn at random from everyone who started using Social Limits before August 2025, is still active, and has at least 45 days of step data in August to October of both years. "Start of the year" is August to October 2025 and "after a year" is the same months in 2026, so seasons don't skew the comparison. "Hours with social media locked" counts the time from 7am until the day's step goal was met, averaged over August to October 2026; days the goal was not met count as zero. It measures time apps were locked, not total screen time. With only 10 users, results are indicative and vary between people. All data is anonymised. The 95% figure comes from the goal chosen at sign-up by the 520 currently active users who answered it ("Reduce my screen time" or "Both"); these 10 users joined before that question was added.</p>
         <div class="cs-note" style="margin-top:24px; font-size:13px; color:var(--rich-grey);"><strong style="color:var(--ink);">How the productivity estimate is calculated.</strong> 2,250 extra steps a day ÷ 100 steps a minute ≈ 22 minutes; × 7 days ≈ 157 minutes a week. RAND's 3.0–4.6 days (0.44–0.86 days of absence plus 2.6–3.71 days of reduced performance) compares physically active with inactive workers, so it applies in full to an employee who moves from inactive to active. It is an estimate based on published research, not a measurement of these users' work. Focus hours: 4.4 hours a day × 230 working days.</div>
         <ol class="refs">
           <li id="ref-1">DataReportal / We Are Social / Meltwater, <em>Digital 2024: Global Overview Report</em>, 2024. <a href="https://datareportal.com/reports/digital-2024-global-overview-report">datareportal.com</a></li>
           <li id="ref-2">CareerBuilder / Harris Poll, survey of 2,186 hiring and HR managers and 3,031 workers (2016).</li>
-          <li id="ref-3">Hunt M.G. et al., "No more FOMO: Limiting social media decreases loneliness and depression", <em>Journal of Social and Clinical Psychology</em> 37(10), 2018.</li>
-          <li id="ref-4">Marshall S.J. et al., "Translating physical activity recommendations into a pedometer-based step goal: 3000 steps in 30 minutes", <em>American Journal of Preventive Medicine</em> 36(5), 2009.</li>
-          <li id="ref-5">World Health Organization, <em>Guidelines on physical activity and sedentary behaviour</em>, 2020.</li>
-          <li id="ref-6">Hafner M. et al., <em>The economic benefits of a more physically active population: An international analysis</em>, RAND Corporation RR-4291, 2019. <a href="https://www.rand.org/t/RR4291">rand.org/t/RR4291</a></li>
+          <li id="ref-3">Marshall S.J. et al., "Translating physical activity recommendations into a pedometer-based step goal: 3000 steps in 30 minutes", <em>American Journal of Preventive Medicine</em> 36(5), 2009.</li>
+          <li id="ref-4">World Health Organization, <em>Guidelines on physical activity and sedentary behaviour</em>, 2020.</li>
+          <li id="ref-5">Hafner M. et al., <em>The economic benefits of a more physically active population: An international analysis</em>, RAND Corporation RR-4291, 2019. <a href="https://www.rand.org/t/RR4291">rand.org/t/RR4291</a></li>
         </ol>
       </div>
     </div>
