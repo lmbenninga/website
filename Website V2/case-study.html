@@ -61,6 +61,16 @@
     .q-v { position: absolute; left: 0; right: 0; bottom: calc(100% + 8px); text-align: center; font-weight: 800; font-size: clamp(16px, 2vw, 22px); letter-spacing: -0.02em; color: var(--ink); }
     .q-k { text-align: center; font-size: 13px; font-weight: 600; color: var(--rich-grey); }
 
+    /* Morning routine */
+    .am { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 16px; align-items: stretch; }
+    .am-text h2 { color: #fff; }
+    .am-text p { color: rgba(255,255,255,0.72); }
+    .am-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 26px; display: flex; flex-direction: column; justify-content: flex-end; gap: 10px; }
+    .am-card .v { font-size: clamp(36px, 4vw, 52px); font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
+    .am-card .l { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.45; }
+    @media (max-width: 860px) { .am { grid-template-columns: 1fr 1fr; } .am-text { grid-column: 1 / -1; } }
+    @media (max-width: 480px) { .am { grid-template-columns: 1fr; } }
+
     .cs-sec .cs-note { margin-top: 28px; font-size: 13px; }
 
     .final { position: relative; overflow: hidden; isolation: isolate; color: #fff; text-align: center; padding: clamp(72px, 10vw, 120px) 0; }
@@ -146,6 +156,21 @@
     </div>
   </section>
 
+  <!-- Morning routine -->
+  <section class="cs-sec" style="background:#08081F; color:#fff;">
+    <div class="shell">
+      <div class="cs-col am">
+        <div class="am-text">
+          <span class="cs-eyebrow" style="color:#C4B5FF;">Morning routine</span>
+          <h2>Mornings start with a walk, not a feed.</h2>
+          <p>Social apps stay locked until the day's step goal is met. For this member that kept the morning and most of the working day free of social media.</p>
+        </div>
+        <div class="am-card"><div class="v num">6pm</div><div class="l">Typical time social apps were unlocked</div></div>
+        <div class="am-card"><div class="v num">4 in 5</div><div class="l">unlocks happened after midday</div></div>
+      </div>
+    </div>
+  </section>
+
   <!-- Quarterly -->
   <section class="cs-sec" style="background:var(--pale-grey);">
     <div class="shell">
@@ -159,7 +184,7 @@
           <div class="q"><div class="q-track"><div class="q-bar" style="height:84.9%;"><div class="q-v num">7,039</div></div></div><div class="q-k">May – Jul</div></div>
           <div class="q"><div class="q-track"><div class="q-bar" style="height:88.0%;"><div class="q-v num">7,298</div></div></div><div class="q-k">Aug – Oct</div></div>
         </div>
-        <p class="cs-note">Based on daily step data from Nov 1, 2025 to Oct 25, 2026 for one member, anonymised before analysis. Results vary between people.</p>
+        <p class="cs-note">Based on daily step data from Nov 1, 2025 to Oct 25, 2026 for one member, anonymised before analysis. Unlock times are from the 152 days where the app recorded one. Results vary between people.</p>
       </div>
     </div>
   </section>
