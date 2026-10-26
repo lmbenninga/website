@@ -177,6 +177,22 @@
       .tl-delta { margin-left: 0; }
     }
 
+    /* Research */
+    .rs-h { margin: 40px 0 14px; font-size: 13px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rich-grey); }
+    .rs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .rs-grid.two { grid-template-columns: repeat(2, 1fr); }
+    .rs-card { background: var(--pale-grey); border-radius: 22px; padding: 24px; display: flex; flex-direction: column; gap: 6px; }
+    .rs-card .v { font-size: clamp(32px, 3.4vw, 44px); font-weight: 800; letter-spacing: -0.04em; line-height: 1; background: linear-gradient(180deg, #0000FF 0%, #7B5BFF 120%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .rs-card .l { font-size: 15px; font-weight: 700; }
+    .rs-card p { font-size: 14px !important; line-height: 1.5 !important; margin-top: 4px !important; }
+    .rs-card .src { margin-top: auto; padding-top: 10px; font-size: 12px; font-weight: 600; color: var(--electric-blue); }
+    .rs-apply { margin-top: 40px; border-radius: 26px; padding: clamp(22px, 3vw, 34px); color: #fff; background: linear-gradient(160deg, #0A0AB8 0%, #1414DD 55%, #0606A0 100%); }
+    .rs-apply-k { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #C4C4FF; margin-bottom: 18px; }
+    .rs-apply-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .rs-apply-grid b { display: block; font-size: clamp(30px, 3.2vw, 42px); font-weight: 800; letter-spacing: -0.04em; line-height: 1; margin-bottom: 8px; }
+    .rs-apply-grid span { font-size: 14px; line-height: 1.5; color: rgba(255,255,255,0.82); }
+    @media (max-width: 900px) { .rs-grid, .rs-grid.two, .rs-apply-grid { grid-template-columns: 1fr; } }
+
     .cs-sec .cs-note { margin-top: 28px; font-size: 13px; }
 
     .final { position: relative; overflow: hidden; isolation: isolate; color: #fff; text-align: center; padding: clamp(72px, 10vw, 120px) 0; }
@@ -248,6 +264,7 @@
         <nav class="cs-steps" aria-label="Study sections">
           <a href="#challenge"><b>01</b> What are we addressing?</a>
           <a href="#outcomes"><b>02</b> The outcomes</a>
+          <a href="#research"><b>03</b> The research</a>
         </nav>
         <p class="cs-privacy"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>All figures come from real user data. Personal information has been removed to protect users' privacy.</p>
       </div>
@@ -353,6 +370,7 @@
           <summary>About this case study and sources</summary>
           <div class="cs-note">
           <p><strong style="color:var(--ink);">About this case study.</strong> 10 users were drawn at random from everyone who started using Social Limits before August 2025, is still active, and has at least 45 days of step data in late summer of both years. We compare July to September 2025 with July to September 2026, the most recent three complete months, so seasons don't skew the comparison. One user has no step data for August 2026, so that month averages 9 users. With only 10 users, results are indicative and vary between people. All data is anonymised.</p>
+          <p><strong style="color:var(--ink);">Research figures.</strong> The studies in "What the research says" are independent of Social Limits. Most are observational and show associations, not proof of cause; the Puig-Ribera study is a randomised trial. Applying their figures to these users is an estimate, not a measurement.</p>
           <p><strong style="color:var(--ink);">Unlock times.</strong> The time social media unlocked is when the day's step goal was met, in each user's local time, on days the goal was met (523 days in 2025, 680 in 2026). "Typical" is the median. Days the goal wasn't met, when social media stayed locked, aren't included.</p>
           <p style="margin-top:10px;"><strong style="color:var(--ink);">How we estimate productive hours.</strong> The 2,607 extra steps a day equal about 26 minutes of brisk walking at roughly 100 steps a minute,<sup class="ref"><a href="#ref-2">2</a></sup> or 182 minutes a week, above the 150 minutes the WHO recommends.<sup class="ref"><a href="#ref-3">3</a></sup> RAND found that physically active workers lose 3.0 to 4.6 fewer working days a year to sick leave and reduced performance than inactive workers.<sup class="ref"><a href="#ref-1">1</a></sup> At 7.5 hours a day that is 23 to 34 hours. It applies in full to an employee who moves from inactive to active, and it is an estimate from published research, not a measurement of these users' work.</p>
         </div>
@@ -360,8 +378,45 @@
           <li id="ref-1">Hafner M. et al., <em>The economic benefits of a more physically active population: An international analysis</em>, RAND Corporation RR-4291, 2019. <a href="https://www.rand.org/t/RR4291">rand.org/t/RR4291</a></li>
           <li id="ref-2">Marshall S.J. et al., "Translating physical activity recommendations into a pedometer-based step goal: 3000 steps in 30 minutes", <em>American Journal of Preventive Medicine</em> 36(5), 2009.</li>
           <li id="ref-3">World Health Organization, <em>Guidelines on physical activity and sedentary behaviour</em>, 2020.</li>
+          <li id="ref-4">Puig-Ribera A. et al., "Impact of a workplace 'sit less, move more' program on efficiency-related outcomes of office employees", <em>BMC Public Health</em> 17:455, 2017.</li>
+          <li id="ref-5">Chekroud S.R. et al., "Association between physical exercise and mental health in 1·2 million individuals in the USA between 2011 and 2015", <em>The Lancet Psychiatry</em> 5(9), 2018.</li>
+          <li id="ref-6">Bizzozero-Peroni B. et al., "Daily step count and depression in adults: a systematic review and meta-analysis", <em>JAMA Network Open</em> 7(12), 2024.</li>
+          <li id="ref-7">Ding D. et al., "Daily steps and health outcomes in adults: a systematic review and dose-response meta-analysis", <em>The Lancet Public Health</em> 10(8), 2025.</li>
         </ol>
         </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research -->
+  <section class="cs-sec" id="research" style="background:#fff;">
+    <div class="shell">
+      <div class="cs-col">
+        <span class="cs-eyebrow">03 · What the research says</span>
+        <h2>A more active workforce is a more productive one.</h2>
+        <p>Independent studies of workers and adults link moving more to more productive working time and better health. These are the headline numbers.</p>
+
+        <h3 class="rs-h">Productivity</h3>
+        <div class="rs-grid two">
+          <div class="rs-card"><div class="v num">3–4.6 days</div><div class="l">fewer working days lost a year</div><p>Physically active workers vs inactive workers: 0.44–0.86 fewer days off sick and 2.6–3.71 fewer days of reduced performance at work.<sup class="ref"><a href="#ref-1">1</a></sup></p><div class="src">RAND Europe, 2019</div></div>
+          <div class="rs-card"><div class="v num">2%</div><div class="l">less lost work productivity</div><p>Office workers on a 19-week "sit less, move more" programme lost 1.7–2.0 percentage points less productivity than a comparison group, in a randomised trial of 264 employees.<sup class="ref"><a href="#ref-4">4</a></sup></p><div class="src">Puig-Ribera et al., 2017</div></div>
+        </div>
+
+        <h3 class="rs-h">Mental health and wellbeing</h3>
+        <div class="rs-grid">
+          <div class="rs-card"><div class="v num">43%</div><div class="l">fewer poor mental health days</div><p>People who exercised reported 1.5 fewer days of poor mental health a month than matched non-exercisers, across 1.2 million US adults.<sup class="ref"><a href="#ref-5">5</a></sup></p><div class="src">Chekroud et al., 2018</div></div>
+          <div class="rs-card"><div class="v num">31%</div><div class="l">lower risk of depression</div><p>Adults walking 7,000+ steps a day vs fewer than 7,000. Each extra 1,000 steps a day was linked to a 9% lower risk.<sup class="ref"><a href="#ref-6">6</a></sup></p><div class="src">Bizzozero-Peroni et al., 2024</div></div>
+          <div class="rs-card"><div class="v num">47%</div><div class="l">lower risk of early death</div><p>7,000 vs 2,000 steps a day, along with a 25% lower risk of heart disease and 38% lower risk of dementia.<sup class="ref"><a href="#ref-7">7</a></sup></p><div class="src">Ding et al., 2025</div></div>
+        </div>
+
+        <div class="rs-apply">
+          <div class="rs-apply-k">What this means for Social Limits users</div>
+          <div class="rs-apply-grid">
+            <div><b class="num">7,706</b><span>steps a day on average after a year, past the 7,000-step level linked to a 31% lower risk of depression, up from 5,099.</span></div>
+            <div><b class="num">+2,607</b><span>steps a day. At 9% lower depression risk per extra 1,000 steps, that's a meaningful gain for mental health.</span></div>
+            <div><b class="num">29–35 hrs</b><span>a year per full-time employee if the 1.7–2.0% productivity gain from the workplace trial is applied to a 1,725-hour working year.</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
