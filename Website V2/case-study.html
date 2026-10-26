@@ -198,6 +198,13 @@
     @media (min-width: 901px) { .rs-t, .rs-at { min-height: 2.4em; } }
     .rs-at { margin: 0 0 10px; font-size: clamp(17px, 1.5vw, 20px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; color: #fff; }
 
+    .tl-gain { position: absolute; top: 0; bottom: 0; background: linear-gradient(90deg, rgba(46,204,113,0.85), rgba(125,255,168,0.9)); box-shadow: 0 0 22px rgba(125,255,168,0.45); }
+    .tl-ghost { position: absolute; top: 6px; bottom: 6px; width: 0; border-left: 2px dashed rgba(255,255,255,0.55); margin-left: -1px; }
+    .tl-gain-label { position: absolute; top: calc(100% + 10px); height: 10px; border: 2px solid #7DFFA8; border-top: 0; border-radius: 0 0 6px 6px; }
+    .tl-gain-label span { position: absolute; top: 14px; left: 0; white-space: nowrap; font-size: 15px; font-weight: 800; color: #7DFFA8; }
+    .tl-row-after { margin-bottom: 42px; }
+    .tl-key-gain { width: 16px; height: 12px; border-radius: 3px; background: #7DFFA8; box-shadow: 0 0 10px rgba(125,255,168,0.7); }
+
     .cs-sec .cs-note { margin-top: 28px; font-size: 13px; }
 
     .final { position: relative; overflow: hidden; isolation: isolate; color: #fff; text-align: center; padding: clamp(72px, 10vw, 120px) 0; }
@@ -328,11 +335,14 @@
               <div class="tl-mark" style="left:30.3%;"><b>10:09am</b></div>
             </div>
           </div>
-          <div class="tl-row">
+          <div class="tl-row tl-row-after">
             <div class="tl-k">After a year of Social Limits<small>Jul – Sep 2026</small></div>
             <div class="tl-track">
               <div class="tl-locked" style="width:38.0%;"><span>Locked</span></div>
+              <div class="tl-gain" style="left:30.3%; width:7.7%;"></div>
+              <div class="tl-ghost" style="left:30.3%;"></div>
               <div class="tl-mark" style="left:38.0%;"><b>11:28am</b></div>
+              <div class="tl-gain-label" style="left:30.3%; width:7.7%;"><span>+1 h 19 min later →</span></div>
             </div>
           </div>
           <div class="tl-row tl-axis">
@@ -343,7 +353,7 @@
         <div class="tl-key">
           <span><i class="tl-key-locked"></i>Social media locked</span>
           <span><i class="tl-key-mark"></i>Typical unlock time</span>
-          <span class="tl-delta">+1 h 19 min later</span>
+          <span><i class="tl-key-gain"></i>Extra time with social media locked, every day</span>
         </div>
       </div>
     </div>
