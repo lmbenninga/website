@@ -142,6 +142,14 @@
     .cs-h3 { margin: 48px 0 6px; font-size: clamp(20px, 2vw, 26px); font-weight: 800; letter-spacing: -0.02em; }
     .cs-note p { margin: 0; font-size: 13px; line-height: 1.6; color: var(--rich-grey); max-width: 920px; }
 
+    .cs-more { margin-top: 36px; border-top: 1px solid rgba(8,8,31,0.1); padding-top: 18px; }
+    .cs-more summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: var(--electric-blue); }
+    .cs-more summary::-webkit-details-marker { display: none; }
+    .cs-more summary::after { content: '+'; font-size: 18px; }
+    .cs-more[open] summary::after { content: '–'; }
+    .cs-more .cs-note { margin-top: 16px; }
+    .cs-more .cs-note p + p { margin-top: 10px; }
+
     .cs-sec .cs-note { margin-top: 28px; font-size: 13px; }
 
     .final { position: relative; overflow: hidden; isolation: isolate; color: #fff; text-align: center; padding: clamp(72px, 10vw, 120px) 0; }
@@ -219,29 +227,12 @@
     </div>
   </section>
 
-  <!-- 01 Challenge -->
-  <section class="cs-sec" id="challenge" style="background:#fff;">
+  <!-- Graph -->
+  <section class="cs-sec" id="graph" style="background:var(--pale-grey);">
     <div class="shell">
       <div class="cs-col">
-        <span class="cs-eyebrow">01 · What are we addressing?</span>
-        <h2>Too much screen, too little focus, too little movement.</h2>
-        <p>Hours a day go to social feeds, attention keeps breaking, and most of the day is spent sitting still. Employers report losing more than two hours of productivity per employee every day to distractions, with phones the biggest cause.<sup class="ref"><a href="#ref-1">1</a></sup></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 02 Outcomes -->
-  <section class="cs-sec" id="outcomes" style="background:var(--pale-grey);">
-    <div class="shell">
-      <div class="cs-col">
-        <span class="cs-eyebrow">02 · The outcomes</span>
-        <h2>More steps. More productive hours.</h2>
-        <div class="cs-stats two-up">
-          <div class="cs-stat"><div class="v num">+40%</div><div class="l">More steps every day</div><div class="s">Average across the 10 users, after a year of Social Limits</div></div>
-          <div class="cs-stat"><div class="v num">Up to 34 hrs</div><div class="l">More productive time a year</div><div class="s">Per employee, from fewer working days lost<sup class="ref"><a href="#ref-2">2</a></sup></div></div>
-        </div>
-
-        <h3 class="cs-h3">Steps per day, month by month</h3>
+        <span class="cs-eyebrow">Steps per day, month by month</span>
+        <h2>More steps than a year before, every month.</h2>
         <p>Average steps per user per day, at the start of the year and after a year of Social Limits.</p>
         <div class="qs mm" role="img" aria-label="Average steps per day. August: 5,102 at the start of the year, 8,287 after a year. September: 5,414 and 8,169. October: 6,379 and 6,782.">
           <div class="m">
@@ -270,17 +261,43 @@
           <span><i style="background:#C9CAD3"></i>Start of the year (2025)</span>
           <span><i style="background:var(--electric-blue)"></i>After a year of Social Limits (2026)</span>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="cs-note" style="margin-top:40px;">
+  <!-- 01 Challenge -->
+  <section class="cs-sec" id="challenge" style="background:#fff;">
+    <div class="shell">
+      <div class="cs-col">
+        <span class="cs-eyebrow">01 · What are we addressing?</span>
+        <h2>Too much screen, too little focus, too little movement.</h2>
+        <p>Social feeds take hours out of the day, attention keeps breaking, and most of the day is spent sitting still. For employers, that shows up as lost focus and lost productivity.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 Outcomes -->
+  <section class="cs-sec" id="outcomes" style="background:var(--pale-grey);">
+    <div class="shell">
+      <div class="cs-col">
+        <span class="cs-eyebrow">02 · The outcomes</span>
+        <h2>More steps. More productive hours.</h2>
+        <div class="cs-stats two-up">
+          <div class="cs-stat"><div class="v num">+40%</div><div class="l">More steps every day</div></div>
+          <div class="cs-stat"><div class="v num">Up to 34 hrs</div><div class="l">More productive time a year, per employee<sup class="ref"><a href="#ref-1">1</a></sup></div></div>
+        </div>
+        <details class="cs-more">
+          <summary>About this case study and sources</summary>
+          <div class="cs-note">
           <p><strong style="color:var(--ink);">About this case study.</strong> 10 users were drawn at random from everyone who started using Social Limits before August 2025, is still active, and has at least 45 days of step data in August to October of both years. "Start of the year" is August to October 2025 and "after a year" is the same months in 2026, so seasons don't skew the comparison. With only 10 users, results are indicative and vary between people. All data is anonymised.</p>
-          <p style="margin-top:10px;"><strong style="color:var(--ink);">How we estimate productive hours.</strong> The 2,250 extra steps a day equal about 22 minutes of brisk walking at roughly 100 steps a minute,<sup class="ref"><a href="#ref-3">3</a></sup> or 157 minutes a week, above the 150 minutes the WHO recommends.<sup class="ref"><a href="#ref-4">4</a></sup> RAND found that physically active workers lose 3.0 to 4.6 fewer working days a year to sick leave and reduced performance than inactive workers.<sup class="ref"><a href="#ref-2">2</a></sup> At 7.5 hours a day that is 23 to 34 hours. It applies in full to an employee who moves from inactive to active, and it is an estimate from published research, not a measurement of these users' work.</p>
+          <p style="margin-top:10px;"><strong style="color:var(--ink);">How we estimate productive hours.</strong> The 2,250 extra steps a day equal about 22 minutes of brisk walking at roughly 100 steps a minute,<sup class="ref"><a href="#ref-2">2</a></sup> or 157 minutes a week, above the 150 minutes the WHO recommends.<sup class="ref"><a href="#ref-3">3</a></sup> RAND found that physically active workers lose 3.0 to 4.6 fewer working days a year to sick leave and reduced performance than inactive workers.<sup class="ref"><a href="#ref-1">1</a></sup> At 7.5 hours a day that is 23 to 34 hours. It applies in full to an employee who moves from inactive to active, and it is an estimate from published research, not a measurement of these users' work.</p>
         </div>
         <ol class="refs">
-          <li id="ref-1">CareerBuilder / Harris Poll, survey of 2,186 hiring and HR managers and 3,031 workers (2016).</li>
-          <li id="ref-2">Hafner M. et al., <em>The economic benefits of a more physically active population: An international analysis</em>, RAND Corporation RR-4291, 2019. <a href="https://www.rand.org/t/RR4291">rand.org/t/RR4291</a></li>
-          <li id="ref-3">Marshall S.J. et al., "Translating physical activity recommendations into a pedometer-based step goal: 3000 steps in 30 minutes", <em>American Journal of Preventive Medicine</em> 36(5), 2009.</li>
-          <li id="ref-4">World Health Organization, <em>Guidelines on physical activity and sedentary behaviour</em>, 2020.</li>
+          <li id="ref-1">Hafner M. et al., <em>The economic benefits of a more physically active population: An international analysis</em>, RAND Corporation RR-4291, 2019. <a href="https://www.rand.org/t/RR4291">rand.org/t/RR4291</a></li>
+          <li id="ref-2">Marshall S.J. et al., "Translating physical activity recommendations into a pedometer-based step goal: 3000 steps in 30 minutes", <em>American Journal of Preventive Medicine</em> 36(5), 2009.</li>
+          <li id="ref-3">World Health Organization, <em>Guidelines on physical activity and sedentary behaviour</em>, 2020.</li>
         </ol>
+        </details>
       </div>
     </div>
   </section>
@@ -323,6 +340,11 @@
         drawer.querySelectorAll('[data-nav-close]').forEach(function (el) { el.addEventListener('click', function () { setOpen(false); }); });
         document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && drawer.getAttribute('data-open') === 'true') setOpen(false); });
       }
+
+      // ── Reference links open the collapsed sources ──
+      document.querySelectorAll('a[href^="#ref-"]').forEach(function (el) {
+        el.addEventListener('click', function () { var d = document.querySelector('.cs-more'); if (d) d.open = true; });
+      });
 
       // ── Analytics ──
       function track(name, props) {
