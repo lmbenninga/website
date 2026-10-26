@@ -29,12 +29,12 @@
     .cs-hero .shell, .cs-sec .shell, .cs-quote .shell, .final .shell, footer .shell { max-width: 1440px; }
     .cs-sec { padding: clamp(56px, 8vw, 88px) 0; }
     .cs-sec h2 { font-weight: 800; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.05; letter-spacing: -0.03em; margin: 12px 0 12px; text-wrap: balance; }
-    .cs-sec p { margin: 0; font-size: 16px; line-height: 1.6; color: var(--rich-grey); max-width: 720px; }
+    .cs-sec p { margin: 0; font-size: 16px; line-height: 1.6; color: var(--rich-grey); max-width: 880px; }
 
     /* Hero */
     .cs-hero { position: relative; color: #fff; overflow: hidden; isolation: isolate; padding: clamp(130px, 16vw, 170px) 0 clamp(56px, 8vw, 88px); }
-    .cs-hero h1 { font-weight: 800; font-size: clamp(40px, 6vw, 76px); line-height: 0.98; letter-spacing: -0.04em; margin: 20px 0 18px; max-width: 20ch; text-wrap: balance; }
-    .cs-hero p.lead { font-size: clamp(16px, 1.3vw, 19px); line-height: 1.55; color: rgba(255,255,255,0.84); max-width: 640px; margin: 0; }
+    .cs-hero h1 { font-weight: 800; font-size: clamp(40px, 6vw, 76px); line-height: 0.98; letter-spacing: -0.04em; margin: 20px 0 18px; max-width: 26ch; text-wrap: balance; }
+    .cs-hero p.lead { font-size: clamp(16px, 1.3vw, 19px); line-height: 1.55; color: rgba(255,255,255,0.84); max-width: 780px; margin: 0; }
     .cs-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); margin-bottom: 18px; }
     .cs-back:hover { color: #fff; }
 
@@ -207,24 +207,9 @@
 
     /* Quote */
     .cs-quote { background: #fff; padding: clamp(56px, 8vw, 96px) 0 0; }
-    .cs-quote figure { margin: 0; max-width: 980px; position: relative; padding-left: clamp(28px, 4vw, 56px); border-left: 4px solid var(--electric-blue); }
+    .cs-quote figure { margin: 0; max-width: 1120px; position: relative; padding-left: clamp(28px, 4vw, 56px); border-left: 4px solid var(--electric-blue); }
     .cs-quote blockquote { margin: 0; font-size: clamp(24px, 2.8vw, 38px); font-weight: 700; line-height: 1.25; letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
     .cs-quote figcaption { margin-top: 18px; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rich-grey); }
-
-    /* ── Centred layout ── */
-    .cs-hero .cs-col { display: flex; flex-direction: column; align-items: center; text-align: center; }
-    .cs-hero h1, .cs-hero p.lead { margin-left: auto; margin-right: auto; }
-    .cs-facts-strip { margin-left: auto; margin-right: auto; }
-    .cs-steps, .cs-privacy { justify-content: center; }
-    .cs-back { align-self: center; }
-    .cs-sec .cs-col > .cs-eyebrow, .cs-sec .cs-col > h2, .cs-sec .cs-col > p { display: block; text-align: center; margin-left: auto; margin-right: auto; }
-    .cs-sec .cs-col > h2 { max-width: 22ch; }
-    .split-key, .tl-key { justify-content: center; }
-    .rs-h { text-align: center; }
-    .rs-apply-k { text-align: center; }
-    .cs-quote figure { margin: 0 auto; padding: 0; border-left: 0; text-align: center; }
-    .cs-quote figure::before { content: ''; display: block; width: 56px; height: 4px; border-radius: 4px; background: var(--electric-blue); margin: 0 auto 24px; }
-    .cs-more summary { justify-content: center; }
 
     .cs-sec .cs-note { margin-top: 28px; font-size: 13px; }
 
