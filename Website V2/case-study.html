@@ -87,6 +87,22 @@
     .mm .q-v { font-size: clamp(12px, 1.6vw, 18px); }
     .q-k b { color: var(--electric-blue); font-weight: 800; margin-left: 4px; }
 
+    /* Productivity calc */
+    .calc { margin-top: 28px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .calc-step { background: var(--pale-grey); border-radius: 22px; padding: 24px; display: flex; flex-direction: column; gap: 8px; }
+    .calc-step .k { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--electric-blue); }
+    .calc-step .v { font-size: clamp(30px, 3.4vw, 42px); font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
+    .calc-step p { font-size: 14px !important; line-height: 1.5 !important; }
+    .calc-step.res { background: linear-gradient(160deg, #0A0AB8 0%, #1414DD 55%, #0606A0 100%); color: #fff; }
+    .calc-step.res .k { color: #C4C4FF; }
+    .calc-step.res p { color: rgba(255,255,255,0.8) !important; }
+    sup.ref { font-size: 0.6em; font-weight: 700; margin-left: 2px; color: inherit; opacity: .8; }
+    sup.ref a { color: inherit; }
+    .refs { margin: 16px 0 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 13px; line-height: 1.5; color: var(--rich-grey); max-width: 760px; }
+    .refs a { color: var(--electric-blue); text-decoration: underline; word-break: break-word; }
+    .calc.two { grid-template-columns: 1fr 1fr; margin-top: 16px; }
+    @media (max-width: 860px) { .calc, .calc.two { grid-template-columns: 1fr; } }
+
     .cs-sec .cs-note { margin-top: 28px; font-size: 13px; }
 
     .final { position: relative; overflow: hidden; isolation: isolate; color: #fff; text-align: center; padding: clamp(72px, 10vw, 120px) 0; }
@@ -189,6 +205,46 @@
     </div>
   </section>
 
+  <!-- Productivity -->
+  <section class="cs-sec" style="background:#fff;">
+    <div class="shell">
+      <div class="cs-col">
+        <span class="cs-eyebrow">The productivity case</span>
+        <h2>What the extra movement is worth at work.</h2>
+        <p>Employers report losing 2+ hours a day per employee to distractions, with phones the biggest cause.<sup class="ref"><a href="#ref-1">1</a></sup> Research links regular activity to fewer lost working days. Here is how the change in these members' walking translates.</p>
+        <div class="calc">
+          <div class="calc-step">
+            <div class="k">1 · Extra walking</div>
+            <div class="v num">22 min</div>
+            <p>a day. 2,250 extra steps at about 100 steps a minute, the pace of moderate-intensity walking.<sup class="ref"><a href="#ref-2">2</a></sup></p>
+          </div>
+          <div class="calc-step">
+            <div class="k">2 · Weekly activity</div>
+            <div class="v num">157 min</div>
+            <p>a week, above the 150 minutes of moderate activity the WHO recommends for adults.<sup class="ref"><a href="#ref-3">3</a></sup></p>
+          </div>
+          <div class="calc-step res">
+            <div class="k">3 · Productive time</div>
+            <div class="v num">3–4.5 days</div>
+            <p>more productive time a year. RAND found active workers lose 3.0–4.6 fewer working days a year to sick leave and reduced performance than inactive workers.<sup class="ref"><a href="#ref-4">4</a></sup></p>
+          </div>
+        </div>
+        <div class="calc two">
+          <div class="calc-step">
+            <div class="k">Focus</div>
+            <div class="v num">1,000 hrs</div>
+            <p>a year with social media locked across 230 working days: 4.4 hours a day, from 7am until the step goal is met.</p>
+          </div>
+          <div class="calc-step">
+            <div class="k">Attention</div>
+            <div class="v num">47 sec</div>
+            <p>is how long people now stay on one screen before switching, down from 2.5 minutes in 2004.<sup class="ref"><a href="#ref-5">5</a></sup> Fewer feeds within reach means fewer switches.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Month by month -->
   <section class="cs-sec" style="background:var(--pale-grey);">
     <div class="shell">
@@ -247,6 +303,14 @@
         </div>
 
         <p class="cs-note">About this study: 10 members were drawn at random from everyone who started using Social Limits before August 2025, is still active, and has at least 45 days of step data in August to October of both years. "Start" is August to October 2025 and "finish" is the same months in 2026, so seasons don't skew the comparison. "Hours with social media locked" counts the time from 7am until the day's step goal was met, averaged over August to October 2026; days the goal was not met count as zero. It measures time apps were locked, not total screen time. With only 10 members, results are indicative and vary between people. All data is anonymised.</p>
+        <div class="cs-note" style="margin-top:24px; font-size:13px; color:var(--rich-grey);"><strong style="color:var(--ink);">How the productivity estimate is calculated.</strong> 2,250 extra steps a day ÷ 100 steps a minute ≈ 22 minutes; × 7 days ≈ 157 minutes a week. RAND's 3.0–4.6 days (0.44–0.86 days of absence plus 2.6–3.71 days of reduced performance) compares physically active with inactive workers, so it applies in full to an employee who moves from inactive to active. It is an estimate based on published research, not a measurement of these members' work. Focus hours: 4.4 hours a day × 230 working days.</div>
+        <ol class="refs">
+          <li id="ref-1">CareerBuilder / Harris Poll, survey of 2,186 hiring and HR managers and 3,031 workers (2016).</li>
+          <li id="ref-2">Marshall S.J. et al., "Translating physical activity recommendations into a pedometer-based step goal: 3000 steps in 30 minutes", <em>American Journal of Preventive Medicine</em> 36(5), 2009.</li>
+          <li id="ref-3">World Health Organization, <em>Guidelines on physical activity and sedentary behaviour</em>, 2020.</li>
+          <li id="ref-4">Hafner M. et al., <em>The economic benefits of a more physically active population: An international analysis</em>, RAND Corporation RR-4291, 2019. <a href="https://www.rand.org/t/RR4291">rand.org/t/RR4291</a></li>
+          <li id="ref-5">Gloria Mark, <em>Attention Span</em>, Hanover Square Press, 2023.</li>
+        </ol>
       </div>
     </div>
   </section>
