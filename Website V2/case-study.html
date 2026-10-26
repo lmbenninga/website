@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Case Study: 10 Users, 12 Months — Social Limits</title>
-  <meta name="description" content="A 12-month case study of 10 randomly selected Social Limits users: what we set out to address and the outcomes, including 40% more steps a day."/>
+  <meta name="description" content="A 12-month case study of 10 randomly selected Social Limits users: 40% more steps a day and up to 34 more productive hours a year."/>
   <meta name="robots" content="noindex"/>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png"/>
   <link rel="icon" type="image/png" href="assets/favicon.png"/>
@@ -25,15 +25,16 @@
   <style>
     .cs-eyebrow { font-weight: 600; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--electric-blue); }
     .num { font-variant-numeric: tabular-nums; }
-    .cs-col { max-width: 880px; margin: 0 auto; }
+    .cs-col { max-width: 100%; margin: 0 auto; }
+    .cs-hero .shell, .cs-sec .shell, .final .shell { max-width: 1440px; }
     .cs-sec { padding: clamp(56px, 8vw, 88px) 0; }
     .cs-sec h2 { font-weight: 800; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.05; letter-spacing: -0.03em; margin: 12px 0 12px; text-wrap: balance; }
-    .cs-sec p { margin: 0; font-size: 16px; line-height: 1.6; color: var(--rich-grey); max-width: 620px; }
+    .cs-sec p { margin: 0; font-size: 16px; line-height: 1.6; color: var(--rich-grey); max-width: 720px; }
 
     /* Hero */
     .cs-hero { position: relative; color: #fff; overflow: hidden; isolation: isolate; padding: clamp(130px, 16vw, 170px) 0 clamp(56px, 8vw, 88px); }
     .cs-hero h1 { font-weight: 800; font-size: clamp(40px, 6vw, 76px); line-height: 0.98; letter-spacing: -0.04em; margin: 20px 0 18px; max-width: 20ch; text-wrap: balance; }
-    .cs-hero p.lead { font-size: clamp(16px, 1.3vw, 19px); line-height: 1.55; color: rgba(255,255,255,0.84); max-width: 560px; margin: 0; }
+    .cs-hero p.lead { font-size: clamp(16px, 1.3vw, 19px); line-height: 1.55; color: rgba(255,255,255,0.84); max-width: 640px; margin: 0; }
     .cs-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); margin-bottom: 18px; }
     .cs-back:hover { color: #fff; }
 
@@ -100,7 +101,7 @@
     .calc-step.res p { color: rgba(255,255,255,0.8) !important; }
     sup.ref { font-size: 0.6em; font-weight: 700; margin-left: 2px; color: inherit; opacity: .8; }
     sup.ref a { color: inherit; }
-    .refs { margin: 16px 0 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 13px; line-height: 1.5; color: var(--rich-grey); max-width: 760px; }
+    .refs { margin: 16px 0 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 13px; line-height: 1.5; color: var(--rich-grey); max-width: 920px; }
     .refs a { color: var(--electric-blue); text-decoration: underline; word-break: break-word; }
     .calc.two { grid-template-columns: 1fr 1fr; margin-top: 16px; }
     @media (max-width: 860px) { .calc, .calc.two { grid-template-columns: 1fr; } }
@@ -136,14 +137,24 @@
     .cs-privacy { display: flex; align-items: flex-start; gap: 8px; margin: 22px 0 0; font-size: 13px; color: rgba(255,255,255,0.7); }
     .cs-privacy svg { flex-shrink: 0; margin-top: 3px; }
 
+    .cs-stats.two-up { grid-template-columns: 1fr 1fr; margin-top: 28px; }
+    .cs-stats.two-up .v { font-size: clamp(44px, 6vw, 72px); }
+    .cs-h3 { margin: 48px 0 6px; font-size: clamp(20px, 2vw, 26px); font-weight: 800; letter-spacing: -0.02em; }
+    .cs-note p { margin: 0; font-size: 13px; line-height: 1.6; color: var(--rich-grey); max-width: 920px; }
+
     .cs-sec .cs-note { margin-top: 28px; font-size: 13px; }
 
     .final { position: relative; overflow: hidden; isolation: isolate; color: #fff; text-align: center; padding: clamp(72px, 10vw, 120px) 0; }
     .final .shell { display: flex; flex-direction: column; align-items: center; gap: 20px; }
 
     @media (max-width: 1000px) { .cs-stats { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1400px) {
+      .cs-sec p { font-size: 17px; }
+      .qs { height: 360px; }
+      .cs-hero h1 { font-size: 84px; }
+    }
     @media (max-width: 760px) {
-      .cs-stats, .cs-stats.three { grid-template-columns: 1fr; }
+      .cs-stats, .cs-stats.three, .cs-stats.two-up { grid-template-columns: 1fr; }
       .ba-row { grid-template-columns: 1fr; gap: 8px; }
       .qs { height: 240px; }
     }
@@ -214,59 +225,24 @@
       <div class="cs-col">
         <span class="cs-eyebrow">01 · What are we addressing?</span>
         <h2>Too much screen, too little focus, too little movement.</h2>
-        <p>Before Social Limits, the picture for most people looks the same: hours a day on social feeds, attention that keeps breaking, and days spent sitting still. It's why people come to us.</p>
-        <div class="cs-stats grp-stats three">
-          <div class="cs-stat"><div class="v num">2h 23m</div><div class="l">A day on social media</div><div class="s">For the typical social media user<sup class="ref"><a href="#ref-1">1</a></sup></div></div>
-          <div class="cs-stat"><div class="v num">2+ hrs</div><div class="l">Of productivity lost a day</div><div class="s">To distractions, with phones the biggest cause<sup class="ref"><a href="#ref-2">2</a></sup></div></div>
-          <div class="cs-stat"><div class="v num">95%</div><div class="l">Of users want less screen time</div><div class="s">From the goal they chose when signing up</div></div>
-        </div>
-        <div class="start-box">
-          <div class="start-k">Where these 10 users started</div>
-          <div class="start-row">
-            <div><b class="num">5,597</b><span>steps a day on average</span></div>
-            <div><b class="num">15%</b><span>of days reached 10,000 steps</span></div>
-            <div><b class="num">77%</b><span>of days they hit their step goal</span></div>
-          </div>
-        </div>
+        <p>Hours a day go to social feeds, attention keeps breaking, and most of the day is spent sitting still. Employers report losing more than two hours of productivity per employee every day to distractions, with phones the biggest cause.<sup class="ref"><a href="#ref-1">1</a></sup></p>
       </div>
     </div>
   </section>
 
   <!-- 02 Outcomes -->
-  <section class="cs-sec" id="outcomes" style="background:#fff;">
+  <section class="cs-sec" id="outcomes" style="background:var(--pale-grey);">
     <div class="shell">
       <div class="cs-col">
         <span class="cs-eyebrow">02 · The outcomes</span>
-        <h2>More steps, more focus, less scrolling.</h2>
-        <p>After a year, here's how these 10 users compared with where they started.</p>
-        <div class="cs-stats grp-stats">
-          <div class="cs-stat"><div class="v num">+40%</div><div class="l">Average daily steps</div><div class="s">5,597 → 7,847 steps a day</div></div>
-          <div class="cs-stat"><div class="v num">4.4 hrs</div><div class="l">A day with social media locked</div><div class="s">About 30 hours a week free from social feeds</div></div>
-          <div class="cs-stat"><div class="v num">95%</div><div class="l">Of days goal met</div><div class="s">Up from 77%, with 43% fewer early unlocks</div></div>
-          <div class="cs-stat"><div class="v num">8 of 10</div><div class="l">Users walk more</div><div class="s">Than at the start of the year</div></div>
+        <h2>More steps. More productive hours.</h2>
+        <div class="cs-stats two-up">
+          <div class="cs-stat"><div class="v num">+40%</div><div class="l">More steps every day</div><div class="s">Average across the 10 users, after a year of Social Limits</div></div>
+          <div class="cs-stat"><div class="v num">Up to 34 hrs</div><div class="l">More productive time a year</div><div class="s">Per employee, from fewer working days lost<sup class="ref"><a href="#ref-2">2</a></sup></div></div>
         </div>
 
-        <div class="ba" role="img" aria-label="Average steps per user per day: 5,597 at the start of the year, August to October 2025, and 7,847 after a year of Social Limits, August to October 2026">
-          <div class="ba-row">
-            <div class="ba-k">Start of the year<small>Aug – Oct 2025</small></div>
-            <div class="ba-bar num" style="width:71.3%;">5,597<span class="ba-u">steps per day</span></div>
-          </div>
-          <div class="ba-row">
-            <div class="ba-k">After a year of Social Limits<small>Aug – Oct 2026</small></div>
-            <div class="ba-bar after num" style="width:100%;">7,847<span class="ba-u">steps per day</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Outcomes: month by month -->
-  <section class="cs-sec" style="background:var(--pale-grey);">
-    <div class="shell">
-      <div class="cs-col">
-        <span class="cs-eyebrow">Outcomes · Month by month</span>
-        <h2>Higher than a year ago, every month.</h2>
-        <p>Average steps per user per day, same month at the start of the year and after a year of Social Limits.</p>
+        <h3 class="cs-h3">Steps per day, month by month</h3>
+        <p>Average steps per user per day, at the start of the year and after a year of Social Limits.</p>
         <div class="qs mm" role="img" aria-label="Average steps per day. August: 5,102 at the start of the year, 8,287 after a year. September: 5,414 and 8,169. October: 6,379 and 6,782.">
           <div class="m">
             <div class="m-pair">
@@ -294,76 +270,16 @@
           <span><i style="background:#C9CAD3"></i>Start of the year (2025)</span>
           <span><i style="background:var(--electric-blue)"></i>After a year of Social Limits (2026)</span>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Outcomes: productivity -->
-  <section class="cs-sec" style="background:#fff;">
-    <div class="shell">
-      <div class="cs-col">
-        <span class="cs-eyebrow">Outcomes · At work</span>
-        <h2>What the extra movement is worth at work.</h2>
-        <p>Research links regular activity to fewer lost working days. Here is how the change in these users' walking translates.</p>
-        <div class="calc">
-          <div class="calc-step">
-            <div class="k">1 · Extra walking</div>
-            <div class="v num">22 min</div>
-            <p>a day. 2,250 extra steps at about 100 steps a minute, the pace of moderate-intensity walking.<sup class="ref"><a href="#ref-3">3</a></sup></p>
-          </div>
-          <div class="calc-step">
-            <div class="k">2 · Weekly activity</div>
-            <div class="v num">157 min</div>
-            <p>a week, above the 150 minutes of moderate activity the WHO recommends for adults.<sup class="ref"><a href="#ref-4">4</a></sup></p>
-          </div>
-          <div class="calc-step res">
-            <div class="k">3 · Productive time</div>
-            <div class="v num">3–4.5 days</div>
-            <p>more productive time a year. RAND found active workers lose 3.0–4.6 fewer working days a year to sick leave and reduced performance than inactive workers.<sup class="ref"><a href="#ref-5">5</a></sup></p>
-          </div>
+        <div class="cs-note" style="margin-top:40px;">
+          <p><strong style="color:var(--ink);">About this case study.</strong> 10 users were drawn at random from everyone who started using Social Limits before August 2025, is still active, and has at least 45 days of step data in August to October of both years. "Start of the year" is August to October 2025 and "after a year" is the same months in 2026, so seasons don't skew the comparison. With only 10 users, results are indicative and vary between people. All data is anonymised.</p>
+          <p style="margin-top:10px;"><strong style="color:var(--ink);">How we estimate productive hours.</strong> The 2,250 extra steps a day equal about 22 minutes of brisk walking at roughly 100 steps a minute,<sup class="ref"><a href="#ref-3">3</a></sup> or 157 minutes a week, above the 150 minutes the WHO recommends.<sup class="ref"><a href="#ref-4">4</a></sup> RAND found that physically active workers lose 3.0 to 4.6 fewer working days a year to sick leave and reduced performance than inactive workers.<sup class="ref"><a href="#ref-2">2</a></sup> At 7.5 hours a day that is 23 to 34 hours. It applies in full to an employee who moves from inactive to active, and it is an estimate from published research, not a measurement of these users' work.</p>
         </div>
-        <div class="calc two">
-          <div class="calc-step">
-            <div class="k">Focus</div>
-            <div class="v num">1,000 hrs</div>
-            <p>a year with social media locked across 230 working days: 4.4 hours a day, from 7am until the step goal is met.</p>
-          </div>
-          <div class="calc-step">
-            <div class="k">Extra steps</div>
-            <div class="v num">820k</div>
-            <p>more steps per user a year: 2,250 more a day, at today's pace.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Outcomes: user by user -->
-  <section class="cs-sec" style="background:var(--pale-grey);">
-    <div class="shell">
-      <div class="cs-col">
-        <span class="cs-eyebrow">Outcomes · User by user</span>
-        <h2>Half of them walk at least 30% more.</h2>
-        <p>Change in each user's average daily steps over the year. 10,000-step days also nearly doubled, from 15% to 28% of days.</p>
-        <div class="split" role="img" aria-label="Of 10 users: 5 up 30% or more, 3 up by less than 30%, 2 down">
-          <div style="flex:5; background:var(--electric-blue);">5</div>
-          <div style="flex:3; background:#7B5BFF;">3</div>
-          <div style="flex:2; background:#C9CAD3; color:var(--ink);">2</div>
-        </div>
-        <div class="split-key">
-          <span><i style="background:var(--electric-blue)"></i>Up 30% or more</span>
-          <span><i style="background:#7B5BFF"></i>Up, by less than 30%</span>
-          <span><i style="background:#C9CAD3"></i>Down</span>
-        </div>
-
-        <p class="cs-note">About this study: 10 users were drawn at random from everyone who started using Social Limits before August 2025, is still active, and has at least 45 days of step data in August to October of both years. "Start of the year" is August to October 2025 and "after a year" is the same months in 2026, so seasons don't skew the comparison. "Hours with social media locked" counts the time from 7am until the day's step goal was met, averaged over August to October 2026; days the goal was not met count as zero. It measures time apps were locked, not total screen time. With only 10 users, results are indicative and vary between people. All data is anonymised. The 95% figure comes from the goal chosen at sign-up by the 520 currently active users who answered it ("Reduce my screen time" or "Both"); these 10 users joined before that question was added.</p>
-        <div class="cs-note" style="margin-top:24px; font-size:13px; color:var(--rich-grey);"><strong style="color:var(--ink);">How the productivity estimate is calculated.</strong> 2,250 extra steps a day ÷ 100 steps a minute ≈ 22 minutes; × 7 days ≈ 157 minutes a week. RAND's 3.0–4.6 days (0.44–0.86 days of absence plus 2.6–3.71 days of reduced performance) compares physically active with inactive workers, so it applies in full to an employee who moves from inactive to active. It is an estimate based on published research, not a measurement of these users' work. Focus hours: 4.4 hours a day × 230 working days.</div>
         <ol class="refs">
-          <li id="ref-1">DataReportal / We Are Social / Meltwater, <em>Digital 2024: Global Overview Report</em>, 2024. <a href="https://datareportal.com/reports/digital-2024-global-overview-report">datareportal.com</a></li>
-          <li id="ref-2">CareerBuilder / Harris Poll, survey of 2,186 hiring and HR managers and 3,031 workers (2016).</li>
+          <li id="ref-1">CareerBuilder / Harris Poll, survey of 2,186 hiring and HR managers and 3,031 workers (2016).</li>
+          <li id="ref-2">Hafner M. et al., <em>The economic benefits of a more physically active population: An international analysis</em>, RAND Corporation RR-4291, 2019. <a href="https://www.rand.org/t/RR4291">rand.org/t/RR4291</a></li>
           <li id="ref-3">Marshall S.J. et al., "Translating physical activity recommendations into a pedometer-based step goal: 3000 steps in 30 minutes", <em>American Journal of Preventive Medicine</em> 36(5), 2009.</li>
           <li id="ref-4">World Health Organization, <em>Guidelines on physical activity and sedentary behaviour</em>, 2020.</li>
-          <li id="ref-5">Hafner M. et al., <em>The economic benefits of a more physically active population: An international analysis</em>, RAND Corporation RR-4291, 2019. <a href="https://www.rand.org/t/RR4291">rand.org/t/RR4291</a></li>
         </ol>
       </div>
     </div>
