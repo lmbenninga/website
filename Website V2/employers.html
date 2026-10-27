@@ -75,7 +75,9 @@
     .lb-row em { font-style: normal; color: rgba(255,255,255,0.8); }
 
     /* Trust strip */
-    .trust { background: #fff; padding: 28px 0 8px; }
+    .trust { background: #fff; padding: 32px 0 8px; }
+    .cs-cta { color: var(--electric-blue); background: rgba(0,0,255,0.06); border: 1.5px solid var(--electric-blue); box-shadow: 0 10px 24px -12px rgba(0,0,255,0.45); }
+    .cs-cta:hover { background: var(--electric-blue); color: #fff; box-shadow: 0 14px 28px -10px rgba(0,0,255,0.55); }
     .trust-inner { display: flex; align-items: center; gap: clamp(20px, 4vw, 56px); flex-wrap: wrap; justify-content: center; }
     .trust-label { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rich-grey); opacity: 0.7; }
     .wordmark { font-weight: 900; font-size: clamp(20px, 2.2vw, 28px); letter-spacing: -0.03em; color: var(--rich-grey); opacity: 0.7; line-height: 1; display: inline-flex; align-items: center; gap: 8px; }
@@ -351,13 +353,8 @@
 
   <!-- Trust strip -->
   <div class="trust">
-    <div class="shell trust-inner">
-      <span class="trust-label">Trusted by teams and brands including</span>
-      <span class="wordmark">Adobe</span>
-      <span class="wordmark" style="font-style:italic;">HOKA<i style="display:inline-block;width:5px;height:5px;border-radius:999px;background:currentColor;margin-left:-4px;transform:translateY(-6px);"></i></span>
-    </div>
-    <div class="shell" style="display:flex; justify-content:center; margin-top:18px;">
-      <a href="/case-study" class="btn btn-ghost-light" style="padding:12px 22px; font-size:14px;" data-track="employers_case_study_click" data-loc="trust">View our 12-month case study →</a>
+    <div class="shell" style="display:flex; justify-content:center;">
+      <a href="/case-study" class="btn cs-cta" style="padding:12px 22px; font-size:14px;" data-track="employers_case_study_click" data-loc="trust">View our 12-month case study →</a>
     </div>
   </div>
 
