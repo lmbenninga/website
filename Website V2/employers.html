@@ -566,7 +566,7 @@
   </section>
 
   <!-- FAQ -->
-  <section style="background:#fff;">
+  <section id="faq" style="background:#fff; scroll-margin-top: 72px;">
     <div class="shell">
       <div class="section-head reveal" style="align-items:center; text-align:center; margin-left:auto; margin-right:auto;">
         <span class="chip">FAQ</span>
@@ -829,6 +829,7 @@
         modal.addEventListener('click', function (e) { if (e.target === modal) closeForm(); });
         modal.addEventListener('close', function () { document.body.style.overflow = ''; });
       }
+      if (location.hash === '#book') { openForm(); track('employers_form_open', { loc: 'case_study_link' }); }
       if (form) form.addEventListener('submit', function (e) {
         e.preventDefault();
         fErr.classList.remove('show');

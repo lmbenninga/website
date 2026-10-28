@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Case Study: 10 Users, 12 Months — Social Limits</title>
-  <meta name="description" content="A 12-month case study of 10 randomly selected Social Limits users: 51% more steps a day, social media unlocked later, and what research says those changes are worth."/>
+  <meta name="description" content="10 randomly selected Social Limits users, July–September 2025 vs 2026: 2,607 more steps a day, social apps unlocking 1 h 19 min later, and how it rolls out for employers."/>
   <meta name="robots" content="noindex"/>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png"/>
   <link rel="icon" type="image/png" href="assets/favicon.png"/>
@@ -130,8 +130,10 @@
     .cs-facts-strip div { padding: 16px 24px; display: flex; flex-direction: column; gap: 4px; border-left: 1px solid rgba(255,255,255,0.18); }
     .cs-facts-strip div:first-child { border-left: 0; }
     .cs-facts-strip b { font-size: clamp(30px, 3.6vw, 44px); font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
-    .cs-facts-strip span { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.78); }
-    @media (max-width: 560px) { .cs-facts-strip { grid-template-columns: 1fr; width: 100%; } .cs-facts-strip div { border-left: 0; border-top: 1px solid rgba(255,255,255,0.18); flex-direction: row; align-items: baseline; gap: 10px; padding: 12px 18px; } .cs-facts-strip div:first-child { border-top: 0; } }
+    .cs-facts-strip span { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.78); max-width: 24ch; }
+    .cs-facts-strip em { font-style: normal; font-size: 12px; font-weight: 600; color: #7DFFA8; }
+    .cs-facts-strip b { white-space: nowrap; }
+    @media (max-width: 760px) { .cs-facts-strip { grid-template-columns: 1fr; width: 100%; } .cs-facts-strip div { border-left: 0; border-top: 1px solid rgba(255,255,255,0.18); padding: 14px 18px; } .cs-facts-strip div:first-child { border-top: 0; } .cs-facts-strip span { max-width: none; } }
 
     .cs-privacy { display: flex; align-items: flex-start; gap: 8px; margin: 22px 0 0; font-size: 13px; color: rgba(255,255,255,0.7); }
     .cs-privacy svg { flex-shrink: 0; margin-top: 3px; }
@@ -176,6 +178,18 @@
       .tl-delta { margin-left: 0; }
     }
 
+    /* Rollout */
+    .ro-grid { margin-top: 28px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .ro-card { background: var(--pale-grey); border-radius: 22px; padding: 24px; display: flex; flex-direction: column; gap: 8px; }
+    .ro-i { width: 44px; height: 44px; border-radius: 12px; background: var(--faded-blue); color: var(--electric-blue); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 8px; }
+    .ro-card h3 { margin: 0; font-size: 17px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.25; }
+    .ro-card p { font-size: 14px !important; line-height: 1.5 !important; }
+    .ro-opt { display: block; width: fit-content; margin-bottom: 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--electric-blue); }
+    .ro-link { display: inline-block; margin-top: 22px; font-size: 14px; font-weight: 700; color: var(--electric-blue); }
+    .ro-link:hover { text-decoration: underline; }
+    @media (max-width: 1000px) { .ro-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .ro-grid { grid-template-columns: 1fr; } }
+
     /* Research */
     .rs-h { margin: 40px 0 14px; font-size: 13px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rich-grey); }
     .rs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -186,6 +200,17 @@
     .rs-card p { font-size: 14px !important; line-height: 1.5 !important; margin-top: 4px !important; }
     .rs-card .src { margin-top: auto; padding-top: 10px; font-size: 12px; font-weight: 600; color: var(--electric-blue); text-decoration: none; }
     .rs-card .src:hover { text-decoration: underline; }
+    .rs-minor { margin-top: 16px; border: 1px solid rgba(8,8,31,0.1); border-radius: 18px; padding: 16px 20px; display: flex; align-items: baseline; justify-content: space-between; gap: 8px 24px; flex-wrap: wrap; }
+    .cs-sec .rs-minor p { font-size: 14px; line-height: 1.5; flex: 1 1 520px; }
+    .rs-minor strong { color: var(--ink); }
+    .rs-minor .src { font-size: 12px; font-weight: 600; color: var(--electric-blue); white-space: nowrap; }
+    .rs-minor .src:hover { text-decoration: underline; }
+    .rs-est { display: inline-block; margin-bottom: 10px; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.3); font-size: 11px !important; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #fff !important; }
+    .rs-calc-link { color: #fff; text-decoration: underline; }
+    @media (min-width: 901px) {
+      .rs-apply-grid > div { position: relative; }
+      .rs-est { position: absolute; left: 0; bottom: calc(100% + 8px); margin: 0; }
+    }
     .rs-apply { margin-top: 40px; border-radius: 26px; padding: clamp(22px, 3vw, 34px); color: #fff; background: linear-gradient(160deg, #0A0AB8 0%, #1414DD 55%, #0606A0 100%); }
     .rs-apply-k { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #C4C4FF; margin-bottom: 18px; }
     .rs-apply-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
@@ -202,6 +227,8 @@
     .tl-gain-label { position: absolute; top: calc(100% + 10px); height: 10px; border: 2px solid #7DFFA8; border-top: 0; border-radius: 0 0 6px 6px; }
     .tl-gain-label span { position: absolute; top: 14px; left: 0; white-space: nowrap; font-size: 15px; font-weight: 800; color: #7DFFA8; }
     .tl-row-after { margin-bottom: 42px; }
+    .cs-sec p.tl-goal { margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.12); font-size: 16px; color: rgba(255,255,255,0.82); }
+    .tl-goal b { color: #7DFFA8; font-weight: 800; }
     .tl-key-gain { width: 16px; height: 12px; border-radius: 3px; background: #7DFFA8; box-shadow: 0 0 10px rgba(125,255,168,0.7); }
 
 
@@ -268,16 +295,50 @@
         <div class="cs-badge">Case study</div>
         <h1>Reimagining phone habits for a more productive workforce.</h1>
         <div class="cs-facts-strip">
-          <div><b class="num">10</b><span>users, selected at random</span></div>
-          <div><b class="num">12</b><span>months of data tracked</span></div>
-          <div><b class="num">+51%</b><span>more steps every day</span></div>
+          <div><b class="num">+2,607</b><span>steps a day</span><em class="num">5,099 → 7,706 (+51%)</em></div>
+          <div><b class="num">1 h 19 min</b><span>later social apps unlock each morning</span><em class="num">10:09am → 11:28am</em></div>
+          <div><b class="num">+30%</b><span>more days the step goal was hit</span><em class="num">680 days vs 523 a year earlier</em></div>
         </div>
-        <p class="lead">We selected 10 Social Limits users at random and tracked their data over a year. These are the benefits your employees can experience when they get access to the app.</p>
+        <p class="lead">We picked 10 Social Limits users at random and compared July–September 2025 with July–September 2026. Every number below comes from their app data, not a survey.</p>
         <nav class="cs-steps" aria-label="Case study sections">
-          <a href="#graph"><b>01</b> The results</a>
-          <a href="#research"><b>02</b> What it means</a>
+          <a href="#rollout"><b>01</b> How it rolls out</a>
+          <a href="#graph"><b>02</b> The results</a>
+          <a href="#research"><b>03</b> What it means</a>
         </nav>
         <p class="cs-privacy"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>All figures come from real user data. Personal information has been removed to protect users' privacy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rollout -->
+  <section class="cs-sec" id="rollout" style="background:#fff;">
+    <div class="shell">
+      <div class="cs-col">
+        <span class="cs-eyebrow">How it rolls out</span>
+        <h2>Switch it on. Your team does the rest.</h2>
+        <div class="ro-grid">
+          <div class="ro-card">
+            <span class="ro-i"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M10.85 12.15 19 4M18 5l2 2M15 8l2 2"/></svg></span>
+            <h3>Uses the sign-in you already have</h3>
+            <p>Connect through your existing SSO or benefits portal. No new hardware or IT project.</p>
+          </div>
+          <div class="ro-card">
+            <span class="ro-i"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></span>
+            <h3>Nothing for HR to manage</h3>
+            <p>Employees download the app, sign in with their work account and choose their own step goal.</p>
+          </div>
+          <div class="ro-card">
+            <span class="ro-i"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+            <h3>Privacy built in</h3>
+            <p>You see aggregated results only, for groups of 10 or more. Never an individual's steps, health data or apps.</p>
+          </div>
+          <div class="ro-card">
+            <span class="ro-i"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4Z"/><path d="M17 6h3v1a3 3 0 0 1-3 3M7 6H4v1a3 3 0 0 0 3 3"/></svg></span>
+            <h3><span class="ro-opt">Optional</span>Make it a challenge</h3>
+            <p>Add a private company leaderboard and step challenges that we run for you.</p>
+          </div>
+        </div>
+        <a class="ro-link" href="/employers#faq" data-track="case_study_rollout_pricing">See how pricing and rollout work →</a>
       </div>
     </div>
   </section>
@@ -355,6 +416,7 @@
           <span><i class="tl-key-mark"></i>Typical unlock time</span>
           <span><i class="tl-key-gain"></i>Extra time with social media locked, every day</span>
         </div>
+        <p class="tl-goal">Users hit their step goal on <b class="num">680 days</b> in July–September 2026, up from <b class="num">523</b> a year earlier, <b class="num">30%</b> more mornings won back.</p>
       </div>
     </div>
   </section>
@@ -365,19 +427,16 @@
       <div class="cs-col">
         <span class="cs-eyebrow">What this means</span>
         <h2>More steps and less scrolling add up to a healthier, more productive team.</h2>
-        <p>These users now walk 51% more each day and keep social media locked for longer each morning. Independent research shows what changes like these are worth, at work and for wellbeing.</p>
+        <p>These users now walk 2,600 more steps a day and keep social media locked for longer each morning. Here's what independent research links to changes like these.</p>
 
-        <h3 class="rs-h">Productivity</h3>
-        <div class="rs-grid two">
-          <div class="rs-card"><h4 class="rs-t">Employees gain extra working days</h4><div class="v num">3–4.6</div><div class="l">more working days a year</div><p>Physically active workers gain 3–4.6 productive working days a year over inactive workers: 0.44–0.86 fewer days off sick and 2.6–3.71 fewer days of reduced performance at work.<sup class="ref"><a href="#ref-1">1</a></sup></p><a class="src" href="https://www.rand.org/t/RR4291" target="_blank" rel="noopener">RAND Europe, 2019 · Read the study ↗</a></div>
-          <div class="rs-card"><h4 class="rs-t">Employees are more productive</h4><div class="v num">+33%</div><div class="l">higher productivity</div><p>Desk workers who added 15 minutes of movement to every workday for a week reported 33.2% higher productivity, 28.6% better focus and 14.7% lower stress. 80 office workers across 16 countries.<sup class="ref"><a href="#ref-4">4</a></sup></p><a class="src" href="https://news-emea.asics.com/archive/asics-public-service-announcement-warns-the-world-about-workplace-mental-health-threat/s/cd21911b-0363-49fe-b677-7ab4b567a894" target="_blank" rel="noopener">ASICS Desk Break experiment, 2024 · Read the study ↗</a></div>
-        </div>
-
-        <h3 class="rs-h">Mental health and wellbeing</h3>
-        <div class="rs-grid">
-          <div class="rs-card"><h4 class="rs-t">Employees feel mentally better</h4><div class="v num">43%</div><div class="l">fewer poor mental health days</div><p>People who exercised reported 1.5 fewer days of poor mental health a month than matched non-exercisers, across 1.2 million US adults.<sup class="ref"><a href="#ref-5">5</a></sup></p><a class="src" href="https://doi.org/10.1016/S2215-0366(18)30227-X" target="_blank" rel="noopener">Chekroud et al., 2018 · Read the study ↗</a></div>
+        <div class="rs-grid" style="margin-top:40px;">
           <div class="rs-card"><h4 class="rs-t">Lower risk of depression</h4><div class="v num">31%</div><div class="l">lower risk of depression</div><p>Adults walking 7,000+ steps a day vs fewer than 7,000. Each extra 1,000 steps a day was linked to a 9% lower risk.<sup class="ref"><a href="#ref-6">6</a></sup></p><a class="src" href="https://doi.org/10.1001/jamanetworkopen.2024.51208" target="_blank" rel="noopener">Bizzozero-Peroni et al., 2024 · Read the study ↗</a></div>
-          <div class="rs-card"><h4 class="rs-t">Healthier, longer lives</h4><div class="v num">47%</div><div class="l">lower risk of early death</div><p>7,000 vs 2,000 steps a day, along with a 25% lower risk of heart disease and 38% lower risk of dementia.<sup class="ref"><a href="#ref-7">7</a></sup></p><a class="src" href="https://doi.org/10.1016/S2468-2667(25)00164-1" target="_blank" rel="noopener">Ding et al., 2025 · Read the study ↗</a></div>
+          <div class="rs-card"><h4 class="rs-t">Employees feel mentally better</h4><div class="v num">43%</div><div class="l">fewer poor mental health days</div><p>People who exercised reported 1.5 fewer days of poor mental health a month than matched non-exercisers, across 1.2 million US adults.<sup class="ref"><a href="#ref-5">5</a></sup></p><a class="src" href="https://doi.org/10.1016/S2215-0366(18)30227-X" target="_blank" rel="noopener">Chekroud et al., 2018 · Read the study ↗</a></div>
+          <div class="rs-card"><h4 class="rs-t">Employees gain extra working days</h4><div class="v num">3–4.6</div><div class="l">more working days a year</div><p>Physically active workers gain 3–4.6 productive working days a year over inactive workers: 0.44–0.86 fewer days off sick and 2.6–3.71 fewer days of reduced performance at work.<sup class="ref"><a href="#ref-1">1</a></sup></p><a class="src" href="https://www.rand.org/t/RR4291" target="_blank" rel="noopener">RAND Europe, 2019 · Read the study ↗</a></div>
+        </div>
+        <div class="rs-minor">
+          <p><strong>ASICS Desk Break experiment (2024):</strong> desk workers who added 15 minutes of movement a day for a week reported 33% higher productivity and 29% better focus. A company-run, self-reported study of 80 office workers; not peer reviewed.<sup class="ref"><a href="#ref-4">4</a></sup></p>
+          <a class="src" href="https://news-emea.asics.com/archive/asics-public-service-announcement-warns-the-world-about-workplace-mental-health-threat/s/cd21911b-0363-49fe-b677-7ab4b567a894" target="_blank" rel="noopener">Read the study ↗</a>
         </div>
 
         <div class="rs-apply">
@@ -385,7 +444,7 @@
           <div class="rs-apply-grid">
             <div><h4 class="rs-at">Past the step level linked to better mental health</h4><b class="num">7,706</b><span>steps a day on average after a year, past the 7,000-step level linked to a 31% lower risk of depression, up from 5,099.</span></div>
             <div><h4 class="rs-at">A daily boost for mental health</h4><b class="num">+2,607</b><span>steps a day. At 9% lower depression risk per extra 1,000 steps, that's a meaningful gain for mental health.</span></div>
-            <div><h4 class="rs-at">Up to a working week of extra productive time a year</h4><b class="num">23–34 hrs</b><span>a year per employee. Their extra walking puts them above the activity level RAND links to 3–4.6 fewer lost working days.</span></div>
+            <div><span class="rs-est">Estimate</span><h4 class="rs-at">Estimated productive time gained</h4><b class="num">23–34 hrs</b><span>a year per employee, estimated from RAND research on active workers. Not measured from these users' work. <a href="#how-calc" class="rs-calc-link">See how we calculate this below.</a></span></div>
           </div>
         </div>
         <details class="cs-more">
@@ -394,7 +453,7 @@
           <p><strong style="color:var(--ink);">About this case study.</strong> 10 users were drawn at random from everyone who started using Social Limits before August 2025, is still active, and has at least 45 days of step data in late summer of both years. We compare July to September 2025 with July to September 2026, the most recent three complete months, so seasons don't skew the comparison. One user has no step data for August 2026, so that month averages 9 users. With only 10 users, results are indicative and vary between people. All data is anonymised.</p>
           <p><strong style="color:var(--ink);">Research figures.</strong> The studies in "What the research says" are independent of Social Limits. Most are observational and show associations, not proof of cause; the ASICS Desk Break experiment is a company-run study of 80 office workers using self-reported measures and has not been peer reviewed. Its 15-minute daily movement break is about 1,500 steps; these users added around 2,600 steps a day. Applying their figures to these users is an estimate, not a measurement.</p>
           <p><strong style="color:var(--ink);">Unlock times.</strong> The time social media unlocked is when the day's step goal was met, in each user's local time, on days the goal was met (523 days in 2025, 680 in 2026). "Typical" is the median. Days the goal wasn't met, when social media stayed locked, aren't included.</p>
-          <p style="margin-top:10px;"><strong style="color:var(--ink);">How we estimate productive hours.</strong> The 2,607 extra steps a day equal about 26 minutes of brisk walking at roughly 100 steps a minute,<sup class="ref"><a href="#ref-2">2</a></sup> or 182 minutes a week, above the 150 minutes the WHO recommends.<sup class="ref"><a href="#ref-3">3</a></sup> RAND found that physically active workers lose 3.0 to 4.6 fewer working days a year to sick leave and reduced performance than inactive workers.<sup class="ref"><a href="#ref-1">1</a></sup> At 7.5 hours a day that is 23 to 34 hours. It applies in full to an employee who moves from inactive to active, and it is an estimate from published research, not a measurement of these users' work.</p>
+          <p id="how-calc" style="margin-top:10px; scroll-margin-top:90px;"><strong style="color:var(--ink);">How we estimate productive hours.</strong> The 2,607 extra steps a day equal about 26 minutes of brisk walking at roughly 100 steps a minute,<sup class="ref"><a href="#ref-2">2</a></sup> or 182 minutes a week, above the 150 minutes the WHO recommends.<sup class="ref"><a href="#ref-3">3</a></sup> RAND found that physically active workers lose 3.0 to 4.6 fewer working days a year to sick leave and reduced performance than inactive workers.<sup class="ref"><a href="#ref-1">1</a></sup> At 7.5 hours a day that is 23 to 34 hours. It applies in full to an employee who moves from inactive to active, and it is an estimate from published research, not a measurement of these users' work.</p>
         </div>
         <ol class="refs">
           <li id="ref-1">Hafner M. et al., <em>The economic benefits of a more physically active population: An international analysis</em>, RAND Corporation RR-4291, 2019. <a href="https://www.rand.org/t/RR4291" target="_blank" rel="noopener">Link ↗</a></li>
@@ -402,9 +461,7 @@
           <li id="ref-3">World Health Organization, <em>Guidelines on physical activity and sedentary behaviour</em>, 2020. <a href="https://www.who.int/publications/i/item/9789240015128" target="_blank" rel="noopener">Link ↗</a></li>
           <li id="ref-4">ASICS, "Desk Break" experiment, led by Dr Brendon Stubbs (King's College London and University of Vienna), 80 office workers in 16 countries, 15–26 July 2024. <a href="https://news-emea.asics.com/archive/asics-public-service-announcement-warns-the-world-about-workplace-mental-health-threat/s/cd21911b-0363-49fe-b677-7ab4b567a894" target="_blank" rel="noopener">Link ↗</a></li>
           <li id="ref-5">Chekroud S.R. et al., "Association between physical exercise and mental health in 1·2 million individuals in the USA between 2011 and 2015", <em>The Lancet Psychiatry</em> 5(9), 2018. <a href="https://doi.org/10.1016/S2215-0366(18)30227-X" target="_blank" rel="noopener">Link ↗</a></li>
-          <li id="ref-6">Bizzozero-Peroni B. et al., "Daily step count and depression in adults: a systematic review and meta-analysis", <em>JAMA Network Open</em> 7(12), 2024. <a href="https://doi.org/10.1001/jamanetworkopen.2024.51208" target="_blank" rel="noopener">Link ↗</a></li>
-          <li id="ref-7">Ding D. et al., "Daily steps and health outcomes in adults: a systematic review and dose-response meta-analysis", <em>The Lancet Public Health</em> 10(8), 2025. <a href="https://doi.org/10.1016/S2468-2667(25)00164-1" target="_blank" rel="noopener">Link ↗</a></li>
-        </ol>
+          <li id="ref-6">Bizzozero-Peroni B. et al., "Daily step count and depression in adults: a systematic review and meta-analysis", <em>JAMA Network Open</em> 7(12), 2024. <a href="https://doi.org/10.1001/jamanetworkopen.2024.51208" target="_blank" rel="noopener">Link ↗</a></li>        </ol>
         </details>
       </div>
     </div>
@@ -417,9 +474,10 @@
       <span class="chip chip-dark"><span class="dot" style="background:#7DFFA8;"></span>Let's talk</span>
       <h2 class="h-2" style="margin:0; max-width:18ch;">See what Social Limits could do for <span class="gradient-text">your team.</span></h2>
       <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:8px;">
-        <a href="/employers" class="btn btn-solid" style="padding:18px 32px; background:#fff; color:var(--electric-blue); box-shadow:0 18px 40px -14px rgba(0,0,0,0.4);" data-track="case_study_cta_employers">Back to employers</a>
-        <a href="/employers#roi" class="btn btn-glass" style="padding:18px 28px;" data-track="case_study_cta_roi">Calculate your ROI</a>
+        <a href="https://apps.apple.com/au/app/social-limits-screen-time-app/id6471964510" class="btn btn-solid" style="padding:18px 32px; background:#fff; color:var(--electric-blue); box-shadow:0 18px 40px -14px rgba(0,0,0,0.4);" data-track="case_study_cta_try_app">Try it free for your team</a>
+        <a href="/employers#book" class="btn btn-glass" style="padding:18px 28px;" data-track="case_study_cta_book_call">Book a call</a>
       </div>
+      <a href="/employers#roi" style="font-size:14px; font-weight:600; color:#fff; text-decoration:underline;" data-track="case_study_cta_roi">Calculate your ROI</a>
       <div style="font-size:13px; color:rgba(255,255,255,0.6);">Or email <a href="mailto:lino@social-limits.com" style="color:#fff; text-decoration:underline;">lino@social-limits.com</a></div>
     </div>
   </section>
@@ -450,7 +508,7 @@
       }
 
       // ── Reference links open the collapsed sources ──
-      document.querySelectorAll('a[href^="#ref-"]').forEach(function (el) {
+      document.querySelectorAll('a[href^="#ref-"], a[href="#how-calc"]').forEach(function (el) {
         el.addEventListener('click', function () { var d = document.querySelector('.cs-more'); if (d) d.open = true; });
       });
 
