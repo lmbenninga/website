@@ -178,6 +178,22 @@
       .tl-delta { margin-left: 0; }
     }
 
+    /* Remote work */
+    .wfh { margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .wfh-card { background: var(--pale-grey); border-radius: 24px; padding: clamp(24px, 3vw, 34px); display: flex; flex-direction: column; gap: 6px; }
+    .wfh-k { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rich-grey); }
+    .wfh-v { margin-top: 8px; font-size: clamp(44px, 6vw, 72px); font-weight: 800; letter-spacing: -0.045em; line-height: 0.95; white-space: nowrap; }
+    .wfh-down { color: #9A9BA8; }
+    .wfh-l { font-size: 16px; font-weight: 700; }
+    .cs-sec .wfh-card p { font-size: 14px; line-height: 1.5; margin-top: 6px; }
+    .wfh-card .src { margin-top: auto; padding-top: 12px; font-size: 12px; font-weight: 600; color: var(--electric-blue); }
+    .wfh-card .src:hover { text-decoration: underline; }
+    .wfh-up { background: linear-gradient(160deg, #0A0AB8 0%, #1414DD 55%, #0606A0 100%); color: #fff; }
+    .wfh-up .wfh-k { color: #C4C4FF; }
+    .cs-sec .wfh-up p { color: rgba(255,255,255,0.82); }
+    .cs-sec p.wfh-note { margin-top: 22px; font-size: 15px; }
+    @media (max-width: 760px) { .wfh { grid-template-columns: 1fr; } }
+
     /* Rollout */
     .ro-grid { margin-top: 28px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
     .ro-card { background: var(--pale-grey); border-radius: 22px; padding: 24px; display: flex; flex-direction: column; gap: 8px; }
@@ -381,6 +397,33 @@
     </div>
   </section>
 
+  <!-- Remote work -->
+  <section class="cs-sec" id="remote" style="background:#fff;">
+    <div class="shell">
+      <div class="cs-col">
+        <span class="cs-eyebrow">The results · Remote work</span>
+        <h2>Working from home takes steps away. Social Limits helps win them back.</h2>
+        <p>Without the commute and the walk around the office, movement falls away fast. A 2025 systematic review found people take about 2,500 fewer steps a day when they work from home.</p>
+        <div class="wfh">
+          <div class="wfh-card">
+            <span class="wfh-k">Working from home vs on site</span>
+            <div class="wfh-v wfh-down num">−2,564</div>
+            <div class="wfh-l">steps a day</div>
+            <p>Pooled result from 7 studies comparing days working from home with days working on site.<sup class="ref"><a href="#ref-7">7</a></sup></p>
+            <a class="src" href="https://doi.org/10.1186/s12889-025-24960-x" target="_blank" rel="noopener">Schöne et al., 2025, BMC Public Health · Read the study ↗</a>
+          </div>
+          <div class="wfh-card wfh-up">
+            <span class="wfh-k">After a year of Social Limits</span>
+            <div class="wfh-v num">+2,607</div>
+            <div class="wfh-l">steps a day</div>
+            <p>The average gain for the users in this case study, from 5,099 to 7,706 steps a day. About the same as the steps lost to working from home.</p>
+          </div>
+        </div>
+        <p class="wfh-note">Social Limits keeps social apps locked until the day's step goal is met, so movement gets built into the day wherever people work.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Unlock times -->
   <section class="cs-sec" id="unlock" style="background:#08081F; color:#fff;">
     <div class="shell">
@@ -452,6 +495,7 @@
           <div class="cs-note">
           <p><strong style="color:var(--ink);">About this case study.</strong> 10 users were drawn at random from everyone who started using Social Limits before August 2025, is still active, and has at least 45 days of step data in late summer of both years. We compare July to September 2025 with July to September 2026, the most recent three complete months, so seasons don't skew the comparison. One user has no step data for August 2026, so that month averages 9 users. With only 10 users, results are indicative and vary between people. All data is anonymised.</p>
           <p><strong style="color:var(--ink);">Research figures.</strong> The studies in "What the research says" are independent of Social Limits. Most are observational and show associations, not proof of cause; the ASICS Desk Break experiment is a company-run study of 80 office workers using self-reported measures and has not been peer reviewed. Its 15-minute daily movement break is about 1,500 steps; these users added around 2,600 steps a day. Applying their figures to these users is an estimate, not a measurement.</p>
+          <p><strong style="color:var(--ink);">Remote work.</strong> The 2,564-step figure is the pooled mean difference from 7 studies (95% CI −3,809 to −1,320) in Schöne et al., 2025. The studies varied widely and most were run during the COVID-19 pandemic, so the authors treat it as an indication rather than a settled number. We don't know whether the users in this case study work from home; the comparison shows the size of their gain next to the steps typically lost to remote work.</p>
           <p><strong style="color:var(--ink);">Unlock times.</strong> The time social media unlocked is when the day's step goal was met, in each user's local time, on days the goal was met (523 days in 2025, 680 in 2026). "Typical" is the median. Days the goal wasn't met, when social media stayed locked, aren't included.</p>
           <p id="how-calc" style="margin-top:10px; scroll-margin-top:90px;"><strong style="color:var(--ink);">How we estimate productive hours.</strong> The 2,607 extra steps a day equal about 26 minutes of brisk walking at roughly 100 steps a minute,<sup class="ref"><a href="#ref-2">2</a></sup> or 182 minutes a week, above the 150 minutes the WHO recommends.<sup class="ref"><a href="#ref-3">3</a></sup> RAND found that physically active workers lose 3.0 to 4.6 fewer working days a year to sick leave and reduced performance than inactive workers.<sup class="ref"><a href="#ref-1">1</a></sup> At 7.5 hours a day that is 23 to 34 hours. It applies in full to an employee who moves from inactive to active, and it is an estimate from published research, not a measurement of these users' work.</p>
         </div>
@@ -461,7 +505,9 @@
           <li id="ref-3">World Health Organization, <em>Guidelines on physical activity and sedentary behaviour</em>, 2020. <a href="https://www.who.int/publications/i/item/9789240015128" target="_blank" rel="noopener">Link ↗</a></li>
           <li id="ref-4">ASICS, "Desk Break" experiment, led by Dr Brendon Stubbs (King's College London and University of Vienna), 80 office workers in 16 countries, 15–26 July 2024. <a href="https://news-emea.asics.com/archive/asics-public-service-announcement-warns-the-world-about-workplace-mental-health-threat/s/cd21911b-0363-49fe-b677-7ab4b567a894" target="_blank" rel="noopener">Link ↗</a></li>
           <li id="ref-5">Chekroud S.R. et al., "Association between physical exercise and mental health in 1·2 million individuals in the USA between 2011 and 2015", <em>The Lancet Psychiatry</em> 5(9), 2018. <a href="https://doi.org/10.1016/S2215-0366(18)30227-X" target="_blank" rel="noopener">Link ↗</a></li>
-          <li id="ref-6">Bizzozero-Peroni B. et al., "Daily step count and depression in adults: a systematic review and meta-analysis", <em>JAMA Network Open</em> 7(12), 2024. <a href="https://doi.org/10.1001/jamanetworkopen.2024.51208" target="_blank" rel="noopener">Link ↗</a></li>        </ol>
+          <li id="ref-6">Bizzozero-Peroni B. et al., "Daily step count and depression in adults: a systematic review and meta-analysis", <em>JAMA Network Open</em> 7(12), 2024. <a href="https://doi.org/10.1001/jamanetworkopen.2024.51208" target="_blank" rel="noopener">Link ↗</a></li>
+          <li id="ref-7">Schöne C., Sauter M., Backé E.-M., Prigge M., Brendler C., Hegewald J., "The impact of working from home on sedentary behaviour and physical activity compared to onsite work in the working population: a systematic review and meta-analysis", <em>BMC Public Health</em> 25, 3963, 2025. <a href="https://doi.org/10.1186/s12889-025-24960-x" target="_blank" rel="noopener">Link ↗</a></li>
+        </ol>
         </details>
       </div>
     </div>
